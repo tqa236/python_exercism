@@ -26,4 +26,15 @@ class SgfTree(object):
 
 
 def parse(input_string):
-    pass
+    if not input_string:
+        raise ValueError("Empty input")
+    if input_string in ['()', ';', '(;)']:
+        raise ValueError("Invalid input")
+    nodes = list(filter(None, input_string[1:-1].split(";")))
+    print(nodes)
+    for i in nodes:
+        if i[0].islower():
+            raise ValueError("Invalid key")
+        key = i.split("[")[0]
+        print(key[0])
+        return SgfTree(properties={key: i.split("[")[1][:-1]})
