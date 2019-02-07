@@ -28,13 +28,21 @@ class SgfTree(object):
 def parse(input_string):
     if not input_string:
         raise ValueError("Empty input")
-    if input_string in ['()', ';', '(;)']:
+    if input_string in ['()', ';']:
         raise ValueError("Invalid input")
+    if input_string == "(;)":
+        return SgfTree()
     nodes = list(filter(None, input_string[1:-1].split(";")))
-    print(nodes)
+    print("nodes = ", nodes)
+    tree = {}
     for i in nodes:
-        if i[0].islower():
-            raise ValueError("Invalid key")
+        if "[" not in i:
+            raise ValueError("Node must have properties")
         key = i.split("[")[0]
-        print(key[0])
-        return SgfTree(properties={key: i.split("[")[1][:-1]})
+        if key != key.upper():
+            raise ValueError("Keys must be all capital")
+        tree[key] = [i.split("[")[1][:-1]]
+    print()
+    print(tree)
+
+    return SgfTree(properties=tree)
