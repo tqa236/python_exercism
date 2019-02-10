@@ -19,6 +19,6 @@ matrix:
 install:
   - pip install -r requirements.txt
 
-before_script:
+script:
   - flake8
-  - pycodestyle
+  - pycodestyle .
