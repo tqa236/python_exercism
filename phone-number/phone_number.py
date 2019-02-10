@@ -10,7 +10,7 @@ class Phone(object):
         return f"({self.area_code}) {self.number[3:6]}-{self.number[6:]}"
 
     def valid_phone_number(self, phone_number):
-        number = re.sub("\D", "", phone_number)
+        number = re.sub(r"\D", "", phone_number)
         if len(number) < 10 or len(number) > 11:
             raise ValueError("Invalid phone number")
         if len(number) == 11 and number[0] != '1':

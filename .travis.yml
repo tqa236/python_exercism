@@ -21,6 +21,4 @@ install:
 
 before_script:
   - flake8
-
-script:
-- make -j8 OPTS='-v' test
+  - pycodestyle
