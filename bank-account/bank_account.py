@@ -1,9 +1,10 @@
-import threading
+from threading import Lock
+
+lock = Lock()
 
 
 class BankAccount(object):
     def __init__(self):
-        self.lock = threading.Lock()
         self.balance = 0
         self.is_open = False
 

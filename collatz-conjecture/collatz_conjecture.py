@@ -1,4 +1,8 @@
+"""Return the number of steps in a collatz conjecture."""
+
+
 def collatz_steps(number):
+    """Return the number of steps in a collatz conjecture."""
     if number < 1:
         raise ValueError("Number must be a positive integer")
     count = 0

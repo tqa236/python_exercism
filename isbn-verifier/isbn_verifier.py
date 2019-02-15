@@ -1,7 +1,9 @@
+"""Check a valid ISBN number."""
 import re
 
 
 def verify(isbn):
+    """Check a valid ISBN number."""
     if not isbn:
         return False
     isbn_number = [int(digit) for digit in re.sub(r"\D", "", isbn)]
