@@ -5,23 +5,19 @@ class HighScores(object):
     """Manage high scores of a game."""
 
     def __init__(self, scores):
-        self._scores = scores
-
-    def scores(self):
-        """Return all scores."""
-        return self._scores
+        self.scores = scores
 
     def latest(self):
         """Return the latest score."""
-        return self._scores[-1]
+        return self.scores[-1]
 
     def personal_best(self):
         """Return the best score."""
-        return max(self._scores)
+        return max(self.scores)
 
     def personal_top(self):
         """Return three best scores."""
-        return sorted(self._scores, reverse=True)[:3]
+        return sorted(self.scores, reverse=True)[:3]
 
     def report(self):
         """Auto-generate a report."""
