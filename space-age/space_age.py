@@ -1,7 +1,7 @@
 """Find the ages of the planets in the Solar system."""
-year_seconds = 31557600
+YEAR_SECONDS = 31557600
 
-year_map = {
+YEAR_MAP = {
     'earth': 1,
     'mercury': 0.2408467,
     'venus': 0.61519726,
@@ -20,9 +20,9 @@ class SpaceAge(object):
 
 def on_planet(r):
     def inner(self):
-        return round(self.seconds / year_seconds / r, 2)
+        return round(self.seconds / YEAR_SECONDS / r, 2)
     return inner
 
 
-for k, v in year_map.items():
+for k, v in YEAR_MAP.items():
     setattr(SpaceAge, "on_{}".format(k), on_planet(v))
