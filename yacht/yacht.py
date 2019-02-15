@@ -1,3 +1,4 @@
+"""Calculate the score of a yatch game."""
 # Score categories
 # Change the values as you see fit
 

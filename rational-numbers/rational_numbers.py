@@ -1,8 +1,11 @@
+"""Implement a basic ratinal number object."""
 from __future__ import division
 from math import gcd
 
 
 class Rational(object):
+    """Implement a basic ratinal number object."""
+
     def __init__(self, numer, denom):
         if denom == 0:
             raise ValueError("Denominator cannot be 0")

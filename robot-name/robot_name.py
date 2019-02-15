@@ -1,8 +1,11 @@
+"""Return a unique robot name."""
 from string import ascii_uppercase, digits
 from random import choice
 
 
 class Robot(object):
+    """Return a unique robot name."""
+
     def __init__(self):
         self.name = self.generate_name()
         self.used_name = [self.name]

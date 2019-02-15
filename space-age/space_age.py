@@ -1,3 +1,4 @@
+"""Find the ages of the planets in the Solar system."""
 year_seconds = 31557600
 
 year_map = {

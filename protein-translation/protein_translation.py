@@ -1,4 +1,8 @@
+"""Convert from RND sequences into proteins."""
+
+
 def proteins(strand):
+    """Convert from RND sequences into proteins."""
     codons = {"AUG": "Methionine",
               "UUU": "Phenylalanine", "UUC": "Phenylalanine",
               "UUA": "Leucine", "UUG": "Leucine",

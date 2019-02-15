@@ -1,3 +1,4 @@
+"""Verify if a number is a valid phone number."""
 import re
 
 
@@ -7,9 +8,11 @@ class Phone(object):
         self.area_code = self.number[:3]
 
     def pretty(self):
+        """Pretify a phone number."""
         return f"({self.area_code}) {self.number[3:6]}-{self.number[6:]}"
 
     def valid_phone_number(self, phone_number):
+        """Verify if a number is a valid phone number."""
         number = re.sub(r"\D", "", phone_number)
         if len(number) < 10 or len(number) > 11:
             raise ValueError("Invalid phone number")
