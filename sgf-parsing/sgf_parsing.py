@@ -1,4 +1,10 @@
+"""Build a class to parse SGF format."""
+import re
+
+
 class SgfTree(object):
+    """Build a class to parse SGF format."""
+
     def __init__(self, properties=None, children=None):
         self.properties = properties or {}
         self.children = children or []
@@ -26,23 +32,25 @@ class SgfTree(object):
 
 
 def parse(input_string):
-    if not input_string:
-        raise ValueError("Empty input")
-    if input_string in ['()', ';']:
+    """Build a function to parse SGF format."""
+    if input_string in ['()', ';', ""]:
         raise ValueError("Invalid input")
     if input_string == "(;)":
         return SgfTree()
-    # nodes = list(filter(None, input_string[1:-1].split(";")))
-    # print("nodes = ", nodes)
-    tree = {}
-    # for i in nodes:
-    #     if "[" not in i:
-    #         raise ValueError("Node must have properties")
-    #     key = i.split("[")[0]
-    #     if key != key.upper():
-    #         raise ValueError("Keys must be all capital")
-    #     tree[key] = [i.split("[")[1][:-1]]
-    # print()
-    # print(tree)
-
-    return SgfTree(properties=tree)
+    nodes = list(filter(None, input_string[1:-1].split(";")))
+    print("nodes = ", nodes)
+    whole_tree = []
+    for node in nodes:
+        tree = {}
+        if "[" not in node:
+            raise ValueError("Node must have properties")
+        key = node.split("[")[0]
+        if key != key.upper():
+            raise ValueError("Keys must be all capital")
+        print(node.split("["))
+        value = [x.split("]")[0] for x in node.split("[") if "]" in x]
+        tree[key] = value
+        whole_tree.append(tree)
+    print("whole tree = ", whole_tree)
+    children = [SgfTree(properties=x) for x in whole_tree[1:]]
+    return SgfTree(properties=whole_tree[0], children=children)
