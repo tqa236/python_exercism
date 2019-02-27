@@ -4,5 +4,6 @@
 def raindrops(number):
     """Return the sound of raindrops for a given number."""
     sounds = {3: "Pling", 5: "Plang", 7: "Plong"}
-    drops = "".join([sounds[i] for i in [3, 5, 7] if number % i == 0])
-    return drops if drops else str(number)
+    drops = "".join(
+        [value for key, value in sorted(sounds.items()) if number % key == 0])
+    return drops or str(number)
