@@ -1,5 +1,6 @@
 """Build a class to parse SGF format."""
 import re
+import string
 
 
 class SgfTree(object):
@@ -33,24 +34,33 @@ class SgfTree(object):
 
 def parse(input_string):
     """Build a function to parse SGF format."""
-    if input_string in ['()', ';', ""]:
-        raise ValueError("Invalid input")
+    input_string = input_string.replace("\\", "").replace("\t", " ")
+    regex = r"\(?\;?(?P<keys>[A-Z]+)?(?:\[(?P<values>(.|\s)+?\]?)\])"
+    matches = re.finditer(regex, input_string, re.MULTILINE)
     if input_string == "(;)":
         return SgfTree()
-    nodes = list(filter(None, input_string[1:-1].split(";")))
-    print("nodes = ", nodes)
-    whole_tree = []
-    for node in nodes:
-        tree = {}
-        if "[" not in node:
-            raise ValueError("Node must have properties")
-        key = node.split("[")[0]
-        if key != key.upper():
-            raise ValueError("Keys must be all capital")
-        print(node.split("["))
-        value = [x.split("]")[0] for x in node.split("[") if "]" in x]
-        tree[key] = value
-        whole_tree.append(tree)
-    print("whole tree = ", whole_tree)
-    children = [SgfTree(properties=x) for x in whole_tree[1:]]
-    return SgfTree(properties=whole_tree[0], children=children)
+    if re.match(regex, input_string) is None:
+        raise ValueError("Invalid input")
+    properties, children, last_key, level = {}, [], "", 0
+    for _, match in enumerate(matches, start=1):
+        full = match.group()
+        key = match.group('keys')
+        value = match.group('values')
+        if "(;" in full or ";" in full:
+            if not key and not last_key or key not in string.ascii_uppercase\
+                    or not value:
+                raise ValueError("Invalid input")
+            level += 1
+        if level == 1:
+            if not key and last_key:
+                properties[last_key].append(value)
+            else:
+                if key in properties:
+                    properties[key].append(value)
+                else:
+                    properties[key] = [value]
+        if level >= 2:
+            children.append(SgfTree({key: [value]}))
+        if key:
+            last_key = key
+    return SgfTree(properties, children)

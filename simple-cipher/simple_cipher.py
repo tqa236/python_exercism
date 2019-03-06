@@ -1,5 +1,5 @@
 """Implement a simple Ceasar cipher."""
-import random
+import secrets
 from string import ascii_lowercase
 
 
@@ -9,7 +9,7 @@ class Cipher(object):
     def __init__(self, key=None):
         """Initialize key or create a random key if it is not provided."""
         self.key = key if key else "".join(
-            random.choice(ascii_lowercase)
+            secrets.choice(ascii_lowercase)
             for _ in range(100))
 
     def encode(self, text):
