@@ -1,10 +1,10 @@
-import unittest
 import re
+import unittest
 
 from simple_cipher import Cipher
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
+
 
 class SimpleCipherTest(unittest.TestCase):
     # Utility functions
