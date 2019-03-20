@@ -19,38 +19,29 @@ class Node():
         self.children = []
 
 
+def check_valid_record(record):
+    """Check valid record."""
+    if record.record_id == 0 and record.parent_id != 0:
+        raise ValueError('Root node cannot have a parent')
+    elif record.record_id < record.parent_id:
+        raise ValueError('Parent id must be lower than child id')
+    elif record.record_id == record.parent_id and record.record_id != 0:
+        raise ValueError('Tree is a cycle')
+
+
 def BuildTree(records):
     """Build a tree of records."""
     records.sort(key=lambda x: x.record_id)
-    ordered_id = [i.record_id for i in records]
     if not records:
         return None
-    if ordered_id[-1] != len(ordered_id) - 1:
+    if records[-1].record_id != len(records) - 1:
         raise ValueError('Tree must be continuous')
-    if ordered_id[0] != 0:
+    if records[0].record_id != 0:
         raise ValueError('Tree must start with id 0')
     trees = []
-    parent = {}
-    for i in range(len(ordered_id)):
-        for j in records:
-            if ordered_id[i] == j.record_id:
-                if j.record_id == 0 and j.parent_id != 0:
-                    raise ValueError('Root node cannot have a parent')
-                elif j.record_id < j.parent_id:
-                    raise ValueError('Parent id must be lower than child id')
-                elif j.record_id == j.parent_id and j.record_id != 0:
-                    raise ValueError('Tree is a cycle')
-                trees.append(Node(ordered_id[i]))
-    for i in range(len(ordered_id)):
-        for j in trees:
-            if i == j.node_id:
-                parent = j
-        for j in records:
-            if j.parent_id == i:
-                for k in trees:
-                    if k.node_id == 0:
-                        continue
-                    if j.record_id == k.node_id:
-                        child = k
-                        parent.children.append(child)
+    for record in records:
+        check_valid_record(record)
+        trees.append(Node(record.record_id))
+        if record.record_id > 0:
+            trees[record.parent_id].children.append(trees[record.record_id])
     return trees[0]
