@@ -1,6 +1,6 @@
 """Return a unique robot name."""
+from secrets import choice
 from string import ascii_uppercase, digits
-from random import choice
 
 
 class Robot(object):
@@ -11,9 +11,9 @@ class Robot(object):
         self.used_name = [self.name]
 
     def reset(self):
-        while self.name in self.generate_name():
+        while self.name in self.used_name:
             self.name = self.generate_name()
-            self.used_name.append(self.name)
+        self.used_name.append(self.name)
 
     def generate_name(self):
         return ''.join([choice(ascii_uppercase)
