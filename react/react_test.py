@@ -1,10 +1,10 @@
 import unittest
 from functools import partial
 
-from react import InputCell, ComputeCell
-
+from react import ComputeCell, InputCell
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v2.0.0
+
 
 class ReactTest(unittest.TestCase):
 
@@ -27,7 +27,7 @@ class ReactTest(unittest.TestCase):
         two = InputCell(2)
         output = ComputeCell(
             [one, two],
-            lambda inputs: inputs[0] + inputs[1]*10
+            lambda inputs: inputs[0] + inputs[1] * 10
         )
         self.assertEqual(output.value, 21)
 
