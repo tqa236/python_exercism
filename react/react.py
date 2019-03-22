@@ -5,6 +5,7 @@ class InputCell(object):
     def __init__(self, initial_value):
         """Initialize."""
         self.value = initial_value
+        self.current_value = self.value
 
     def __add__(self, number):
         """Overload + operator."""
@@ -13,6 +14,9 @@ class InputCell(object):
     def __mul__(self, number):
         """Overload + operator."""
         return self.value * number
+
+    # def updated():
+        # if self.
 
 
 class ComputeCell(object):
