@@ -2,6 +2,8 @@
 
 STUDENTS = ["Alice", "Bob", "Charlie", "David", "Eve", "Fred",
             "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"]
+PLANT_NAMES = {"V": "Violets", "C": "Clover",
+               "R": "Radishes", "G": "Grass"}
 
 
 class Garden(object):
@@ -9,24 +11,19 @@ class Garden(object):
 
     def __init__(self, diagram, students=None):
         """Initialize."""
-        self.plant_names = {"V": "Violets", "C": "Clover",
-                            "R": "Radishes", "G": "Grass"}
-        self.garden = self.make_garden(diagram)
+        try:
+            self.garden = [[PLANT_NAMES[plant] for plant in row]
+                           for row in diagram.split("\n")]
+        except ValueError:
+            print("Invalid plant.")
+
         self.students = sorted(students) if students else STUDENTS
 
     def plants(self, student):
         """Determine which plants this child is responsible for."""
         try:
-            index = self.students.index(student)
-            return self.garden[0][2 * index: 2 * index + 2] +\
-                self.garden[1][2 * index: 2 * index + 2]
+            start = self.students.index(student) * 2
+            end = start + 2
+            return [plant for row in self.garden for plant in row[start: end]]
         except ValueError:
             print(f"{student} is not in this class.")
-
-    def make_garden(self, diagram):
-        """Create the garden from the diagram."""
-        try:
-            return [[self.plant_names[plant] for plant in row]
-                    for row in diagram.split("\n")]
-        except ValueError:
-            print("Invalid plant.")
