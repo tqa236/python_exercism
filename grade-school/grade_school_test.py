@@ -2,8 +2,8 @@ import unittest
 
 from grade_school import School
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.0
+
 
 class GradeSchoolTest(unittest.TestCase):
     def test_adding_student_adds_them_to_sorted_roster(self):
