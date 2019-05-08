@@ -12,6 +12,5 @@ def proteins(strand):
               "UGU": "Cysteine", "UGC": "Cysteine",
               "UGG": "Tryptophan",
               "UAA": "STOP", "UAG": "STOP", "UGA": "STOP"}
-    proteins = [codons[strand[i:i+3]] for i in range(0, len(strand), 3)]
-    return proteins[:None if "STOP" not in proteins
-                    else proteins.index("STOP")]
+    return list(next(iter(())) if codons[strand[i:i + 3]] == "STOP" else
+                codons[strand[i:i + 3]] for i in range(0, len(strand), 3))
