@@ -1,6 +1,13 @@
+"""A secrete handshake decoder."""
+
+ACTIONS = ['wink', 'double blink', 'close your eyes', 'jump']
+
+
 def handshake(code):
-    pass
+    """Decode."""
+    return ACTIONS[code & 31]
 
 
 def secret_code(actions):
-    pass
+    """Encode."""
+    return 0
