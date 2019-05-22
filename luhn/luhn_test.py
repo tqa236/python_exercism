@@ -4,8 +4,8 @@ import unittest
 
 from luhn import Luhn
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.5.0
+
 
 class LuhnTest(unittest.TestCase):
     def test_single_digit_strings_can_not_be_valid(self):
