@@ -1,4 +1,4 @@
-
+"""Check the relation of 2 lists."""
 SUBLIST = 1
 SUPERLIST = 2
 EQUAL = 3
