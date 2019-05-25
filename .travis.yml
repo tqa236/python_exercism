@@ -25,7 +25,7 @@ install:
 
 script:
   # - ./lint.sh
-  - ./test.sh
+  # - ./test.sh
   - codecov
 
 after_success:
