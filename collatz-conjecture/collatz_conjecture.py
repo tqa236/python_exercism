@@ -1,7 +1,7 @@
 """Return the number of steps in a collatz conjecture."""
 
 
-def collatz_steps(number):
+def collatz_steps(number: int) -> int:
     """Return the number of steps in a collatz conjecture."""
     if number < 1:
         raise ValueError("Number must be a positive integer")

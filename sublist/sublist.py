@@ -1,11 +1,12 @@
 """Check the relation of 2 lists."""
+from typing import List, Union
 SUBLIST = 1
 SUPERLIST = 2
 EQUAL = 3
 UNEQUAL = 4
 
 
-def check_sublist(sublist, lst):
+def check_sublist(sublist: Union[List[int], List[str]], lst: Union[List[int], List[str]]) -> bool:
     """Check if a list is an ordered sublist of another list."""
     if not isinstance(sublist, list):
         raise ValueError("sublist must be a list")
@@ -29,7 +30,7 @@ def check_sublist(sublist, lst):
     return False
 
 
-def check_lists(first_list, second_list):
+def check_lists(first_list: Union[List[int], List[str]], second_list: Union[List[int], List[str]]) -> int:
     """Check the relation of 2 lists."""
     if first_list == second_list:
         return EQUAL

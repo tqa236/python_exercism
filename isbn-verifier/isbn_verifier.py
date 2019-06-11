@@ -2,7 +2,7 @@
 import re
 
 
-def verify(isbn):
+def verify(isbn: str) -> bool:
     """Check a valid ISBN number."""
     if not isbn:
         return False

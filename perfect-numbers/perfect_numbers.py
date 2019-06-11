@@ -2,7 +2,7 @@
 from functools import reduce
 
 
-def classify(number):
+def classify(number: int) -> str:
     """Classify numbers into the perfect number types."""
     if number < 1:
         raise ValueError("Invalid number.")

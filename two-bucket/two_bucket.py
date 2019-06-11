@@ -1,2 +1,2 @@
-def measure(bucket_one, bucket_two, goal, start_bucket):
+def measure(bucket_one: int, bucket_two: int, goal: int, start_bucket: str) -> None:
     pass

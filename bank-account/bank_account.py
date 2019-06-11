@@ -5,7 +5,7 @@ from threading import Lock
 class BankAccount(object):
     """Implement a simple class to manage a bank account."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.balance = 0
         self.is_open = False
         self.lock = Lock()
@@ -23,7 +23,7 @@ class BankAccount(object):
         with self.lock:
             return self.balance
 
-    def open(self):
+    def open(self) -> None:
         """Open an account."""
         if not self.is_open:
             self.is_open = True

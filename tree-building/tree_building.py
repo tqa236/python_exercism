@@ -1,10 +1,11 @@
 """Build a tree of records."""
 
 
+from typing import List, Optional
 class Record():
     """Simple record class."""
 
-    def __init__(self, record_id, parent_id):
+    def __init__(self, record_id: int, parent_id: int) -> None:
         """Initialize."""
         self.record_id = record_id
         self.parent_id = parent_id
@@ -13,13 +14,13 @@ class Record():
 class Node():
     """Simple node class."""
 
-    def __init__(self, node_id):
+    def __init__(self, node_id: int) -> None:
         """Initialize."""
         self.node_id = node_id
         self.children = []
 
 
-def check_valid_record(record):
+def check_valid_record(record: Record) -> None:
     """Check valid record."""
     if record.record_id == 0 and record.parent_id != 0:
         raise ValueError('Root node cannot have a parent')
@@ -29,7 +30,7 @@ def check_valid_record(record):
         raise ValueError('Tree is a cycle')
 
 
-def BuildTree(records):
+def BuildTree(records: List[Record]) -> Optional[Node]:
     """Build a tree of records."""
     records.sort(key=lambda x: x.record_id)
     if not records:

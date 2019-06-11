@@ -1,4 +1,5 @@
 
+from typing import List
 class Board:
     """Count territories of each player in a Go game
 
@@ -6,10 +7,10 @@ class Board:
         board (list[str]): A two-dimensional Go board
     """
 
-    def __init__(self, board):
+    def __init__(self, board: List[str]) -> None:
         pass
 
-    def territory(self, x, y):
+    def territory(self, x: int, y: int) -> None:
         """Find the owner and the territories given a coordinate on
            the board
 
@@ -25,7 +26,7 @@ class Board:
         """
         pass
 
-    def territories(self):
+    def territories(self) -> None:
         """Find the owners and the territories of the whole board
 
         Args:

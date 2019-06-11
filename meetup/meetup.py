@@ -3,13 +3,14 @@ import datetime
 from calendar import monthrange
 
 
-def next_weekday(day, weekday):
+from datetime import date
+def next_weekday(day: date, weekday: int) -> date:
     """Find the nearest day in the future of a weekday type."""
     days_ahead = (weekday - day.weekday() + 7) % 7
     return day + datetime.timedelta(days_ahead)
 
 
-def meetup_day(year, month, day_of_the_week, which):
+def meetup_day(year: int, month: int, day_of_the_week: str, which: str) -> date:
     """Return the meeting day given some conditions."""
     last_day_of_month = monthrange(year, month)[1]
     days_of_the_week = {"Monday": 0, "Tuesday": 1, "Wednesday": 2,

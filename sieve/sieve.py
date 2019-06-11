@@ -1,7 +1,8 @@
 """Generate a list of primes based on the Sieve algorithm."""
 
 
-def sieve(limit):
+from typing import List
+def sieve(limit: int) -> List[int]:
     """Generate a list of primes based on the Sieve algorithm."""
     primes = []
     numbers = range(2, limit + 1)

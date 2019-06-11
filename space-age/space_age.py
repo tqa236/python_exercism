@@ -1,4 +1,5 @@
 """Find the ages of the planets in the Solar system."""
+from typing import Callable, Union
 YEAR_SECONDS = 31557600
 
 YEAR_MAP = {
@@ -14,11 +15,11 @@ YEAR_MAP = {
 
 
 class SpaceAge(object):
-    def __init__(self, seconds):
+    def __init__(self, seconds: Union[float, int]) -> None:
         self.seconds = seconds
 
 
-def on_planet(r):
+def on_planet(r: Union[float, int]) -> Callable:
     def inner(self):
         return round(self.seconds / YEAR_SECONDS / r, 2)
     return inner

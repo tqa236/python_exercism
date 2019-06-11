@@ -1,7 +1,8 @@
 """Find all pythagorean triplets of a given sum."""
 
 
-def triplets_with_sum(sum_of_triplet):
+from typing import Set, Tuple
+def triplets_with_sum(sum_of_triplet: int) -> Set[Tuple[int, int, int]]:
     """Find all pythagorean triplets of a given sum."""
     triplet = []
     for a in range(1, sum_of_triplet // 3):

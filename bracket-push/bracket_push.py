@@ -2,7 +2,7 @@
 import re
 
 
-def is_paired(input_string):
+def is_paired(input_string: str) -> bool:
     """Check if a string has correct bracket order or not."""
     stack = []
     brackets = re.sub(r"[^\(\)\[\]\{\}]", "", input_string)

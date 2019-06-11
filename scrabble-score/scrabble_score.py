@@ -1,7 +1,8 @@
 """Calculate the scrabble score of a word."""
 
 
-def make_value_dict():
+from typing import Dict
+def make_value_dict() -> Dict[str, int]:
     """Make a value dictionary for scrabble."""
     value_dict = {}
 
@@ -17,7 +18,7 @@ def make_value_dict():
     return value_dict
 
 
-def score(word):
+def score(word: str) -> int:
     """Calculate the scrabble score of a word."""
     value_dict = make_value_dict()
     return sum(value_dict[character] for character in word.upper())

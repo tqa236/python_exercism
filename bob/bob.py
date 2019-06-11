@@ -1,7 +1,7 @@
 """Choose a response based on the phrase."""
 
 
-def hey(phrase):
+def hey(phrase: str) -> str:
     """Choose a response based on the phrase."""
     phrase = phrase.rstrip()
     if phrase == "":

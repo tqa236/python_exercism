@@ -1,12 +1,13 @@
 """Practice handling various kind of errors."""
 
 
+from typing import Optional, Tuple, Union
 def handle_error_by_throwing_exception():
     """Throw exception."""
     raise ValueError("No input")
 
 
-def handle_error_by_returning_none(input_data):
+def handle_error_by_returning_none(input_data: str) -> Optional[int]:
     """Return None if errors."""
     try:
         return int(input_data)
@@ -14,7 +15,7 @@ def handle_error_by_returning_none(input_data):
         return None
 
 
-def handle_error_by_returning_tuple(input_data):
+def handle_error_by_returning_tuple(input_data: str) -> Union[Tuple[bool, str], Tuple[bool, int]]:
     """Return the result and the status."""
     try:
         return True, int(input_data)

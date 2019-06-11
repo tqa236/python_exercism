@@ -13,10 +13,10 @@ palindrome in arbitrary order.
 
 import unittest
 
-from palindrome_products import smallest_palindrome, largest_palindrome
-
+from palindrome_products import largest_palindrome, smallest_palindrome
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
+
 
 class PalindromeProductsTest(unittest.TestCase):
     def test_smallest_palindrome_from_single_digit_factors(self):

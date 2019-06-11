@@ -3,14 +3,15 @@ import re
 import string
 
 
+from typing import Dict, List, Optional
 class SgfTree(object):
     """Build a class to parse SGF format."""
 
-    def __init__(self, properties=None, children=None):
+    def __init__(self, properties: Optional[Dict[str, List[str]]] = None, children: Optional[List[SgfTree]] = None) -> None:
         self.properties = properties or {}
         self.children = children or []
 
-    def __eq__(self, other):
+    def __eq__(self, other: SgfTree) -> bool:
         if not isinstance(other, SgfTree):
             return False
         for k, v in self.properties.items():
@@ -28,11 +29,11 @@ class SgfTree(object):
                 return False
         return True
 
-    def __ne__(self, other):
+    def __ne__(self, other: SgfTree) -> bool:
         return not self == other
 
 
-def parse(input_string):
+def parse(input_string: str) -> SgfTree:
     """Build a function to parse SGF format."""
     input_string = input_string.replace("\\", "").replace("\t", " ")
     regex = r"\(?\;?(?P<keys>[A-Z]+)?(?:\[(?P<values>(.|\s)+?\]?)\])"

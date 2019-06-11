@@ -9,7 +9,7 @@ STATUS_ONGOING = "ongoing"
 class Hangman(object):
     """Implement a simple hangman game."""
 
-    def __init__(self, word):
+    def __init__(self, word: str) -> None:
         """Initialize all required value."""
         self.remaining_guesses = 9
         self.status = STATUS_ONGOING
@@ -17,7 +17,7 @@ class Hangman(object):
         self.masked_word = "".join("_" for c in word)
         self.correct_guess = []
 
-    def guess(self, char):
+    def guess(self, char: str) -> None:
         """Guess a character."""
         if self.status != STATUS_ONGOING:
             raise ValueError("Game over.")
@@ -33,10 +33,10 @@ class Hangman(object):
             if "_" not in self.masked_word:
                 self.status = STATUS_WIN
 
-    def get_masked_word(self):
+    def get_masked_word(self) -> str:
         """Return masked word."""
         return self.masked_word
 
-    def get_status(self):
+    def get_status(self) -> str:
         """Return status."""
         return self.status

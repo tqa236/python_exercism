@@ -1,7 +1,8 @@
 """Find saddle points in a matrix."""
 
 
-def saddle_points(matrix):
+from typing import List, Set, Tuple
+def saddle_points(matrix: List[List[int]]) -> Set[Tuple[int, int]]:
     """Find saddle points in a matrix."""
     if any(len(row) != len(matrix[0]) for row in matrix):
         raise ValueError('Length matrix row is different')

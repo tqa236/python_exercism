@@ -1,7 +1,8 @@
 """Find the sum of all the unique multiples of some numbers up to a limit."""
 
 
-def sum_of_multiples(limit, multiples):
+from typing import List
+def sum_of_multiples(limit: int, multiples: List[int]) -> int:
     """Find the sum of all unique multiples of some numbers up to a limit."""
     if 0 in multiples:
         multiples.remove(0)

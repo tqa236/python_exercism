@@ -1,7 +1,8 @@
 """Recite the twelve days song."""
 
 
-def recite_one_verse(verse):
+from typing import List
+def recite_one_verse(verse: int) -> List[str]:
     """Recite a single verse."""
     plural = "and " if verse > 1 else ""
     day_presents = [("first", plural + "a Partridge in a Pear Tree."),
@@ -23,7 +24,7 @@ def recite_one_verse(verse):
             f"{presents}"]
 
 
-def recite(start_verse, end_verse):
+def recite(start_verse: int, end_verse: int) -> List[str]:
     """Recite the twelve days song."""
     return [recite_one_verse(verse)[0]
             for verse in range(start_verse, end_verse + 1)]

@@ -7,7 +7,7 @@ for path in */; do
     file_name=${path::-1}
     file_name=${file_name//-/_}
     # echo "$file_name"
-    # monkeytype run "${file_name}_test.py"
-    # monkeytype apply "${file_name}"
+    monkeytype run "${file_name}_test.py"
+    monkeytype apply "${file_name}"
     cd .. || exit
 done

@@ -2,6 +2,7 @@
 from datetime import timedelta
 
 
-def add_gigasecond(moment):
+from datetime import datetime
+def add_gigasecond(moment: datetime) -> datetime:
     """Return the time of one billion seconds from now."""
     return moment + timedelta(seconds=10**9)

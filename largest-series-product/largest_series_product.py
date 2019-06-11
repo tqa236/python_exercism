@@ -3,7 +3,7 @@ from operator import mul
 from functools import reduce
 
 
-def largest_product(series, size):
+def largest_product(series: str, size: int) -> int:
     """Find a largest products of continuous elements of a series."""
     if size == 0:
         return 1

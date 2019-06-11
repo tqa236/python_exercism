@@ -7,5 +7,5 @@ SOUTH = None
 
 
 class Robot(object):
-    def __init__(self, bearing=NORTH, x=0, y=0):
+    def __init__(self, bearing: None = NORTH, x: int = 0, y: int = 0) -> None:
         pass

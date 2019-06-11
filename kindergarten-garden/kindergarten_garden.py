@@ -1,5 +1,6 @@
 """Determine which plants each child is responsible for."""
 
+from typing import List, Optional
 STUDENTS = ["Alice", "Bob", "Charlie", "David", "Eve", "Fred",
             "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"]
 PLANT_NAMES = {"V": "Violets", "C": "Clover",
@@ -9,7 +10,7 @@ PLANT_NAMES = {"V": "Violets", "C": "Clover",
 class Garden(object):
     """Determine which plants each child is responsible for."""
 
-    def __init__(self, diagram, students=None):
+    def __init__(self, diagram: str, students: Optional[List[str]] = None) -> None:
         """Initialize."""
         try:
             self.garden = [[PLANT_NAMES[plant] for plant in row]
@@ -19,7 +20,7 @@ class Garden(object):
 
         self.students = sorted(students) if students else STUDENTS
 
-    def plants(self, student):
+    def plants(self, student: str) -> List[str]:
         """Determine which plants this child is responsible for."""
         try:
             start = self.students.index(student) * 2
