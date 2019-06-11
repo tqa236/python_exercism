@@ -2,6 +2,8 @@
 
 
 from typing import List
+
+
 def proteins(strand: str) -> List[str]:
     """Convert from RND sequences into proteins."""
     codons = {"AUG": "Methionine",

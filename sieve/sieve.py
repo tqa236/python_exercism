@@ -2,6 +2,8 @@
 
 
 from typing import List
+
+
 def sieve(limit: int) -> List[int]:
     """Generate a list of primes based on the Sieve algorithm."""
     primes = []

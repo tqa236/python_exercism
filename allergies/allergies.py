@@ -2,6 +2,8 @@
 
 
 from typing import List
+
+
 class Allergies(object):
     """Implement a simple class to detect allergens."""
 

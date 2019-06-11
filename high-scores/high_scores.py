@@ -2,6 +2,8 @@
 
 
 from typing import List
+
+
 def latest(scores: List[int]) -> int:
     """Extract the latest score."""
     return scores[-1]

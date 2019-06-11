@@ -2,6 +2,8 @@
 
 
 from typing import List
+
+
 class Matrix(object):
     def __init__(self, matrix_string: str) -> None:
         self.matrix = [
@@ -14,7 +16,7 @@ class Matrix(object):
         ]
 
     def row(self, index: int) -> List[int]:
-        return self.matrix[index-1]
+        return self.matrix[index - 1]
 
     def column(self, index: int) -> List[int]:
-        return self._columns[index-1]
+        return self._columns[index - 1]

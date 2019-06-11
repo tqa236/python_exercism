@@ -2,6 +2,8 @@
 
 
 from typing import List, Union
+
+
 def is_triangle(sides: Union[List[float], List[int]]) -> bool:
     """Check if the sides satisfied the triangle inequility."""
     return min(sides) > 0 and sum(sides) > 2 * max(sides)

@@ -2,6 +2,8 @@
 
 
 from typing import List, Optional
+
+
 class Record():
     """Simple record class."""
 

@@ -1,9 +1,9 @@
 """Build a class to parse SGF format."""
 import re
 import string
-
-
 from typing import Dict, List, Optional
+
+
 class SgfTree(object):
     """Build a class to parse SGF format."""
 

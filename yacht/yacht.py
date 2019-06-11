@@ -4,6 +4,8 @@
 
 
 from typing import Callable, List
+
+
 def YACHT(dice: List[int]) -> int: return 50 if len(set(dice)) == 1 else 0
 
 
@@ -31,7 +33,7 @@ def FULL_HOUSE(dice: List[int]) -> int: return sum(dice) if all([len(set(dice)) 
 
 
 def FOUR_OF_A_KIND(dice: List[int]) -> int: return sum([x * 4 for x in set(dice)
-                                      if dice.count(x) >= 4])
+                                                        if dice.count(x) >= 4])
 
 
 def LITTLE_STRAIGHT(dice: List[int]) -> int: return 30\

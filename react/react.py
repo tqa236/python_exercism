@@ -3,6 +3,8 @@
 
 from functools import partial
 from typing import Callable, List, Union
+
+
 class InputCell(object):
     def __init__(self, initial_value: int) -> None:
         """Initialize."""

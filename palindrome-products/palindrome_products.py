@@ -2,6 +2,8 @@
 
 
 from typing import List, Set, Tuple, Union
+
+
 def check_palindrom(number: int) -> bool:
     """Check if a number is a palindrome or not."""
     return number == int(str(number)[::-1])
@@ -9,9 +11,9 @@ def check_palindrom(number: int) -> bool:
 
 def find_factors(number: int, min_factor: int, max_factor: int) -> Set[Tuple[int, int]]:
     """Return a set of factors in a given range for a given number."""
-    return set([(i, number//i) for i in range(min_factor, max_factor+1)
-                if number % i == 0 and min_factor <= number//i <= max_factor
-                and i <= number//i])
+    return set([(i, number // i) for i in range(min_factor, max_factor + 1)
+                if number % i == 0 and min_factor <= number // i <= max_factor and
+                i <= number // i])
 
 
 def check_valid(max_factor: int, min_factor: int) -> None:
@@ -23,8 +25,8 @@ def check_valid(max_factor: int, min_factor: int) -> None:
 def find_palindrome(max_factor: int, min_factor: int, palindrome_type: str) -> List[Union[int, Set[Tuple[int, int]]]]:
     """Find all palindromes."""
     check_valid(max_factor, min_factor)
-    palindromes = [i*j for i in range(min_factor, max_factor + 1)
-                   for j in range(i, max_factor + 1) if check_palindrom(i*j)]
+    palindromes = [i * j for i in range(min_factor, max_factor + 1)
+                   for j in range(i, max_factor + 1) if check_palindrom(i * j)]
     if palindrome_type == "min":
         number = min(palindromes)
     if palindrome_type == "max":

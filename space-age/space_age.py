@@ -1,5 +1,6 @@
 """Find the ages of the planets in the Solar system."""
 from typing import Callable, Union
+
 YEAR_SECONDS = 31557600
 
 YEAR_MAP = {

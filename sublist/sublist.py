@@ -1,5 +1,6 @@
 """Check the relation of 2 lists."""
 from typing import List, Union
+
 SUBLIST = 1
 SUPERLIST = 2
 EQUAL = 3

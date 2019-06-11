@@ -1,4 +1,6 @@
 from typing import List, Optional
+
+
 class TreeNode(object):
     def __init__(self, data: str, left: Optional[TreeNode], right: Optional[TreeNode]) -> None:
         self.data = None

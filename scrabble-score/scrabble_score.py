@@ -2,6 +2,8 @@
 
 
 from typing import Dict
+
+
 def make_value_dict() -> Dict[str, int]:
     """Make a value dictionary for scrabble."""
     value_dict = {}

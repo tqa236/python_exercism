@@ -2,6 +2,8 @@
 
 
 from typing import Optional, Tuple, Union
+
+
 def handle_error_by_throwing_exception():
     """Throw exception."""
     raise ValueError("No input")

@@ -2,6 +2,8 @@
 
 
 from typing import List
+
+
 def recite(start: int, take: int = 1) -> List[str]:
     """Recite a beer song."""
     return [i for verse in range(start, start - take, -1)

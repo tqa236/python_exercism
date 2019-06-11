@@ -1,9 +1,9 @@
 """Return the meeting day given some conditions."""
 import datetime
 from calendar import monthrange
-
-
 from datetime import date
+
+
 def next_weekday(day: date, weekday: int) -> date:
     """Find the nearest day in the future of a weekday type."""
     days_ahead = (weekday - day.weekday() + 7) % 7

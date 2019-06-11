@@ -10,6 +10,6 @@ def collatz_steps(number: int) -> int:
         if number % 2 == 0:
             number = number / 2
         else:
-            number = number * 3+1
+            number = number * 3 + 1
         count = count + 1
     return count

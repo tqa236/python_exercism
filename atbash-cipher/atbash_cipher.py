@@ -1,4 +1,6 @@
 from typing import Optional
+
+
 def encode(plain_text: str) -> None:
     pass
 

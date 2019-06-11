@@ -1,8 +1,8 @@
 """Factorize a number."""
 import math
-
-
 from typing import List, Union
+
+
 def prime_factors(natural_number: int) -> Union[List[Union[int, float]], List[int]]:
     """Factorize a number."""
     i = 2

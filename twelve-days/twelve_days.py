@@ -2,6 +2,8 @@
 
 
 from typing import List
+
+
 def recite_one_verse(verse: int) -> List[str]:
     """Recite a single verse."""
     plural = "and " if verse > 1 else ""

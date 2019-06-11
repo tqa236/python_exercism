@@ -1,6 +1,7 @@
 """Determine which plants each child is responsible for."""
 
 from typing import List, Optional
+
 STUDENTS = ["Alice", "Bob", "Charlie", "David", "Eve", "Fred",
             "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"]
 PLANT_NAMES = {"V": "Violets", "C": "Clover",

@@ -1,8 +1,8 @@
 """Create a simple school."""
 from collections import defaultdict
-
-
 from typing import List
+
+
 class School(object):
     """Create a simple school."""
 
