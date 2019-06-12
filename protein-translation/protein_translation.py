@@ -15,5 +15,10 @@ def proteins(strand: str) -> List[str]:
               "UGU": "Cysteine", "UGC": "Cysteine",
               "UGG": "Tryptophan",
               "UAA": "STOP", "UAG": "STOP", "UGA": "STOP"}
-    return list(next(iter(())) if codons[strand[i:i + 3]] == "STOP" else
-                codons[strand[i:i + 3]] for i in range(0, len(strand), 3))
+    protein_strand = [codons[strand[i:i + 3]]
+                      for i in range(0, len(strand), 3)]
+    return protein_strand[:None if "STOP" not in protein_strand
+                          else protein_strand.index("STOP")]
+    # Not work in Python 3.7
+    # return list(next(iter(())) if codons[strand[i:i + 3]] == "STOP" else
+    #             codons[strand[i:i + 3]] for i in range(0, len(strand), 3))
