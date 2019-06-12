@@ -44,16 +44,19 @@ class PalindromeProductsTest(unittest.TestCase):
         self.assertEqual(value, 10201)
         self.assertFactorsEqual(factors, {(101, 101)})
 
+    @unittest.skip("extra-credit")
     def test_largest_palindrome_from_triple_digit_factors(self):
         value, factors = largest_palindrome(min_factor=100, max_factor=999)
         self.assertEqual(value, 906609)
         self.assertFactorsEqual(factors, {(913, 993)})
 
+    @unittest.skip("extra-credit")
     def test_smallest_palindrome_from_four_digit_factors(self):
         value, factors = smallest_palindrome(min_factor=1000, max_factor=9999)
         self.assertEqual(value, 1002001)
         self.assertFactorsEqual(factors, {(1001, 1001)})
 
+    @unittest.skip("extra-credit")
     def test_largest_palindrome_from_four_digit_factors(self):
         value, factors = largest_palindrome(min_factor=1000, max_factor=9999)
         self.assertEqual(value, 99000099)
