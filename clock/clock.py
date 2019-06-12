@@ -13,14 +13,14 @@ class Clock(object):
         """Display time with format hh:mm."""
         return f"{self.hour:02d}:{self.minute:02d}"
 
-    def __eq__(self, other: Clock) -> bool:
+    def __eq__(self, other: "Clock") -> bool:
         """Compare time of two clocks."""
         return self.hour == other.hour and self.minute == other.minute
 
-    def __add__(self, minutes: int) -> Clock:
+    def __add__(self, minutes: int) -> "Clock":
         """Add time of a clock."""
         return Clock(self.hour, self.minute + minutes)
 
-    def __sub__(self, minutes: int) -> Clock:
+    def __sub__(self, minutes: int) -> "Clock":
         """Substract time from a clock."""
         return Clock(self.hour, self.minute - minutes)

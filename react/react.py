@@ -34,7 +34,7 @@ class InputCell(object):
         for observer in self.observers:
             observer.update_value()
 
-    def register_observer(self, observer: ComputeCell) -> None:
+    def register_observer(self, observer: "ComputeCell") -> None:
         """Bind to the callback to update automatically."""
         self.observers.append(observer)
 
@@ -46,7 +46,7 @@ class InputCell(object):
 class ComputeCell(object):
     """Compute and update values for all cells."""
 
-    def __init__(self, inputs: Union[List[InputCell], List[ComputeCell]], compute_function: Callable) -> None:
+    def __init__(self, inputs: Union[List[InputCell], List["ComputeCell"]], compute_function: Callable) -> None:
         """Initialize."""
         self.inputs = inputs
         self.compute_function = compute_function

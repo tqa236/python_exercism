@@ -7,11 +7,11 @@ from typing import Dict, List, Optional
 class SgfTree(object):
     """Build a class to parse SGF format."""
 
-    def __init__(self, properties: Optional[Dict[str, List[str]]] = None, children: Optional[List[SgfTree]] = None) -> None:
+    def __init__(self, properties: Optional[Dict[str, List[str]]] = None, children: Optional[List["SgfTree"]] = None) -> None:
         self.properties = properties or {}
         self.children = children or []
 
-    def __eq__(self, other: SgfTree) -> bool:
+    def __eq__(self, other: "SgfTree") -> bool:
         if not isinstance(other, SgfTree):
             return False
         for k, v in self.properties.items():
@@ -29,7 +29,7 @@ class SgfTree(object):
                 return False
         return True
 
-    def __ne__(self, other: SgfTree) -> bool:
+    def __ne__(self, other: "SgfTree") -> bool:
         return not self == other
 
 
