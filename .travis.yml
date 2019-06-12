@@ -24,7 +24,7 @@ install:
   - pip install coveralls
 
 script:
-  - ./lint.sh
+  # - ./lint.sh
   - ./test.sh
   - codecov
 
