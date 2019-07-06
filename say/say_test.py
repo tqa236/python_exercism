@@ -5,6 +5,7 @@ from say import say
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
+
 class SayTest(unittest.TestCase):
     def test_zero(self):
         self.assertEqual(say(0), "zero")
@@ -39,18 +40,22 @@ class SayTest(unittest.TestCase):
 
     def test_1002345(self):
         self.assertEqual(
-            say(1002345),
-            "one million two thousand three hundred and forty-five")
+            say(1002345), "one million two thousand three hundred and forty-five"
+        )
 
     def test_one_billion(self):
         self.assertEqual(say(1e9), "one billion")
 
     def test_987654321123(self):
         self.assertEqual(
-            say(987654321123), ("nine hundred and eighty-seven billion "
-                                "six hundred and fifty-four million "
-                                "three hundred and twenty-one thousand "
-                                "one hundred and twenty-three"))
+            say(987654321123),
+            (
+                "nine hundred and eighty-seven billion "
+                "six hundred and fifty-four million "
+                "three hundred and twenty-one thousand "
+                "one hundred and twenty-three"
+            ),
+        )
 
     def test_number_too_large(self):
         with self.assertRaisesWithMessage(ValueError):
@@ -71,5 +76,5 @@ class SayTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -9,5 +9,9 @@ def largest_product(series: str, size: int) -> int:
         return 1
     if size < 0:
         raise ValueError("Invalid inputs")
-    return max([reduce(mul, [int(x) for x in series[i:i + size]], 1)
-                for i in range(len(series) - size + 1)])
+    return max(
+        [
+            reduce(mul, [int(x) for x in series[i : i + size]], 1)
+            for i in range(len(series) - size + 1)
+        ]
+    )

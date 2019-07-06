@@ -5,6 +5,7 @@ from anagram import find_anagrams
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.4.0
 
+
 class AnagramTest(unittest.TestCase):
     def test_no_matches(self):
         candidates = ["hello", "world", "zombies", "pants"]
@@ -12,8 +13,7 @@ class AnagramTest(unittest.TestCase):
 
     def test_detects_two_anagrams(self):
         candidates = ["stream", "pigeon", "maters"]
-        self.assertEqual(
-            find_anagrams("master", candidates), ["stream", "maters"])
+        self.assertEqual(find_anagrams("master", candidates), ["stream", "maters"])
 
     def test_does_not_detect_anagram_subsets(self):
         self.assertEqual(find_anagrams("good", ["dog", "goody"]), [])
@@ -23,30 +23,25 @@ class AnagramTest(unittest.TestCase):
         self.assertEqual(find_anagrams("listen", candidates), ["inlets"])
 
     def test_detects_three_anagrams(self):
-        candidates = [
-            "gallery", "ballerina", "regally", "clergy", "largely", "leading"
-        ]
+        candidates = ["gallery", "ballerina", "regally", "clergy", "largely", "leading"]
         self.assertEqual(
-            find_anagrams("allergy", candidates),
-            ["gallery", "regally", "largely"])
+            find_anagrams("allergy", candidates), ["gallery", "regally", "largely"]
+        )
 
     def test_does_not_detect_non_anagrams_with_identical_checksum(self):
         self.assertEqual(find_anagrams("mass", ["last"]), [])
 
     def test_detects_anagrams_case_insensitively(self):
         candidates = ["cashregister", "Carthorse", "radishes"]
-        self.assertEqual(
-            find_anagrams("Orchestra", candidates), ["Carthorse"])
+        self.assertEqual(find_anagrams("Orchestra", candidates), ["Carthorse"])
 
     def test_detects_anagrams_using_case_insensitive_subject(self):
         candidates = ["cashregister", "carthorse", "radishes"]
-        self.assertEqual(
-            find_anagrams("Orchestra", candidates), ["carthorse"])
+        self.assertEqual(find_anagrams("Orchestra", candidates), ["carthorse"])
 
     def test_detects_anagrams_using_case_insensitive_possible_matches(self):
         candidates = ["cashregister", "Carthorse", "radishes"]
-        self.assertEqual(
-            find_anagrams("orchestra", candidates), ["Carthorse"])
+        self.assertEqual(find_anagrams("orchestra", candidates), ["Carthorse"])
 
     def test_does_not_detect_a_anagram_if_the_original_word_is_repeated(self):
         self.assertEqual(find_anagrams("go", ["go Go GO"]), [])
@@ -59,5 +54,5 @@ class AnagramTest(unittest.TestCase):
         self.assertEqual(find_anagrams("BANANA", candidates), [])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

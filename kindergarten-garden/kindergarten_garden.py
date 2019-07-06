@@ -2,10 +2,21 @@
 
 from typing import List, Optional
 
-STUDENTS = ["Alice", "Bob", "Charlie", "David", "Eve", "Fred",
-            "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"]
-PLANT_NAMES = {"V": "Violets", "C": "Clover",
-               "R": "Radishes", "G": "Grass"}
+STUDENTS = [
+    "Alice",
+    "Bob",
+    "Charlie",
+    "David",
+    "Eve",
+    "Fred",
+    "Ginny",
+    "Harriet",
+    "Ileana",
+    "Joseph",
+    "Kincaid",
+    "Larry",
+]
+PLANT_NAMES = {"V": "Violets", "C": "Clover", "R": "Radishes", "G": "Grass"}
 
 
 class Garden(object):
@@ -14,8 +25,9 @@ class Garden(object):
     def __init__(self, diagram: str, students: Optional[List[str]] = None) -> None:
         """Initialize."""
         try:
-            self.garden = [[PLANT_NAMES[plant] for plant in row]
-                           for row in diagram.split("\n")]
+            self.garden = [
+                [PLANT_NAMES[plant] for plant in row] for row in diagram.split("\n")
+            ]
         except ValueError:
             print("Invalid plant.")
 
@@ -26,6 +38,6 @@ class Garden(object):
         try:
             start = self.students.index(student) * 2
             end = start + 2
-            return [plant for row in self.garden for plant in row[start: end]]
+            return [plant for row in self.garden for plant in row[start:end]]
         except ValueError:
             print(f"{student} is not in this class.")

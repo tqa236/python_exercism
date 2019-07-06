@@ -5,6 +5,7 @@ from queen_attack import Queen
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v2.3.0
 
+
 class QueenAttackTest(unittest.TestCase):
 
     # Test creation of Queens with valid and invalid positions
@@ -68,5 +69,5 @@ class QueenAttackTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

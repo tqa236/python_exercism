@@ -28,8 +28,9 @@ class Hangman(object):
                 self.status = STATUS_LOSE
         else:
             self.correct_guess.append(char)
-            self.masked_word = "".join(c if c in self.correct_guess
-                                       else "_" for c in self.word)
+            self.masked_word = "".join(
+                c if c in self.correct_guess else "_" for c in self.word
+            )
             if "_" not in self.masked_word:
                 self.status = STATUS_WIN
 

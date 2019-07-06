@@ -5,8 +5,8 @@ from robot_simulator import Robot, NORTH, EAST, SOUTH, WEST
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v3.1.0
 
-class RobotSimulatorTest(unittest.TestCase):
 
+class RobotSimulatorTest(unittest.TestCase):
     def test_robot_created_with_position_and_direction(self):
         robot = Robot(NORTH, 0, 0)
         self.assertEqual(robot.coordinates, (0, 0))
@@ -98,5 +98,5 @@ class RobotSimulatorTest(unittest.TestCase):
         self.assertEqual(robot.bearing, NORTH)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

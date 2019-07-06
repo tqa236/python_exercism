@@ -5,6 +5,7 @@ from prime_factors import prime_factors
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
 
+
 class PrimeFactorsTest(unittest.TestCase):
     def test_no_factors(self):
         self.assertEqual(prime_factors(1), [])
@@ -28,5 +29,5 @@ class PrimeFactorsTest(unittest.TestCase):
         self.assertEqual(prime_factors(93819012551), [11, 9539, 894119])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -66,5 +66,5 @@ class LuhnTest(unittest.TestCase):
         self.assertIs(number.is_valid(), True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -64,8 +64,7 @@ class PalindromeProductsTest(unittest.TestCase):
 
     def test_empty_for_smallest_palindrome_if_none_in_range(self):
         with self.assertRaisesWithMessage(ValueError):
-            value, factors = smallest_palindrome(min_factor=1002,
-                                                 max_factor=1003)
+            value, factors = smallest_palindrome(min_factor=1002, max_factor=1003)
 
     def test_empty_for_largest_palindrome_if_none_in_range(self):
         with self.assertRaisesWithMessage(ValueError):
@@ -73,8 +72,7 @@ class PalindromeProductsTest(unittest.TestCase):
 
     def test_error_for_smallest_if_min_is_more_than_max(self):
         with self.assertRaisesWithMessage(ValueError):
-            value, factors = smallest_palindrome(min_factor=10000,
-                                                 max_factor=1)
+            value, factors = smallest_palindrome(min_factor=10000, max_factor=1)
 
     def test_error_for_largest_if_min_is_more_than_max(self):
         with self.assertRaisesWithMessage(ValueError):
@@ -91,9 +89,8 @@ class PalindromeProductsTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
     def assertFactorsEqual(self, actual, expected):
-        self.assertEqual(set(map(frozenset, actual)),
-                         set(map(frozenset, expected)))
+        self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

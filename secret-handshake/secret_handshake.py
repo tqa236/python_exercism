@@ -1,6 +1,6 @@
 """A secrete handshake decoder."""
 
-ACTIONS = ['wink', 'double blink', 'close your eyes', 'jump']
+ACTIONS = ["wink", "double blink", "close your eyes", "jump"]
 
 
 def handshake(code: int) -> str:

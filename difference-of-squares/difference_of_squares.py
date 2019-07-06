@@ -3,7 +3,7 @@
 
 def square_of_sum(count: int) -> int:
     """Calculate the square of sum of natural numbers."""
-    return sum(range(count + 1))**2
+    return sum(range(count + 1)) ** 2
 
 
 def sum_of_squares(count: int) -> int:

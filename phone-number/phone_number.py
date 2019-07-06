@@ -19,11 +19,11 @@ def valid_phone_number(phone_number: str) -> str:
     number = re.sub(r"\D", "", phone_number)
     if len(number) < 10 or len(number) > 11:
         raise ValueError("Invalid phone number")
-    if len(number) == 11 and number[0] != '1':
+    if len(number) == 11 and number[0] != "1":
         raise ValueError("Invalid phone number")
     number = number[-10:]
-    if number[0] in '01':
+    if number[0] in "01":
         raise ValueError("Invalid area code")
-    if number[3] in '01':
+    if number[3] in "01":
         raise ValueError("Invalid exchange code")
     return number

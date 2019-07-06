@@ -11,6 +11,7 @@ from series import slices
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.0
 
+
 class SeriesTest(unittest.TestCase):
     def test_slices_of_one_from_one(self):
         self.assertEqual(slices("1", 1), ["1"])
@@ -54,5 +55,5 @@ class SeriesTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

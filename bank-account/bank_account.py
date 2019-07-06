@@ -15,6 +15,7 @@ class BankAccount(object):
             if not self.is_open:
                 raise ValueError("Account is closed")
             return func(self, *args)
+
         return wrapper
 
     @is_already_open

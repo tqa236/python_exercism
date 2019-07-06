@@ -5,6 +5,7 @@ from two_bucket import measure
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.4.0
 
+
 class TwoBucketTest(unittest.TestCase):
     def test_bucket_one_size_3_bucket_two_size_5_start_with_bucket_one(self):
         self.assertEqual(measure(3, 5, 1, "one"), (4, "one", 5))
@@ -25,5 +26,5 @@ class TwoBucketTest(unittest.TestCase):
         self.assertEqual(measure(2, 3, 3, "one"), (2, "two", 2))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

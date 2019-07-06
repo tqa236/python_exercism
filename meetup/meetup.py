@@ -13,11 +13,24 @@ def next_weekday(day: date, weekday: int) -> date:
 def meetup_day(year: int, month: int, day_of_the_week: str, which: str) -> date:
     """Return the meeting day given some conditions."""
     last_day_of_month = monthrange(year, month)[1]
-    days_of_the_week = {"Monday": 0, "Tuesday": 1, "Wednesday": 2,
-                        "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6}
-    start_days = {"1st": 1, "2nd": 8, "3rd": 15,
-                  "4th": 22, "5th": 29, "teenth": 13,
-                  "last": last_day_of_month - 6}
+    days_of_the_week = {
+        "Monday": 0,
+        "Tuesday": 1,
+        "Wednesday": 2,
+        "Thursday": 3,
+        "Friday": 4,
+        "Saturday": 5,
+        "Sunday": 6,
+    }
+    start_days = {
+        "1st": 1,
+        "2nd": 8,
+        "3rd": 15,
+        "4th": 22,
+        "5th": 29,
+        "teenth": 13,
+        "last": last_day_of_month - 6,
+    }
     if start_days[which] > last_day_of_month:
         raise MeetupDayException("Invalid day.")
     start = datetime.date(year, month, start_days[which])
@@ -29,4 +42,5 @@ def meetup_day(year: int, month: int, day_of_the_week: str, which: str) -> date:
 
 class MeetupDayException(Exception):
     """A custom exception."""
+
     pass

@@ -5,6 +5,7 @@ from triangle import is_equilateral, is_isosceles, is_scalene
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
+
 class is_equilateralTests(unittest.TestCase):
     def test_true_if_all_sides_are_equal(self):
         self.assertIs(is_equilateral([2, 2, 2]), True)
@@ -68,5 +69,5 @@ class is_scaleneTests(unittest.TestCase):
         self.assertIs(is_scalene([0.5, 0.4, 0.6]), True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

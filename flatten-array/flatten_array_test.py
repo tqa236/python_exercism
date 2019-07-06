@@ -5,8 +5,8 @@ from flatten_array import flatten
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
-class FlattenArrayTest(unittest.TestCase):
 
+class FlattenArrayTest(unittest.TestCase):
     def test_no_nesting(self):
         self.assertEqual(flatten([0, 1, 2]), [0, 1, 2])
 
@@ -40,8 +40,8 @@ class FlattenArrayTest(unittest.TestCase):
         self.assertEqual(flatten([[()]]), [])
 
     def test_strings(self):
-        self.assertEqual(flatten(['0', ['1', '2']]), ['0', '1', '2'])
+        self.assertEqual(flatten(["0", ["1", "2"]]), ["0", "1", "2"])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

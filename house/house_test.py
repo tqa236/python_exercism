@@ -7,16 +7,14 @@ from house import recite
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v2.2.0
 
+
 class HouseTest(unittest.TestCase):
     def test_verse_one(self):
         expected = ["This is the house that Jack built."]
         self.assertEqual(recite(1, 1), expected)
 
     def test_verse_two(self):
-        expected = [
-            "This is the malt "
-            "that lay in the house that Jack built."
-        ]
+        expected = ["This is the malt " "that lay in the house that Jack built."]
         self.assertEqual(recite(2, 2), expected)
 
     def test_verse_three(self):
@@ -153,5 +151,5 @@ class HouseTest(unittest.TestCase):
         self.assertEqual(recite(1, 12), expected)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

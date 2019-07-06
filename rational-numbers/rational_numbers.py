@@ -20,15 +20,19 @@ class Rational(object):
         return self.numer == other.numer and self.denom == other.denom
 
     def __repr__(self):
-        return '{}/{}'.format(self.numer, self.denom)
+        return "{}/{}".format(self.numer, self.denom)
 
     def __add__(self, other: "Rational") -> "Rational":
-        return Rational(self.numer * other.denom + self.denom * other.numer,
-                        self.denom * other.denom)
+        return Rational(
+            self.numer * other.denom + self.denom * other.numer,
+            self.denom * other.denom,
+        )
 
     def __sub__(self, other: "Rational") -> "Rational":
-        return Rational(self.numer * other.denom - self.denom * other.numer,
-                        self.denom * other.denom)
+        return Rational(
+            self.numer * other.denom - self.denom * other.numer,
+            self.denom * other.denom,
+        )
 
     def __mul__(self, other: "Rational") -> "Rational":
         return Rational(self.numer * other.numer, self.denom * other.denom)
@@ -40,7 +44,7 @@ class Rational(object):
         return Rational(abs(self.numer), self.denom)
 
     def __pow__(self, power: int) -> "Rational":
-        return Rational(self.numer**power, self.denom**power)
+        return Rational(self.numer ** power, self.denom ** power)
 
     def __rpow__(self, base: int) -> float:
-        return base**(self.numer / self.denom)
+        return base ** (self.numer / self.denom)

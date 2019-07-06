@@ -1,12 +1,10 @@
 import unittest
 
-from grains import (
-    on_square,
-    total_after,
-)
+from grains import on_square, total_after
 
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
+
 
 class GrainsTest(unittest.TestCase):
     def test_square_1(self):
@@ -62,5 +60,5 @@ class GrainsTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -5,6 +5,7 @@ from dnd_character import Character, modifier
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
 
+
 class DnDCharacterTest(unittest.TestCase):
     def test_modifier_for_score_3_is_n4(self):
         self.assertEqual(modifier(3), -4)
@@ -65,14 +66,12 @@ class DnDCharacterTest(unittest.TestCase):
         self.assertIn(Char.intelligence, range(3, 19))
         self.assertIn(Char.wisdom, range(3, 19))
         self.assertIn(Char.charisma, range(3, 19))
-        self.assertEqual(
-            Char.hitpoints,
-            10 + modifier(Char.constitution))
+        self.assertEqual(Char.hitpoints, 10 + modifier(Char.constitution))
 
     def test_each_ability_is_only_calculated_once(self):
         Char = Character()
         self.assertEqual(Char.strength, Char.strength)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

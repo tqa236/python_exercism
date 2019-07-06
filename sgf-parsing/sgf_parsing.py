@@ -7,7 +7,11 @@ from typing import Dict, List, Optional
 class SgfTree(object):
     """Build a class to parse SGF format."""
 
-    def __init__(self, properties: Optional[Dict[str, List[str]]] = None, children: Optional[List["SgfTree"]] = None) -> None:
+    def __init__(
+        self,
+        properties: Optional[Dict[str, List[str]]] = None,
+        children: Optional[List["SgfTree"]] = None,
+    ) -> None:
         self.properties = properties or {}
         self.children = children or []
 
@@ -45,11 +49,15 @@ def parse(input_string: str) -> SgfTree:
     properties, children, last_key, level = {}, [], "", 0
     for _, match in enumerate(matches, start=1):
         full = match.group()
-        key = match.group('keys')
-        value = match.group('values')
+        key = match.group("keys")
+        value = match.group("values")
         if "(;" in full or ";" in full:
-            if not key and not last_key or key not in string.ascii_uppercase\
-                    or not value:
+            if (
+                not key
+                and not last_key
+                or key not in string.ascii_uppercase
+                or not value
+            ):
                 raise ValueError("Invalid input")
             level += 1
         if level == 1:

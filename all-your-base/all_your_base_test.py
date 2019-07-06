@@ -5,8 +5,8 @@ from all_your_base import rebase
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v2.3.0
 
-class AllYourBaseTest(unittest.TestCase):
 
+class AllYourBaseTest(unittest.TestCase):
     def test_single_bit_to_one_decimal(self):
         self.assertEqual(rebase(2, [1], 10), [1])
 
@@ -90,5 +90,5 @@ class AllYourBaseTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

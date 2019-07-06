@@ -12,6 +12,7 @@ from saddle_points import saddle_points
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.5.0
 
+
 class SaddlePointsTest(unittest.TestCase):
     def test_identify_single_saddle_point(self):
         matrix = [[9, 8, 7], [5, 3, 2], [6, 6, 7]]
@@ -73,5 +74,5 @@ class SaddlePointsTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

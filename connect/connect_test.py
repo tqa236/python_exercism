@@ -8,87 +8,71 @@ import connect
 testcases = [
     {
         "description": "an empty board has no winner",
-        "board":
-        """ . . . . .
+        "board": """ . . . . .
              . . . . .
               . . . . .
                . . . . .
                 . . . . .""",
-        "winner": ""
+        "winner": "",
     },
-    {
-        "description": "O can win on a 1x1 board",
-        "board": "O",
-        "winner": "O"
-    },
-    {
-        "description": "X can win on a 1x1 board",
-        "board": "X",
-        "winner": "X"
-    },
+    {"description": "O can win on a 1x1 board", "board": "O", "winner": "O"},
+    {"description": "X can win on a 1x1 board", "board": "X", "winner": "X"},
     {
         "description": "only edges does not make a winner",
-        "board":
-            """ O O O X
+        "board": """ O O O X
                  X . . X
                   X . . X
                    X O O O""",
-        "winner": ""
+        "winner": "",
     },
     {
         "description": "illegal diagonal does not make a winner",
-        "board":
-            """ X O . .
+        "board": """ X O . .
                  O X X X
                   O X O .
                    . O X .
                     X X O O""",
-        "winner": ""
+        "winner": "",
     },
     {
         "description": "nobody wins crossing adjacent angles",
-        "board":
-            """ X . . .
+        "board": """ X . . .
                  . X O .
                   O . X O
                    . O . X
                     . . O .""",
-        "winner": ""
+        "winner": "",
     },
     {
         "description": "X wins crossing from left to right",
-        "board":
-            """ . O . .
+        "board": """ . O . .
                  O X X X
                   O X O .
                    X X O X
                     . O X .""",
-        "winner": "X"
+        "winner": "X",
     },
     {
         "description": "X wins using a convoluted path",
-        "board":
-            """ . X X . .
+        "board": """ . X X . .
                  X . X . X
                   . X . X .
                    . X X . .
                     O O O O O""",
-        "winner": "X"
+        "winner": "X",
     },
     {
         "description": "O wins crossing from top to bottom",
-        "board":
-            """ . O . .
+        "board": """ . O . .
                  O X X X
                   O O O .
                    X X O X
                     . O X .""",
-        "winner": "O"
+        "winner": "O",
     },
     {
         "description": "X wins using a spiral path",
-        "board":
-            """ O X X X X X X X X
+        "board": """ O X X X X X X X X
                  O X O O O O O O O
                   O X O X X X X X O
                    O X O X O O O X O
@@ -97,7 +81,7 @@ testcases = [
                       O X X X X X O X O
                        O O O O O O O X O
                         X X X X X X X X O """,
-        "winner": "X"
+        "winner": "X",
     },
 ]
 
@@ -109,10 +93,13 @@ class ConnectTest(unittest.TestCase):
             winner = game.get_winner()
             expected = testcase["winner"] if testcase["winner"] else "None"
             got = winner if winner else "None"
-            self.assertEqual(winner, testcase["winner"],
-                             "Test failed: %s, expected winner: %s, got: %s"
-                             % (testcase["description"], expected, got))
+            self.assertEqual(
+                winner,
+                testcase["winner"],
+                "Test failed: %s, expected winner: %s, got: %s"
+                % (testcase["description"], expected, got),
+            )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

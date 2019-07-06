@@ -5,6 +5,7 @@ from perfect_numbers import classify
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
 
+
 class PerfectNumbersTest(unittest.TestCase):
     def test_smallest_perfect_number(self):
         self.assertIs(classify(6), "perfect")
@@ -64,5 +65,5 @@ class InvalidInputsTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

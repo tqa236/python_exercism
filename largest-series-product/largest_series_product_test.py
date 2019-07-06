@@ -13,6 +13,7 @@ from largest_series_product import largest_product
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
+
 class LargestSeriesProductTest(unittest.TestCase):
     def test_finds_the_largest_product_if_span_equals_length(self):
         self.assertEqual(largest_product("29", 2), 18)
@@ -34,9 +35,9 @@ class LargestSeriesProductTest(unittest.TestCase):
 
     def test_can_get_the_largest_product_of_a_big_number(self):
         self.assertEqual(
-            largest_product(
-                "73167176531330624919225119674426574742355349194934", 6),
-            23520)
+            largest_product("73167176531330624919225119674426574742355349194934", 6),
+            23520,
+        )
 
     def test_reports_zero_if_the_only_digits_are_zero(self):
         self.assertEqual(largest_product("0000", 2), 0)
@@ -84,7 +85,8 @@ class LargestSeriesProductTest(unittest.TestCase):
             "44217506941658960408071984038509624554443629812309878799272442849"
             "09188845801561660979191338754992005240636899125607176060588611646"
             "71094050775410022569831552000559357297257163626956188267042825248"
-            "3600823257530420752963450")
+            "3600823257530420752963450"
+        )
         self.assertEqual(largest_product(series, 13), 23514624000)
 
     # Utility functions
@@ -98,5 +100,5 @@ class LargestSeriesProductTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -4,6 +4,7 @@ from darts import score
 
 # Tests adapted from 'problem-specifications//canonical-data.json' @ 1.1.0
 
+
 class darts_test(unittest.TestCase):
     def test_dart_lands_outside_target(self):
         self.assertEqual(score(-9, 9), 0)
@@ -27,5 +28,5 @@ class darts_test(unittest.TestCase):
         self.assertEqual(score(-0.1, -0.1), 10)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

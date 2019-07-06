@@ -14,6 +14,7 @@ class Luhn(object):
             return False
 
         card_num_rev = list(map(int, self.card_num))[::-1]
-        points = sum(card_num_rev[::2]) + sum(2 * i - 9 * (i // 5)
-                                              for i in card_num_rev[1::2])
+        points = sum(card_num_rev[::2]) + sum(
+            2 * i - 9 * (i // 5) for i in card_num_rev[1::2]
+        )
         return points % 10 == 0

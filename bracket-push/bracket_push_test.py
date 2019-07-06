@@ -5,6 +5,7 @@ from bracket_push import is_paired
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.5.0
 
+
 class BracketPushTest(unittest.TestCase):
     def test_paired_square_brackets(self):
         self.assertEqual(is_paired("[]"), True)
@@ -49,18 +50,22 @@ class BracketPushTest(unittest.TestCase):
         self.assertEqual(is_paired("{}["), False)
 
     def test_too_many_closing_brackets(self):
-        self.assertEqual(is_paired('[]]'), False)
+        self.assertEqual(is_paired("[]]"), False)
 
     def test_math_expression(self):
-        self.assertEqual(
-            is_paired("(((185 + 223.85) * 15) - 543)/2"), True)
+        self.assertEqual(is_paired("(((185 + 223.85) * 15) - 543)/2"), True)
 
     def test_complex_latex_expression(self):
         self.assertEqual(
             is_paired(
-                ("\\left(\\begin{array}{cc} \\frac{1}{3} & x\\\\ \\mathrm{e}^{"
-                 "x} &... x^2 \\end{array}\\right)")), True)
+                (
+                    "\\left(\\begin{array}{cc} \\frac{1}{3} & x\\\\ \\mathrm{e}^{"
+                    "x} &... x^2 \\end{array}\\right)"
+                )
+            ),
+            True,
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

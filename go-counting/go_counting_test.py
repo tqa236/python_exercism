@@ -4,13 +4,7 @@ import go_counting
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.0
 
-board5x5 = [
-    "  B  ",
-    " B B ",
-    "B W B",
-    " W W ",
-    "  W  "
-]
+board5x5 = ["  B  ", " B B ", "B W B", " W W ", "  W  "]
 
 
 class GoCountingTest(unittest.TestCase):
@@ -66,10 +60,7 @@ class GoCountingTest(unittest.TestCase):
         self.assertSetEqual(territories[go_counting.NONE], {(0, 0)})
 
     def test_two_territories_rectangular_board(self):
-        input_board = [
-            " BW ",
-            " BW "
-        ]
+        input_board = [" BW ", " BW "]
         board = go_counting.Board(input_board)
         territories = board.territories()
         self.assertSetEqual(territories[go_counting.BLACK], {(0, 0), (0, 1)})
@@ -95,5 +86,5 @@ class GoCountingTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

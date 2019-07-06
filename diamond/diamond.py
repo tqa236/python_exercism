@@ -20,6 +20,8 @@ def make_row(letter: str, center_letter: str) -> str:
 
 def make_diamond(letter: str) -> str:
     """Make a diamond with letters."""
-    upper_part = [make_row(l, letter)
-                  for l in ascii_uppercase[:ascii_uppercase.index(letter) + 1]]
+    upper_part = [
+        make_row(l, letter)
+        for l in ascii_uppercase[: ascii_uppercase.index(letter) + 1]
+    ]
     return "\n".join(upper_part + upper_part[::-1][1:]) + "\n"

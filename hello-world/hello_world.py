@@ -3,4 +3,4 @@
 
 def hello() -> str:
     """Return Hello world."""
-    return 'Hello, World!'
+    return "Hello, World!"

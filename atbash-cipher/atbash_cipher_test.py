@@ -5,6 +5,7 @@ from atbash_cipher import decode, encode
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
+
 class AtbashCipherTest(unittest.TestCase):
     def test_encode_no(self):
         self.assertMultiLineEqual(encode("no"), "ml")
@@ -23,11 +24,11 @@ class AtbashCipherTest(unittest.TestCase):
 
     def test_encode_numbers(self):
         self.assertMultiLineEqual(
-            encode("Testing, 1 2 3, testing."), "gvhgr mt123 gvhgr mt")
+            encode("Testing, 1 2 3, testing."), "gvhgr mt123 gvhgr mt"
+        )
 
     def test_encode_sentence(self):
-        self.assertMultiLineEqual(
-            encode("Truth is fiction."), "gifgs rhurx grlm")
+        self.assertMultiLineEqual(encode("Truth is fiction."), "gifgs rhurx grlm")
 
     def test_encode_all_things(self):
         plaintext = "The quick brown fox jumps over the lazy dog."
@@ -40,11 +41,11 @@ class AtbashCipherTest(unittest.TestCase):
     def test_decode_sentence(self):
         self.assertMultiLineEqual(
             decode("zmlyh gzxov rhlug vmzhg vkkrm thglm v"),
-            "anobstacleisoftenasteppingstone")
+            "anobstacleisoftenasteppingstone",
+        )
 
     def test_decode_numbers(self):
-        self.assertMultiLineEqual(
-            decode("gvhgr mt123 gvhgr mt"), "testing123testing")
+        self.assertMultiLineEqual(decode("gvhgr mt123 gvhgr mt"), "testing123testing")
 
     def test_decode_all_the_letters(self):
         ciphertext = "gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt"
@@ -62,8 +63,9 @@ class AtbashCipherTest(unittest.TestCase):
     # additional track specific test
     def test_encode_decode(self):
         self.assertMultiLineEqual(
-            decode(encode("Testing, 1 2 3, testing.")), "testing123testing")
+            decode(encode("Testing, 1 2 3, testing.")), "testing123testing"
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

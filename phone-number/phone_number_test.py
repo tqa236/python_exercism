@@ -5,6 +5,7 @@ from phone_number import Phone
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.7.0
 
+
 class PhoneNumberTest(unittest.TestCase):
     def test_cleans_number(self):
         number = Phone("(223) 456-7890").number
@@ -102,5 +103,5 @@ class PhoneNumberTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

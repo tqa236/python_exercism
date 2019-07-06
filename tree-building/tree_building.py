@@ -4,7 +4,7 @@
 from typing import List, Optional
 
 
-class Record():
+class Record:
     """Simple record class."""
 
     def __init__(self, record_id: int, parent_id: int) -> None:
@@ -13,7 +13,7 @@ class Record():
         self.parent_id = parent_id
 
 
-class Node():
+class Node:
     """Simple node class."""
 
     def __init__(self, node_id: int) -> None:
@@ -25,11 +25,11 @@ class Node():
 def check_valid_record(record: Record) -> None:
     """Check valid record."""
     if record.record_id == 0 and record.parent_id != 0:
-        raise ValueError('Root node cannot have a parent')
+        raise ValueError("Root node cannot have a parent")
     elif record.record_id < record.parent_id:
-        raise ValueError('Parent id must be lower than child id')
+        raise ValueError("Parent id must be lower than child id")
     elif record.record_id == record.parent_id and record.record_id != 0:
-        raise ValueError('Tree is a cycle')
+        raise ValueError("Tree is a cycle")
 
 
 def BuildTree(records: List[Record]) -> Optional[Node]:
@@ -38,9 +38,9 @@ def BuildTree(records: List[Record]) -> Optional[Node]:
     if not records:
         return None
     if records[-1].record_id != len(records) - 1:
-        raise ValueError('Tree must be continuous')
+        raise ValueError("Tree must be continuous")
     if records[0].record_id != 0:
-        raise ValueError('Tree must start with id 0')
+        raise ValueError("Tree must start with id 0")
     trees = []
     for record in records:
         check_valid_record(record)

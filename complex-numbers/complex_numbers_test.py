@@ -9,8 +9,8 @@ from complex_numbers import ComplexNumber
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.3.0
 
-class ComplexNumbersTest(unittest.TestCase):
 
+class ComplexNumbersTest(unittest.TestCase):
     def test_real_part_of_a_purely_real_number(self):
         input_number = ComplexNumber(1, 0)
         self.assertEqual(input_number.real, 1)
@@ -132,22 +132,19 @@ class ComplexNumbersTest(unittest.TestCase):
         input_number = ComplexNumber(5, 0)
         expected = ComplexNumber(5, 0)
         self.assertEqual(input_number.conjugate().real, expected.real)
-        self.assertEqual(input_number.conjugate().imaginary,
-                         expected.imaginary)
+        self.assertEqual(input_number.conjugate().imaginary, expected.imaginary)
 
     def test_conjugate_a_purely_imaginary_number(self):
         input_number = ComplexNumber(0, 5)
         expected = ComplexNumber(0, -5)
         self.assertEqual(input_number.conjugate().real, expected.real)
-        self.assertEqual(input_number.conjugate().imaginary,
-                         expected.imaginary)
+        self.assertEqual(input_number.conjugate().imaginary, expected.imaginary)
 
     def test_conjugate_a_number_with_real_and_imaginary_part(self):
         input_number = ComplexNumber(1, 1)
         expected = ComplexNumber(1, -1)
         self.assertEqual(input_number.conjugate().real, expected.real)
-        self.assertEqual(input_number.conjugate().imaginary,
-                         expected.imaginary)
+        self.assertEqual(input_number.conjugate().imaginary, expected.imaginary)
 
     def test_eulers_identity_formula(self):
         input_number = ComplexNumber(0, math.pi)
@@ -178,5 +175,5 @@ class ComplexNumbersTest(unittest.TestCase):
         self.assertAlmostEqual(actual.imaginary, expected.imaginary)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

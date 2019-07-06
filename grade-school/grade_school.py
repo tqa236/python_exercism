@@ -16,8 +16,11 @@ class School(object):
 
     def roster(self) -> List[str]:
         """Return all students in the school."""
-        return [student for grade in sorted(self.students.keys())
-                for student in self.grade(grade)]
+        return [
+            student
+            for grade in sorted(self.students.keys())
+            for student in self.grade(grade)
+        ]
 
     def grade(self, grade_number: int) -> List[str]:
         """Return all students in the grade."""

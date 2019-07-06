@@ -14,6 +14,7 @@ from sum_of_multiples import sum_of_multiples
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.5.0
 
+
 class SumOfMultiplesTest(unittest.TestCase):
     def test_multiples_with_no_factors_in_limit(self):
         self.assertEqual(sum_of_multiples(1, [3, 5]), 0)
@@ -61,9 +62,8 @@ class SumOfMultiplesTest(unittest.TestCase):
         self.assertEqual(sum_of_multiples(4, [0, 3]), 3)
 
     def test_multiples_of_several_factors(self):
-        self.assertEqual(sum_of_multiples(10000,
-                         [2, 3, 5, 7, 11]), 39614537)
+        self.assertEqual(sum_of_multiples(10000, [2, 3, 5, 7, 11]), 39614537)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
