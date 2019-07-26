@@ -4,7 +4,7 @@
 class Queen(object):
     """A simple queen object."""
 
-    def __init__(self, row, column):
+    def __init__(self, row: int, column: int) -> None:
         """Initialize the position of the queen."""
         if min(row, column) >= 0 and max(row, column) < 8:
             self.row = row
@@ -12,7 +12,7 @@ class Queen(object):
         else:
             raise ValueError("Unexpected Exception")
 
-    def can_attack(self, another_queen):
+    def can_attack(self, another_queen: Queen) -> bool:
         """Decide if this queen can attack another queen."""
         if (self.row, self.column) == (another_queen.row, another_queen.column):
             raise ValueError("Unexpected Exception")

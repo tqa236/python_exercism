@@ -1,2 +1,2 @@
-def roman(number):
+def roman(number: int) -> None:
     pass

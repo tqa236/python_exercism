@@ -1,3 +1,4 @@
+from typing import Any
 NODE, EDGE, ATTR = range(3)
 
 
@@ -25,5 +26,5 @@ class Edge(object):
 
 
 class Graph(object):
-    def __init__(self, data=[]):
+    def __init__(self, data: Any = []) -> None:
         pass

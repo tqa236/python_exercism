@@ -1,2 +1,3 @@
-def rebase(input_base, digits, output_base):
+from typing import List
+def rebase(input_base: int, digits: List[int], output_base: int) -> None:
     pass
