@@ -10,7 +10,7 @@ class SgfTree(object):
     def __init__(
         self,
         properties: Optional[Dict[str, List[str]]] = None,
-        children: Optional[List["SgfTree"]] = None
+        children: Optional[List["SgfTree"]] = None,
     ) -> None:
         self.properties = properties or {}
         self.children = children or []

@@ -49,7 +49,7 @@ class ComputeCell(object):
     def __init__(
         self,
         inputs: Union[List[InputCell], List["ComputeCell"]],
-        compute_function: Callable
+        compute_function: Callable,
     ) -> None:
         """Initialize."""
         self.inputs = inputs
