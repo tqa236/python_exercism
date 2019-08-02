@@ -1,7 +1,5 @@
 """Implement a simple complex number class."""
 import math
-
-
 from typing import Union
 
 

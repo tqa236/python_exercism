@@ -1,6 +1,6 @@
 import unittest
-import go_counting
 
+import go_counting
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.0
 

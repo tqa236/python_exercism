@@ -2,7 +2,6 @@ import unittest
 
 from triangle import is_equilateral, is_isosceles, is_scalene
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
 

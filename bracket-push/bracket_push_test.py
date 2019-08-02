@@ -2,7 +2,6 @@ import unittest
 
 from bracket_push import is_paired
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.5.0
 
 

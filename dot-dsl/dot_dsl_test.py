@@ -1,6 +1,6 @@
 import unittest
 
-from dot_dsl import Graph, Node, Edge, NODE, EDGE, ATTR
+from dot_dsl import ATTR, EDGE, NODE, Edge, Graph, Node
 
 
 class DotDslTest(unittest.TestCase):

@@ -2,7 +2,6 @@ import unittest
 
 from crypto_square import cipher_text
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v3.2.0
 
 

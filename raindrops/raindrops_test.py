@@ -2,7 +2,6 @@ import unittest
 
 from raindrops import raindrops
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
 
 

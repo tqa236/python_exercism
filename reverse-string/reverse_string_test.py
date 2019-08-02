@@ -2,7 +2,6 @@ import unittest
 
 from reverse_string import reverse
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
 
 

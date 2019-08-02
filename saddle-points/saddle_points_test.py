@@ -9,7 +9,6 @@ import unittest
 
 from saddle_points import saddle_points
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.5.0
 
 

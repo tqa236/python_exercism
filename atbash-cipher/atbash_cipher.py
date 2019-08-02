@@ -1,7 +1,7 @@
 """Encode and decode text with atbash cipher."""
-from typing import Optional
 import re
 import string
+from typing import Optional
 
 
 def encode(plain_text: str) -> None:

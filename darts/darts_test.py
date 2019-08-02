@@ -1,6 +1,6 @@
 import unittest
-from darts import score
 
+from darts import score
 
 # Tests adapted from 'problem-specifications//canonical-data.json' @ 1.1.0
 

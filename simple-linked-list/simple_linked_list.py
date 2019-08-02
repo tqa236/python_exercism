@@ -1,4 +1,6 @@
 from typing import Any, Iterator, List, Optional, Union
+
+
 class Node(object):
     def __init__(self, value: int) -> None:
         self.node_value = value

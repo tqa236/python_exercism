@@ -2,7 +2,6 @@ import unittest
 
 from poker import best_hands
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
 
 

@@ -1,4 +1,5 @@
 from typing import Any
+
 NODE, EDGE, ATTR = range(3)
 
 

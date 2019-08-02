@@ -1,8 +1,7 @@
-import unittest
 import operator
+import unittest
 
 import list_ops
-
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v2.4.0
 

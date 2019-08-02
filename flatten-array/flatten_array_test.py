@@ -2,7 +2,6 @@ import unittest
 
 from flatten_array import flatten
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
 

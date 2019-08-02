@@ -3,7 +3,6 @@ import unittest
 import yacht
 from yacht import score
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
 
 

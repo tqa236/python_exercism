@@ -2,7 +2,6 @@ import unittest
 
 from wordy import calculate
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.5.0
 
 

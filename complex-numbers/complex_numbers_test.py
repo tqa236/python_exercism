@@ -1,11 +1,9 @@
 from __future__ import division
 
+import math
 import unittest
 
-import math
-
 from complex_numbers import ComplexNumber
-
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.3.0
 

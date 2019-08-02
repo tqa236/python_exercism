@@ -1,7 +1,6 @@
 import unittest
 
-from sublist import check_lists, SUBLIST, SUPERLIST, EQUAL, UNEQUAL
-
+from sublist import EQUAL, SUBLIST, SUPERLIST, UNEQUAL, check_lists
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
 

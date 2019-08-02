@@ -3,7 +3,6 @@ import unittest
 import hangman
 from hangman import Hangman
 
-
 # Tests adapted from csharp//hangman/HangmanTest.cs
 
 

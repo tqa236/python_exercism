@@ -2,7 +2,6 @@ import unittest
 
 from isbn_verifier import verify
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v2.7.0
 
 

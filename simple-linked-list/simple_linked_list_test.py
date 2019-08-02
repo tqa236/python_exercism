@@ -1,7 +1,6 @@
 import unittest
 
-from simple_linked_list import LinkedList, EmptyListException
-
+from simple_linked_list import EmptyListException, LinkedList
 
 # No canonical data available for this exercise
 

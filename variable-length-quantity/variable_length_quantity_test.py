@@ -1,7 +1,6 @@
 import unittest
 
-from variable_length_quantity import encode, decode
-
+from variable_length_quantity import decode, encode
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 

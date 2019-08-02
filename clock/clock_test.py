@@ -2,7 +2,6 @@ import unittest
 
 from clock import Clock
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v2.4.0
 
 

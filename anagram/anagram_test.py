@@ -2,7 +2,6 @@ import unittest
 
 from anagram import find_anagrams
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.4.0
 
 

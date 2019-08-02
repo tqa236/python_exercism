@@ -8,7 +8,6 @@ import unittest
 
 from series import slices
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.0
 
 

@@ -2,7 +2,6 @@ import unittest
 
 from protein_translation import proteins
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.1
 
 

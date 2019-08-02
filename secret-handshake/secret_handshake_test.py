@@ -2,7 +2,6 @@ import unittest
 
 from secret_handshake import handshake, secret_code
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
 

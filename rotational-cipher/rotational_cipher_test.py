@@ -2,7 +2,6 @@ import unittest
 
 import rotational_cipher
 
-
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
 
