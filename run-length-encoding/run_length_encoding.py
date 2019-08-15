@@ -2,7 +2,7 @@
 from itertools import groupby
 
 
-def decode(string):
+def decode(string: str) -> str:
     """Decode."""
     counter, result = 1, ""
     for is_digit, group in groupby(string, str.isdigit):
@@ -13,13 +13,13 @@ def decode(string):
     return result
 
 
-def encode_one_char(char, counter):
+def encode_one_char(char: str, counter: int) -> str:
     """Encode one character."""
     if counter > 1:
         return str(counter) + char
     return char
 
 
-def encode(string):
+def encode(string: str) -> str:
     """Encode."""
     return "".join(encode_one_char(k, len(list(g))) for k, g in groupby(string))

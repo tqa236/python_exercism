@@ -7,7 +7,7 @@ ITALIC_PATTERN = "(.*)_(.*)_(.*)"
 LIST_PATTERN = r"\* (.*)"
 
 
-def parse_pattern(text, pattern, convert):
+def parse_pattern(text: str, pattern: str, convert: str) -> str:
     """Parse a specific pattern (bold or italic)."""
     m = re.match(pattern, text)
     if m:
@@ -15,7 +15,7 @@ def parse_pattern(text, pattern, convert):
     return text
 
 
-def parse(markdown):
+def parse(markdown: str) -> str:
     """Markdown parser."""
     lines = markdown.split("\n")
     res = ""

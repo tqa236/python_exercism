@@ -1,5 +1,7 @@
 """A secrete handshake decoder."""
 
+from typing import List
+
 ACTIONS = ["wink", "double blink", "close your eyes", "jump"]
 
 
@@ -11,7 +13,7 @@ def handshake(code: int) -> str:
     return actions
 
 
-def secret_code(actions):
+def secret_code(actions: List[str]) -> int:
     """Encode."""
     indices = [ACTIONS.index(action) for action in actions]
     if indices[0] <= indices[-1]:

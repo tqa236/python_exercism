@@ -15,21 +15,21 @@ class Robot(object):
         self.bearing = bearing
         self.coordinates = (x, y)
 
-    def turn_left(self):
+    def turn_left(self) -> None:
         """Turn left."""
         self.bearing = DIRECTION[DIRECTION.index(self.bearing) - 1]
 
-    def turn_right(self):
+    def turn_right(self) -> None:
         """Turn right."""
         self.bearing = DIRECTION[DIRECTION.index(self.bearing) - 3]
 
-    def advance(self):
+    def advance(self) -> None:
         """Advance."""
         self.coordinates = tuple(
             [item1 + item2 for item1, item2 in zip(self.coordinates, self.bearing)]
         )
 
-    def simulate(self, instructions):
+    def simulate(self, instructions: str) -> None:
         """Simulate a chain of command."""
         for instruction in instructions:
             if instruction == "L":
