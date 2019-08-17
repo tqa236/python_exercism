@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 
 CARD_VALUE = {"J": 11, "Q": 12, "K": 13, "A": 1}
 
@@ -7,7 +7,7 @@ HIGH_CARD, ONE_PAIR, TWO_PAIR, THREE_OF_A_KIND, STRAIGHT, FLUSH, FULL_HOUSE, FOU
 )
 
 
-def parse_hand(hand):
+def parse_hand(hand: str) -> Tuple[List[int], List[str]]:
     numbers = [
         int(card[0]) if card[0].isdigit() else CARD_VALUE[card[0]]
         for card in hand.split()
@@ -16,7 +16,7 @@ def parse_hand(hand):
     return numbers, suits
 
 
-def find_best_type(hand):
+def find_best_type(hand: str) -> int:
     """Find the best type of a hand."""
     numbers, suits = parse_hand(hand)
     numbers = sorted(numbers)

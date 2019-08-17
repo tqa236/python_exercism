@@ -5,7 +5,7 @@ from string import ascii_lowercase
 ALPHABET_LENGTH = 26
 
 
-def convert(text, a, b):
+def convert(text: str, a: int, b: int) -> str:
     """Convert the main part of encoding and decoding."""
     if gcd(a, ALPHABET_LENGTH) != 1:
         raise ValueError("Error: a and m must be coprime.")

@@ -1,25 +1,25 @@
 """A simple Domain Specific Language."""
-from typing import Any
+from typing import Any, Dict
 
 NODE, EDGE, ATTR = range(3)
 
 
 class Node(object):
-    def __init__(self, name, attrs={}):
+    def __init__(self, name: str, attrs: Dict[str, str] = {}) -> None:
         self.name = name
         self.attrs = attrs
 
-    def __eq__(self, other):
+    def __eq__(self, other: "Node") -> bool:
         return self.name == other.name and self.attrs == other.attrs
 
 
 class Edge(object):
-    def __init__(self, src, dst, attrs={}):
+    def __init__(self, src: str, dst: str, attrs: Dict[str, str] = {}) -> None:
         self.src = src
         self.dst = dst
         self.attrs = attrs
 
-    def __eq__(self, other):
+    def __eq__(self, other: "Edge") -> bool:
         return (
             self.src == other.src
             and self.dst == other.dst
