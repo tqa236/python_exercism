@@ -15,7 +15,7 @@ class AcronymTest(unittest.TestCase):
     def test_punctuation(self):
         self.assertEqual(abbreviate("First In, First Out"), "FIFO")
 
-    def test_all_caps_words(self):
+    def test_all_caps_word(self):
         self.assertEqual(abbreviate("GNU Image Manipulation Program"), "GIMP")
 
     def test_punctuation_without_whitespace(self):
@@ -24,8 +24,7 @@ class AcronymTest(unittest.TestCase):
     def test_very_long_abbreviation(self):
         self.assertEqual(
             abbreviate(
-                "Rolling On The Floor Laughing So Hard That "
-                "My Dogs Came Over And Licked Me"
+                "Rolling On The Floor Laughing So Hard That My Dogs Came Over And Licked Me"
             ),
             "ROTFLSHTMDCOALM",
         )

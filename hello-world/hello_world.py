@@ -1,6 +1,2 @@
-"""Return Hello world."""
-
-
-def hello() -> str:
-    """Return Hello world."""
+def hello():
     return "Hello, World!"
