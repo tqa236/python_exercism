@@ -2,50 +2,31 @@
 
 import re
 
-BOLD_PATTERN = "(.*)__(.*)__(.*)"
-ITALIC_PATTERN = "(.*)_(.*)_(.*)"
-LIST_PATTERN = r"\* (.*)"
-
-
-def parse_pattern(text, pattern, convert):
-    """Parse a specific pattern (bold or italic)."""
-    m = re.match(pattern, text)
-    if m:
-        text = m.group(1) + f"<{convert}>" + m.group(2) + f"</{convert}>" + m.group(3)
-    return text
+BOLD_RE = re.compile(r"__(.*?)__")
+ITALICS_RE = re.compile(r"_(.*?)_")
+HEADER_RE = re.compile(r"(#+) (.*)")
+LIST_RE = re.compile(r"\* (.*)")
 
 
 def parse(markdown):
     """Markdown parser."""
     lines = markdown.split("\n")
-    res = ""
-    in_list = False
-
-    for i in lines:
-        header_range = range(6, 0, -1)
-        for header in header_range:
-            header_pattern = "#" * header + " (.*)"
-            if re.match(header_pattern, i):
-                i = f"<h{header}>" + i[header + 1 :] + f"</h{header}>"
-                break
-
-        i = parse_pattern(i, BOLD_PATTERN, "strong")
-        i = parse_pattern(i, ITALIC_PATTERN, "em")
-
-        m = re.match(LIST_PATTERN, i)
-        if m:
-            i = "<li>" + m.group(1) + "</li>"
-            if not in_list:
-                i = "<ul>" + i
-                in_list = True
+    result = []
+    for line in lines:
+        line = BOLD_RE.sub(r"<strong>\1</strong>", line)
+        line = ITALICS_RE.sub(r"<em>\1</em>", line)
+        is_header = HEADER_RE.match(line)
+        is_list = LIST_RE.match(line)
+        if is_header:
+            result.append(
+                "<h{0}>{1}</h{0}>".format(len(is_header.group(1)), is_header.group(2))
+            )
+        elif is_list:
+            if result and result[-1] == "</ul>":
+                result.pop()
+            else:
+                result.append("<ul>")
+            result.extend(["<li>" + is_list.group(1) + "</li>", "</ul>"])
         else:
-            if not re.match("<h|<ul|<p|<li", i):
-                i = "<p>" + i + "</p>"
-            if in_list:
-                i = "</ul>" + i
-                in_list = False
-
-        res = res + i
-    if in_list:
-        res = res + "</ul>"
-    return res
+            result.append("<p>" + line + "</p>")
+    return "".join(result)
