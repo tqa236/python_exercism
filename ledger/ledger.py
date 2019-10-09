@@ -1,101 +1,75 @@
-# -*- coding: utf-8 -*-
+"""Refactor a ledger printer."""
+import locale as lc
 from datetime import datetime
 
 
 class LedgerEntry(object):
-    def __init__(self):
-        self.date = None
-        self.description = None
-        self.change = None
+    """Ledger object."""
+
+    def __init__(self, date, description, change):
+        """Initialize."""
+        self.date = date
+        self.description = description
+        self.change = change
+
+    def __lt__(self, other):
+        """Override the < operator."""
+        return (self.date, self.change, self.description) < (
+            other.date,
+            other.change,
+            other.description,
+        )
 
 
 def create_entry(date, description, change):
-    entry = LedgerEntry()
-    entry.date = datetime.strptime(date, "%Y-%m-%d")
-    entry.description = description
-    entry.change = change
-    return entry
+    """Create a ledger entry."""
+    return LedgerEntry(datetime.strptime(date, "%Y-%m-%d"), description, change)
 
 
 def format_entries(currency, locale, entries):
-    if locale == "en_US":
-        table = "Date" + 7 * " " + "| Description" + 15 * " " + "| Change" + 7 * " "
-    elif locale == "nl_NL":
-        table = (
-            "Datum" + 6 * " " + "| Omschrijving" + 14 * " " + "| Verandering" + 2 * " "
+    """Format the entries."""
+    lc.setlocale(lc.LC_ALL, locale + ".utf8")
+
+    date_format = lc.nl_langinfo(lc.D_FMT)
+    column_name_dict = {
+        "en_US": ["Date", "Description", "Change"],
+        "nl_NL": ["Datum", "Omschrijving", "Verandering"],
+    }
+    column_length = [11, 26, 13]
+    table = [
+        "| ".join(
+            [
+                column.ljust(length)
+                for column, length in zip(column_name_dict[locale], column_length)
+            ]
         )
+    ]
+    entries = sorted(entries)
+    for entry in entries:
+        line = []
 
-    while entries:
-        table += "\n"
+        date_str = entry.date.strftime(date_format)
+        if locale == "nl_NL":
+            date_str = entry.date.strftime("%d-%m-%Y")
 
-        # Find next entry in order
-        min_entry_index = 0
-        for i in range(1, len(entries)):
-            entry = entries[i]
-            min_entry = entries[min_entry_index]
-            if entry.date < min_entry.date:
-                min_entry_index = i
-            elif entry.date == min_entry.date and entry.change < min_entry.change:
-                min_entry_index = i
-            elif (
-                entry.date == min_entry.date
-                and entry.change == min_entry.change
-                and entry.description < min_entry.description
-            ):
-                min_entry_index = i
-        entry = entries.pop(min_entry_index)
+        line.append(date_str)
 
-        # Write entry date to table
-        month = f"{entry.date.month:02d}"
-        date_str = month + "/"
-        day = f"{entry.date.day:02d}"
-        date_str += day + "/"
-        year = f"{entry.date.year:04d}"
-        date_str += year
-        table += date_str
-        table += " | "
-
-        # Write entry description to table
-        # Truncate if necessary
         if len(entry.description) > 25:
-            table = table + "".join(entry.description[:22])
-            table += "..."
+            line.append(entry.description[:22] + "...")
         else:
-            for i in range(25):
-                if len(entry.description) > i:
-                    table += entry.description[i]
-                else:
-                    table += " "
-        table += " | "
+            line.append(entry.description.ljust(25))
 
-        # Write entry change to table
-        change_str = ""
-        if entry.change < 0:
-            change_str = "("
         currency_dict = {"USD": "$", "EUR": "€"}
-        change_str += currency_dict[currency]
-        change_euro = abs(int(entry.change / 100.0))
-        euro_parts = []
-        while change_euro > 0:
-            euro_parts.insert(0, str(change_euro % 1000))
-            change_euro = change_euro // 1000
-        if not euro_parts:
-            change_str += "0"
-        else:
-            while True:
-                change_str += euro_parts[0]
-                euro_parts.pop(0)
-                if not euro_parts:
-                    break
-                change_str += ","
-        change_str += "."
-        change_cents = abs(entry.change) % 100
-        change_cents = f"{change_cents:02d}"
-        change_str += change_cents
-        if entry.change < 0:
-            change_str += ")"
+        change_str = currency_dict[currency]
+        if locale == "en_US":
+            change_str = change_str + f"{abs(entry.change)/100:,.2f}"
+        elif locale == "nl_NL":
+            change_str = change_str + " " f"{entry.change/100:n}"
+        if entry.change < 0 and locale == "en_US":
+            change_str = "(" + change_str + ")"
         else:
             change_str += " "
-        change_str = (13 - len(change_str)) * " " + change_str
-        table += change_str
-    return table
+        change_str = change_str.rjust(13)
+        line.append(change_str)
+        table.append(" | ".join(line))
+    return "\n".join(table)
