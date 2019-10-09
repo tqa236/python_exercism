@@ -1,6 +1,18 @@
+from typing import Dict, Union
+
+
 class Zipper(object):
     @staticmethod
-    def from_tree(tree):
+    def from_tree(
+        tree: Dict[
+            str,
+            Union[
+                int,
+                Dict[str, Union[int, None, Dict[str, Union[int, None]]]],
+                Dict[str, Union[int, None]],
+            ],
+        ]
+    ) -> None:
         pass
 
     def value(self):

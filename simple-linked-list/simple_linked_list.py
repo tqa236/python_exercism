@@ -1,5 +1,5 @@
 """Implement a simple linked list."""
-from typing import Any, Iterator, List, Union
+from typing import Any, Iterator, List, Optional, Union
 
 
 class Node(object):
@@ -12,7 +12,7 @@ class Node(object):
     def value(self) -> int:
         return self.node_value
 
-    def next(self):
+    def next(self) -> Optional["Node"]:
         return self.next_node
 
 
@@ -33,7 +33,7 @@ class LinkedList(object):
     def __iter__(self) -> Iterator[Any]:
         return (self.pop() for i in range(self.length))
 
-    def head(self) -> Node:
+    def head(self) -> "Node":
         if self.__len__() == 0:
             raise EmptyListException("Empty linked list.")
         return self.head_node
@@ -52,7 +52,7 @@ class LinkedList(object):
         self.length = self.length - 1
         return to_return
 
-    def recurse_reverse(self, current, previous):
+    def recurse_reverse(self, current: Node, previous: Optional["Node"]) -> None:
         if current.next() is None:
             current.next_node = previous
             self.head_node = current
@@ -61,7 +61,7 @@ class LinkedList(object):
         current.next_node = previous
         self.recurse_reverse(next_node, current)
 
-    def reversed(self):
+    def reversed(self) -> "LinkedList":
         if self.head_node is None:
             return self
         self.recurse_reverse(self.head_node, None)

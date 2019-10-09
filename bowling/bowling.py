@@ -1,9 +1,9 @@
 class BowlingGame(object):
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
-    def roll(self, pins):
+    def roll(self, pins: int) -> None:
         pass
 
-    def score(self):
+    def score(self) -> None:
         pass

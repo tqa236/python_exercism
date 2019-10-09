@@ -1,7 +1,10 @@
 """Make the tournament table."""
 
 
-def update_result(team, result):
+from typing import Dict, List
+
+
+def update_result(team: Dict[str, int], result: str) -> Dict[str, int]:
     """Update the result for one team after one match."""
     team["MP"] = team["MP"] + 1
     if result == "win":
@@ -15,7 +18,7 @@ def update_result(team, result):
     return team
 
 
-def tally(rows):
+def tally(rows: List[str]) -> List[str]:
     """Make the tournament table."""
     teams = {}
     for row in rows:

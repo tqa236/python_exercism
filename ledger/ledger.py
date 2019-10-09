@@ -1,18 +1,19 @@
 """Refactor a ledger printer."""
 import locale as lc
 from datetime import datetime
+from typing import List
 
 
 class LedgerEntry(object):
     """Ledger object."""
 
-    def __init__(self, date, description, change):
+    def __init__(self, date: datetime, description: str, change: int) -> None:
         """Initialize."""
         self.date = date
         self.description = description
         self.change = change
 
-    def __lt__(self, other):
+    def __lt__(self, other: "LedgerEntry") -> bool:
         """Override the < operator."""
         return (self.date, self.change, self.description) < (
             other.date,
@@ -21,12 +22,12 @@ class LedgerEntry(object):
         )
 
 
-def create_entry(date, description, change):
+def create_entry(date: str, description: str, change: int) -> "LedgerEntry":
     """Create a ledger entry."""
     return LedgerEntry(datetime.strptime(date, "%Y-%m-%d"), description, change)
 
 
-def format_entries(currency, locale, entries):
+def format_entries(currency: str, locale: str, entries: List["LedgerEntry"]) -> str:
     """Format the entries."""
     lc.setlocale(lc.LC_ALL, locale + ".utf8")
 

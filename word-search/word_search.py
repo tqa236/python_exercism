@@ -1,5 +1,8 @@
+from typing import List
+
+
 class Point(object):
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int) -> None:
         self.x = None
         self.y = None
 
@@ -8,8 +11,8 @@ class Point(object):
 
 
 class WordSearch(object):
-    def __init__(self, puzzle):
+    def __init__(self, puzzle: List[str]) -> None:
         pass
 
-    def search(self, word):
+    def search(self, word: str) -> None:
         pass

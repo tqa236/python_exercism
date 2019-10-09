@@ -8,7 +8,7 @@ HEADER_RE = re.compile(r"(#+) (.*)")
 LIST_RE = re.compile(r"\* (.*)")
 
 
-def parse(markdown):
+def parse(markdown: str) -> str:
     """Markdown parser."""
     lines = markdown.split("\n")
     result = []
