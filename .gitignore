@@ -116,3 +116,5 @@ dmypy.json
 **/.exercism/*
 
 */*.sqlite3
+.tags
+.tags1
