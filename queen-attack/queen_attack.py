@@ -12,7 +12,7 @@ class Queen(object):
         else:
             raise ValueError("Unexpected Exception")
 
-    def can_attack(self, another_queen: Queen) -> bool:
+    def can_attack(self, another_queen: "Queen") -> bool:
         """Decide if this queen can attack another queen."""
         if (self.row, self.column) == (another_queen.row, another_queen.column):
             raise ValueError("Unexpected Exception")
