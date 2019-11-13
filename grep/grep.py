@@ -2,4 +2,4 @@ from typing import List
 
 
 def grep(pattern: str, flags: str, files: List[str]) -> None:
-    pass
+    return "\n".join([line for line in files if pattern in line])
