@@ -30,12 +30,12 @@ def create_entry(date: str, description: str, change: int) -> "LedgerEntry":
 def format_entries(currency: str, locale: str, entries: List["LedgerEntry"]) -> str:
     """Format the entries."""
     lc.setlocale(lc.LC_ALL, locale + ".utf8")
-
     date_format = lc.nl_langinfo(lc.D_FMT)
     column_name_dict = {
         "en_US": ["Date", "Description", "Change"],
         "nl_NL": ["Datum", "Omschrijving", "Verandering"],
     }
+    currency_dict = {"USD": "$", "EUR": "€"}
     column_length = [11, 26, 13]
     table = [
         "| ".join(
@@ -48,19 +48,18 @@ def format_entries(currency: str, locale: str, entries: List["LedgerEntry"]) -> 
     entries = sorted(entries)
     for entry in entries:
         line = []
-
         date_str = entry.date.strftime(date_format)
         if locale == "nl_NL":
             date_str = entry.date.strftime("%d-%m-%Y")
 
         line.append(date_str)
 
-        if len(entry.description) > 25:
-            line.append(entry.description[:22] + "...")
-        else:
-            line.append(entry.description.ljust(25))
-
-        currency_dict = {"USD": "$", "EUR": "€"}
+        field = (
+            entry.description[:22] + "..."
+            if len(entry.description) > 25
+            else entry.description
+        )
+        line.append(field.ljust(25))
         change_str = currency_dict[currency]
         if locale == "en_US":
             change_str = change_str + f"{abs(entry.change)/100:,.2f}"
