@@ -13,5 +13,5 @@ jobs:
         python-version: '3.7'
     - name: Run tests
       run: |
-        python3 -m pip install pytest
+        python3 -m pip install pytest pytest-cov
         ./test.sh
