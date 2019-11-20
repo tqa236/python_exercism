@@ -5,6 +5,7 @@ from typing import List
 
 OPPONENT_RESULT = {"win": "loss", "draw": "draw", "loss": "win"}
 MATCH_POINT = {"win": 3, "draw": 1, "loss": 0}
+TEAM_FMT = "{:<30} |{:>3} |{:>3} |{:>3} |{:>3} |{:>3}"
 
 
 @total_ordering
@@ -31,9 +32,8 @@ class Team:
         return (-self.point, self.name) < (-other.point, other.name)
 
     def __str__(self) -> str:
-        return (
-            self.name.ljust(31)
-            + f"|  {self.match} |  {self.win} |  {self.draw} |  {self.loss} |  {self.point}"
+        return TEAM_FMT.format(
+            self.name, self.match, self.win, self.draw, self.loss, self.point
         )
 
 
@@ -44,9 +44,11 @@ def tally(rows: List[str]) -> List[str]:
         team_1, team_2, result = row.split(";")
         teams.setdefault(team_1, Team(team_1)).update_result(result)
         teams.setdefault(team_2, Team(team_2)).update_result(OPPONENT_RESULT[result])
-    header = ["Team                           | MP |  W |  D |  L |  P"]
+    header_fields = ("Team", "MP", "W", "D", "L", "P")
+    header = TEAM_FMT.format(*header_fields)
     tables = [
         str(team)
         for _, team in sorted(teams.items(), key=lambda kv: kv[1], reverse=True)
     ]
-    return header + tables
+    tables.insert(0, header)
+    return tables

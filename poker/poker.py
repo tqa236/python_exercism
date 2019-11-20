@@ -20,7 +20,13 @@ def find_best_type(hand: str) -> int:
     """Find the best type of a hand."""
     numbers, suits = parse_hand(hand)
     numbers = sorted(numbers)
-    if len(set(suits)) == 1:
+    straight = numbers == range(numbers[0], numbers[0] + 5)
+    flush = len(set(suits)) == 1
+    if straight and flush:
+        return STRAIGHT_FLUSH
+    if straight:
+        return STRAIGHT
+    if flush:
         return FLUSH
     return HIGH_CARD
 
