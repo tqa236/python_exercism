@@ -1,10 +1,18 @@
 """Implementation of a double linked list."""
 
 
+from typing import Optional
+
+
 class Node(object):
     """A simple node."""
 
-    def __init__(self, value, succeeding=None, previous=None):
+    def __init__(
+        self,
+        value: int,
+        succeeding: Optional["Node"] = None,
+        previous: Optional["Node"] = None,
+    ) -> None:
         """Initilize."""
         self.value = value
         self.succeeding = succeeding
@@ -20,7 +28,7 @@ class LinkedList(object):
         self.tail = None
         self.node = None
 
-    def push(self, value):
+    def push(self, value: int) -> None:
         """Add a node to the tail of the linked list."""
         node = Node(value, None, self.tail)
         if self.tail:
@@ -29,7 +37,7 @@ class LinkedList(object):
         if not self.head:
             self.head = self.tail
 
-    def unshift(self, value):
+    def unshift(self, value: int) -> None:
         """Add a node to the head of the linked list."""
         node = Node(value, self.head, None)
         if self.head:
@@ -38,7 +46,7 @@ class LinkedList(object):
         if not self.tail:
             self.tail = self.head
 
-    def pop(self):
+    def pop(self) -> int:
         """Remove a node from the tail of the linked list."""
         value = self.tail.value
         self.tail = self.tail.previous
@@ -48,7 +56,7 @@ class LinkedList(object):
             self.head = None
         return value
 
-    def shift(self):
+    def shift(self) -> int:
         """Remove a node from the head of the linked list."""
         value = self.head.value
         self.head = self.head.succeeding
@@ -58,7 +66,7 @@ class LinkedList(object):
             self.tail = None
         return value
 
-    def __len__(self):
+    def __len__(self) -> int:
         """Override len method."""
         node = self.head
         count = 0

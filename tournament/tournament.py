@@ -1,21 +1,40 @@
 """Make the tournament table."""
 
+from functools import total_ordering
+from typing import List
 
-from typing import Dict, List
+OPPONENT_RESULT = {"win": "loss", "draw": "draw", "loss": "win"}
+MATCH_POINT = {"win": 3, "draw": 1, "loss": 0}
 
 
-def update_result(team: Dict[str, int], result: str) -> Dict[str, int]:
-    """Update the result for one team after one match."""
-    team["MP"] = team["MP"] + 1
-    if result == "win":
-        team["W"] = team["W"] + 1
-        team["P"] = team["P"] + 3
-    if result == "loss":
-        team["L"] = team["L"] + 1
-    if result == "draw":
-        team["D"] = team["D"] + 1
-        team["P"] = team["P"] + 1
-    return team
+@total_ordering
+class Team:
+    def __init__(self, name: str) -> None:
+        """Initialize all properties of a team."""
+        self.name = name
+        self.match = 0
+        self.win = 0
+        self.draw = 0
+        self.loss = 0
+        self.point = 0
+
+    def update_result(self, result: str) -> None:
+        """Update the result of a team after one match."""
+        self.match = self.match + 1
+        self.point = self.point + MATCH_POINT[result]
+        setattr(self, result, getattr(self, result) + 1)
+
+    def __eq__(self, other: "Team") -> bool:
+        return (self.point, self.name) == (other.point, other.name)
+
+    def __gt__(self, other: "Team") -> bool:
+        return (-self.point, self.name) < (-other.point, other.name)
+
+    def __str__(self) -> str:
+        return (
+            self.name.ljust(31)
+            + f"|  {self.match} |  {self.win} |  {self.draw} |  {self.loss} |  {self.point}"
+        )
 
 
 def tally(rows: List[str]) -> List[str]:
@@ -23,24 +42,11 @@ def tally(rows: List[str]) -> List[str]:
     teams = {}
     for row in rows:
         team_1, team_2, result = row.split(";")
-        if team_1 not in teams:
-            teams[team_1] = {"MP": 0, "W": 0, "D": 0, "L": 0, "P": 0}
-        if team_2 not in teams:
-            teams[team_2] = {"MP": 0, "W": 0, "D": 0, "L": 0, "P": 0}
-        if result == "win":
-            teams[team_1] = update_result(teams[team_1], "win")
-            teams[team_2] = update_result(teams[team_2], "loss")
-        if result == "loss":
-            teams[team_1] = update_result(teams[team_1], "loss")
-            teams[team_2] = update_result(teams[team_2], "win")
-        if result == "draw":
-            for team in [team_1, team_2]:
-                teams[team] = update_result(teams[team], "draw")
-    tables = ["Team                           | MP |  W |  D |  L |  P"]
-    for team, value in sorted(teams.items(), key=lambda kv: (-1 * kv[1]["P"], kv[0])):
-        row = (
-            team.ljust(31)
-            + f"|  {value['MP']} |  {value['W']} |  {value['D']} |  {value['L']} |  {value['P']}"
-        )
-        tables.append(row)
-    return tables
+        teams.setdefault(team_1, Team(team_1)).update_result(result)
+        teams.setdefault(team_2, Team(team_2)).update_result(OPPONENT_RESULT[result])
+    header = ["Team                           | MP |  W |  D |  L |  P"]
+    tables = [
+        str(team)
+        for _, team in sorted(teams.items(), key=lambda kv: kv[1], reverse=True)
+    ]
+    return header + tables

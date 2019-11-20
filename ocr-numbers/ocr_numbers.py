@@ -16,7 +16,7 @@ NUMBERS = {
 }
 
 
-def convert_one_number(number):
+def convert_one_number(number: List[str]) -> str:
     """Recognize a single number."""
     for key in NUMBERS:
         if "\n".join(number) == "\n".join(NUMBERS[key]):
