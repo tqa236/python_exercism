@@ -5,14 +5,14 @@ from knapsack import maximum_value
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.0
 
 
-class ChangeTest(unittest.TestCase):
+class KnapsackTest(unittest.TestCase):
     def test_no_items(self):
         self.assertEqual(maximum_value(100, []), 0)
 
     def test_one_item_too_heavy(self):
         self.assertEqual(maximum_value(10, [{"weight": 100, "value": 1}]), 0)
 
-    def test_cannot_be_greedy_by_weight(self):
+    def test_five_items_cannot_be_greedy_by_weight(self):
         self.assertEqual(
             maximum_value(
                 10,
@@ -27,7 +27,7 @@ class ChangeTest(unittest.TestCase):
             21,
         )
 
-    def test_cannot_be_greedy_by_value(self):
+    def test_five_items_cannot_be_greedy_by_value(self):
         self.assertEqual(
             maximum_value(
                 10,
@@ -56,7 +56,7 @@ class ChangeTest(unittest.TestCase):
             90,
         )
 
-    def test_eight_items(self):
+    def test_8_items(self):
         self.assertEqual(
             maximum_value(
                 104,
@@ -74,7 +74,7 @@ class ChangeTest(unittest.TestCase):
             900,
         )
 
-    def test_fifteen_items(self):
+    def test_15_items(self):
         self.assertEqual(
             maximum_value(
                 750,
