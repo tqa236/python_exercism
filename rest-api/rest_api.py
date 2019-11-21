@@ -1,30 +1,13 @@
-from typing import Any, Dict, List, Optional, Union
+import json
+from typing import Optional
 
 
 class RestAPI:
-    def __init__(
-        self,
-        database: Optional[
-            Dict[
-                str,
-                Union[
-                    List[Dict[str, Union[str, float]]],
-                    List[Dict[str, Union[str, Dict[str, float], float]]],
-                    List[
-                        Union[
-                            Dict[str, Union[str, float]],
-                            Dict[str, Union[str, Dict[str, float], float]],
-                        ]
-                    ],
-                    List[Any],
-                ],
-            ]
-        ] = None,
-    ) -> None:
-        pass
+    def __init__(self, database):
+        self.database = database
 
     def get(self, url: str, payload: Optional[str] = None) -> None:
-        pass
+        return json.dumps(self.database)
 
     def post(self, url: str, payload: Optional[str] = None) -> None:
         pass
