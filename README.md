@@ -6,3 +6,5 @@
 [![codecov](https://codecov.io/gh/tqa236/python_exercism/branch/master/graph/badge.svg)](https://codecov.io/gh/tqa236/python_exercism)
 
 Solutions for Python track on Exercism
+
+Status: 278 failed, 1247 passed, 3 skipped, 1 warnings in 12.31 seconds
