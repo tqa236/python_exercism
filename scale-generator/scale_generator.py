@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Scale(object):
     def __init__(self, tonic: str) -> None:
         self.tonic = tonic
@@ -9,7 +12,7 @@ class Scale(object):
     def interval(self, intervals: str) -> None:
         pass
 
-    def make_chromatic(self):
+    def make_chromatic(self) -> List[str]:
         base_chromatic = [
             "A",
             "A#",

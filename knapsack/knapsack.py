@@ -4,7 +4,7 @@ from typing import Dict, List
 
 
 def maximum_value(
-    maximum_weight: int, items: List[Dict[str, int]], current_value=0
+    maximum_weight: int, items: List[Dict[str, int]], current_value: int = 0
 ) -> None:
     """Fill the knapsack with the highest values item."""
     if maximum_weight < 0:
