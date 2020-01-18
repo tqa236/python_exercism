@@ -20,7 +20,20 @@ class Tree(object):
         return self.__dict__() == other.__dict__()
 
     def from_pov(self, from_node: str) -> None:
-        pass
+
+        path = self.path_from_root(from_node, [self.label])
+        print(path)
+        if path == ["x"]:
+            return self
+
+        return None
 
     def path_to(self, from_node: str, to_node: str) -> None:
         pass
+
+    def path_from_root(self, to_node: str, path) -> None:
+
+        for child in self.children:
+            if child.label == to_node:
+                return path + [to_node]
+            return self.path_from_root(child.label, path + [to_node])
