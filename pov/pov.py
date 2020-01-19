@@ -31,7 +31,7 @@ class Tree(object):
     def path_to(self, from_node: str, to_node: str) -> None:
         pass
 
-    def path_from_root(self, to_node: str, path) -> None:
+    def path_from_root(self, to_node: str, path: List[str]) -> None:
 
         for child in self.children:
             if child.label == to_node:

@@ -1,5 +1,13 @@
+from typing import Dict, Optional, Union
+
+
 class Zipper(object):
-    def __init__(self, value, left, right):
+    def __init__(
+        self,
+        value: int,
+        left: Optional[Dict[str, Union[int, None, Dict[str, Union[int, None]]]]],
+        right: Optional[Dict[str, Union[int, None]]],
+    ) -> None:
         self._value = value
         if left is None:
             self._left = left
@@ -14,24 +22,33 @@ class Zipper(object):
         print("tree", self.to_tree())
 
     @staticmethod
-    def from_tree(tree):
+    def from_tree(
+        tree: Dict[
+            str,
+            Union[
+                int,
+                Dict[str, Union[int, None, Dict[str, Union[int, None]]]],
+                Dict[str, Union[int, None]],
+            ],
+        ]
+    ) -> Optional["Zipper"]:
         print(tree)
         print(tree["value"])
         return Zipper(tree["value"], tree["left"], tree["right"])
 
-    def value(self):
+    def value(self) -> int:
         return self._value
 
     def set_value(self):
         pass
 
-    def left(self):
+    def left(self) -> Optional["Zipper"]:
         return self._left
 
     def set_left(self):
         pass
 
-    def right(self):
+    def right(self) -> "Zipper":
         return self._right
 
     def set_right(self):
@@ -40,7 +57,17 @@ class Zipper(object):
     def up(self):
         pass
 
-    def to_tree(self):
+    def to_tree(
+        self
+    ) -> Dict[
+        str,
+        Union[
+            int,
+            Dict[str, Union[int, None, Dict[str, Union[int, None]]]],
+            Dict[str, Union[int, None]],
+            None,
+        ],
+    ]:
         left = None
         right = None
         if self._left is not None:
