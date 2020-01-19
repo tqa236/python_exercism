@@ -1,9 +1,6 @@
 import unittest
 
-from hypothesis import given, settings
-from hypothesis.strategies import integers, lists
-
-from book_store import optimal_cost, optimal_cost1, total
+from book_store import total
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.4.0
 
@@ -85,35 +82,6 @@ class BookStoreTest(unittest.TestCase):
         results = [1, 1, 2, 2, 3, 3, 4, 5, 1, 1, 2, 2, 3, 3, 4, 5]
         table = 10240
         self.assertEqual(total(results), table)
-
-    @given(
-        list1=lists(integers(min_value=0, max_value=30), min_size=5, max_size=5),
-        list2=lists(integers(min_value=0, max_value=30), min_size=5, max_size=5),
-    )
-    @settings(deadline=None)
-    def test_combine_of_two_book_sets_is_always_cheaper(self, list1, list2):
-        self.assertEqual(
-            optimal_cost(list1) + optimal_cost(list2)
-            >= optimal_cost([i + j for i, j in zip(list1, list2)]),
-            True,
-        )
-
-    @given(
-        list1=lists(integers(min_value=0, max_value=30), min_size=5, max_size=5),
-        list2=lists(integers(min_value=0, max_value=30), min_size=5, max_size=5),
-    )
-    @settings(deadline=None)
-    def test_combine_of_two_book_sets_is_always_cheaper1(self, list1, list2):
-        self.assertEqual(
-            optimal_cost1(list1) + optimal_cost1(list2)
-            >= optimal_cost([i + j for i, j in zip(list1, list2)]),
-            True,
-        )
-
-    @given(list1=lists(integers(min_value=0, max_value=20), min_size=5, max_size=5))
-    @settings(deadline=None)
-    def test_two_methods(self, list1):
-        self.assertEqual(optimal_cost(list1), optimal_cost1(list1))
 
 
 if __name__ == "__main__":
