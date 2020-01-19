@@ -83,6 +83,12 @@ class BookStoreTest(unittest.TestCase):
         table = 10240
         self.assertEqual(total(results), table)
 
+    def test_max_stack_depth(self):
+        N = 10000
+        results = [1] * 4 * N + [2] * 4 * N + [3] * 4 * N + [4] * 2 * N + [5] * 2 * N
+        table = 10240 * N
+        self.assertEqual(total(results), table)
+
 
 if __name__ == "__main__":
     unittest.main()
