@@ -14,6 +14,7 @@ matrix:
     - python: 3.8
 
 install:
+  - travis_wait 300 mvn install
   - pip install -r requirements.txt
   - pip install codecov
   - pip install pytest
