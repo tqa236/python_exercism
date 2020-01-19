@@ -22,7 +22,7 @@ install:
 
 script:
   # - ./lint.sh
-  - travis_wait 30 ./test.sh
+  - travis_wait 1000 ./test.sh
   - codecov
 
 after_success:
