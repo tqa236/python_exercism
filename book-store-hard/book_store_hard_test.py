@@ -10,8 +10,8 @@ from book_store_hard import optimal_cost, optimal_cost1
 
 class BookStoreTest(unittest.TestCase):
     @given(
-        list1=lists(integers(min_value=0, max_value=20), min_size=5, max_size=5),
-        list2=lists(integers(min_value=1, max_value=9), min_size=4, max_size=4),
+        list1=lists(integers(min_value=0, max_value=3), min_size=5, max_size=5),
+        list2=lists(integers(min_value=1, max_value=2), min_size=4, max_size=4),
     )
     @settings(deadline=None)
     def test_two_methods(self, list1, list2):
