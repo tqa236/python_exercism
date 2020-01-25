@@ -6,9 +6,7 @@ from typing import List
 
 BOOK_COST = 800
 DISCOUNT_RATE = [0, 0.05, 0.1, 0.2, 0.25]
-
 BOOK_PRICE = {(): 0}
-BOOK_PRICE1 = {(): 0}
 
 
 def total(basket: List[int]) -> float:
@@ -24,6 +22,11 @@ def optimal_cost(book_quantities: List[int]) -> float:
     )
     if not book_quantities:
         return 0
+    # The price to buy a book basket nth times will be equal to the price of a
+    # big book basket with nth times the quantities of each book. So if the gcd
+    # of the book quantities in a basket is bigger than 1, we divide the quantities
+    # of all books to this gcd and later multiply the cost of this new book basket
+    # with gcd to receive the price of the original book basket.
     largest_gcd = reduce(math.gcd, book_quantities)
     core_quantities = tuple([quantity // largest_gcd for quantity in book_quantities])
     if core_quantities in BOOK_PRICE:
