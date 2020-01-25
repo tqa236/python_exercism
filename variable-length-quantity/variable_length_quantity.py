@@ -2,8 +2,8 @@ from typing import List
 
 
 def encode(numbers: List[int]) -> None:
-    pass
+    return numbers
 
 
 def decode(bytes_: List[int]) -> None:
-    pass
+    return bytes_
