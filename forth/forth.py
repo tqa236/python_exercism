@@ -1,24 +1,62 @@
+from operator import add, floordiv, mul, sub
 from typing import List
+
+OPERATOR_DICT = {"+": add, "-": sub, "/": floordiv, "*": mul}
 
 
 class StackUnderflowError(Exception):
     pass
 
 
+def update_stack(stack, element):
+    check_minimum_elements = {
+        "dup": 1,
+        "swap": 2,
+        "drop": 1,
+        "over": 2,
+        "+": 2,
+        "-": 2,
+        "*": 2,
+        "/": 2,
+    }
+    if element in check_minimum_elements:
+        if len(stack) < check_minimum_elements[element]:
+            raise StackUnderflowError("Not enough value ForthDropTest this operator")
+    if element.isdigit():
+        stack.append(int(element))
+    elif element == "dup":
+        stack.append(stack[-1])
+    elif element == "swap":
+        stack[-1], stack[-2] = stack[-2], stack[-1]
+    elif element == "drop":
+        stack.pop()
+    elif element == "over":
+        stack.append(stack[-2])
+    elif element in "+-*/":
+        stack = stack[:-2] + [OPERATOR_DICT[element](stack[-2], stack[-1])]
+    else:
+        raise ValueError("Nonexistent word")
+    return stack
+
+
 def evaluate(input_data: List[str]) -> None:
     commands = [command.lower().split() for command in input_data]
     stack = []
-    for command in commands:
-        for element in command:
-            if element.isdigit():
-                stack.append(int(element))
-            if element == "dup":
-                if not stack:
-                    raise StackUnderflowError("Not enough value for this operator")
-                stack.append(stack[-1])
-            if element == "swap":
-                if len(stack) < 2:
-                    raise StackUnderflowError("Not enough value for this operator")
-                stack[-1], stack[-2] = stack[-2], stack[-1]
+    user_defined_words = {}
+    for command in commands[:-1]:
+        if command[1].isdigit():
+            raise ValueError("Cannot redefine numbers")
+        sub_command = []
+        for element in command[2:-1]:
+            if element in user_defined_words:
+                sub_command = sub_command + user_defined_words[element]
+            else:
+                sub_command.append(element)
+        user_defined_words[command[1]] = sub_command
+    for element in commands[-1]:
+        if element in user_defined_words:
+            for sub_element in user_defined_words[element]:
+                stack = update_stack(stack, sub_element)
+        else:
+            stack = update_stack(stack, element)
     return stack
-    # return [int(element) for element in input_data[0].split()]
