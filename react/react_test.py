@@ -52,7 +52,6 @@ class ReactTest(unittest.TestCase):
 
         observer = []
         callback1 = self.callback_factory(observer)
-
         output.add_callback(callback1)
         input_.value = 3
         self.assertEqual(observer[-1], 4)
