@@ -1,20 +1,19 @@
 """Create a simple school."""
 from collections import defaultdict
-from typing import List
 
 
 class School(object):
     """Create a simple school."""
 
-    def __init__(self) -> None:
+    def __init__(self):
         """Initialize."""
         self.students = defaultdict(set)
 
-    def add_student(self, name: str, grade: int) -> None:
+    def add_student(self, name, grade):
         """Add new student to a grade."""
         self.students[grade].add(name)
 
-    def roster(self) -> List[str]:
+    def roster(self):
         """Return all students in the school."""
         return [
             student
@@ -22,6 +21,6 @@ class School(object):
             for student in self.grade(grade)
         ]
 
-    def grade(self, grade_number: int) -> List[str]:
+    def grade(self, grade_number):
         """Return all students in the grade."""
         return sorted(self.students[grade_number])

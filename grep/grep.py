@@ -1,3 +1,4 @@
+import string
 from typing import List
 
 ILIADFILENAME = "iliad.txt"
@@ -30,8 +31,17 @@ Sing Heav'nly Muse, that on the secret top
 Of Oreb, or of Sinai, didst inspire
 That Shepherd, who first taught the chosen Seed"""
 FILENAMES = [ILIADFILENAME, MIDSUMMERNIGHTFILENAME, PARADISELOSTFILENAME]
+FILES = {
+    ILIADFILENAME: ILIADCONTENTS,
+    MIDSUMMERNIGHTFILENAME: MIDSUMMERNIGHTCONTENTS,
+    PARADISELOSTFILENAME: PARADISELOSTCONTENTS,
+}
 
 
 def grep(pattern: str, flags: str, files: List[str]) -> None:
-    print(files)
-    return "\n".join([line for line in files if pattern in line])
+    content = [line for file in files for line in FILES[file].split("\n")]
+    flags = [flag for flag in flags if flag in string.ascii_lowercase]
+    if "i" in flags:
+        pattern = pattern.lower()
+        content = [line.lower() for line in content]
+    return "\n".join([line for line in content if pattern in line]) + "\n"
