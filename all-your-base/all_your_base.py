@@ -11,7 +11,7 @@ def rebase(input_base: int, digits: List[int], output_base: int) -> None:
             raise ValueError("Negative digit is not allowed.")
         if max(digits) >= input_base:
             raise ValueError("Digit exists in input_base.")
-    return dec2base(base2dec(input_base, digits), output_base)[::-1]
+    return dec2base(base2dec(input_base, digits), output_base)[::-1] or [0]
 
 
 def base2dec(input_base: int, digits: List[int]) -> int:

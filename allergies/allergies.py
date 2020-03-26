@@ -21,7 +21,7 @@ class Allergies(object):
             "cats",
         ]
 
-    def is_allergic_to(self, item: str) -> bool:
+    def allergic_to(self, item: str) -> bool:
         """Check if allergic to an allergen."""
         return item in self.lst
 

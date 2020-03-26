@@ -12,7 +12,7 @@ def triplets_with_sum(sum_of_triplet: int) -> Set[Tuple[int, int, int]]:
         c = sum_of_triplet - a - b
         if a ** 2 + b ** 2 == c ** 2:
             triplet.append((min(a, b), max(a, b), c))
-    return set(triplet)
+    return [list(unique_triplet) for unique_triplet in set(triplet)]
 
 
 def is_triplet(triplet):

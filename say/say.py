@@ -67,11 +67,5 @@ def say(number: Union[float, int]) -> None:
         say(number // maxkey)
         + " "
         + NUMBERS_DICT[maxkey]
-        + (
-            ""
-            if number % maxkey == 0
-            else " " + say(number % maxkey)
-            if maxkey > 100
-            else " and " + say(number % maxkey)
-        )
+        + ("" if number % maxkey == 0 else " " + say(number % maxkey))
     )

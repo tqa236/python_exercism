@@ -24,4 +24,4 @@ def rows(letter: str) -> str:
         make_row(l, letter)
         for l in ascii_uppercase[: ascii_uppercase.index(letter) + 1]
     ]
-    return "\n".join(upper_part + upper_part[::-1][1:]) + "\n"
+    return upper_part + upper_part[::-1][1:]

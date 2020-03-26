@@ -10,26 +10,26 @@ DIRECTION = [NORTH, EAST, SOUTH, WEST]
 class Robot(object):
     """Simulate the movements of a robot."""
 
-    def __init__(self, bearing: None = NORTH, x: int = 0, y: int = 0) -> None:
+    def __init__(self, direction: None = NORTH, x: int = 0, y: int = 0) -> None:
         """Initialize position and orientation."""
-        self.bearing = bearing
+        self.direction = direction
         self.coordinates = (x, y)
 
     def turn_left(self) -> None:
         """Turn left."""
-        self.bearing = DIRECTION[DIRECTION.index(self.bearing) - 1]
+        self.direction = DIRECTION[DIRECTION.index(self.direction) - 1]
 
     def turn_right(self) -> None:
         """Turn right."""
-        self.bearing = DIRECTION[DIRECTION.index(self.bearing) - 3]
+        self.direction = DIRECTION[DIRECTION.index(self.direction) - 3]
 
     def advance(self) -> None:
         """Advance."""
         self.coordinates = tuple(
-            [item1 + item2 for item1, item2 in zip(self.coordinates, self.bearing)]
+            [item1 + item2 for item1, item2 in zip(self.coordinates, self.direction)]
         )
 
-    def simulate(self, instructions: str) -> None:
+    def move(self, instructions: str) -> None:
         """Simulate a chain of command."""
         for instruction in instructions:
             if instruction == "L":
