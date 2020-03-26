@@ -56,7 +56,7 @@ def check_complete_vertical_line(
     )
 
 
-def count(ascii_diagram: List[str]) -> None:
+def rectangles(ascii_diagram: List[str]) -> None:
     """Count the number of rectangles in a diagram."""
     point_lists = [
         (i, j)

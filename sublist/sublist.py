@@ -7,15 +7,15 @@ UNEQUAL = 4
 
 
 def check_sublist(
-    sublist: Union[List[str], List[int]], lst: Union[List[str], List[int]]
+    sublist_: Union[List[str], List[int]], lst: Union[List[str], List[int]]
 ) -> bool:
     """Check if a list is an ordered sublist of another list."""
-    if not isinstance(sublist, list):
+    if not isinstance(sublist_, list):
         raise ValueError("sublist must be a list")
     if not isinstance(lst, list):
         raise ValueError("lst must be a list")
 
-    sublist_len = len(sublist)
+    sublist_len = len(sublist_)
     index = 0
 
     if sublist_len > len(lst):
@@ -23,27 +23,27 @@ def check_sublist(
     if sublist_len == 0:
         return True
     for element in lst:
-        if element == sublist[index]:
+        if element == sublist_[index]:
             index = index + 1
             if index == sublist_len:
                 return True
-        elif index > 0 and sublist[index - 1] != element:
+        elif index > 0 and sublist_[index - 1] != element:
             index = 0
     return False
 
 
-def check_lists(
+def sublist(
     first_list: Union[List[str], List[int]], second_list: Union[List[str], List[int]]
 ) -> int:
     """Check the relation of 2 lists."""
     if first_list == second_list:
         return EQUAL
 
-    sublist = check_sublist(first_list, second_list)
-    superlist = check_sublist(second_list, first_list)
+    is_sublist = check_sublist(first_list, second_list)
+    is_superlist = check_sublist(second_list, first_list)
 
-    if sublist:
+    if is_sublist:
         return SUBLIST
-    if superlist:
+    if is_superlist:
         return SUPERLIST
     return UNEQUAL

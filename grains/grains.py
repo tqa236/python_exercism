@@ -7,13 +7,12 @@ def is_valid_square(integer_number: int) -> None:
         raise ValueError("Wrong square")
 
 
-def on_square(integer_number: int) -> int:
+def square(integer_number: int) -> int:
     """Return the number of grains for each square."""
     is_valid_square(integer_number)
     return 2 ** (integer_number - 1)
 
 
-def total_after(integer_number: int) -> int:
+def total() -> int:
     """Return the number of grains for all squares."""
-    is_valid_square(integer_number)
-    return 2 ** integer_number - 1
+    return 2 ** 64 - 1

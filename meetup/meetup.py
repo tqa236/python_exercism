@@ -1,10 +1,9 @@
 """Return the meeting day given some conditions."""
 import datetime
 from calendar import monthrange
-from datetime import date
 
 
-def next_weekday(day: date, weekday: int) -> date:
+def next_weekday(day: datetime.date, weekday: int) -> datetime.date:
     """Find the nearest day in the future of a weekday type."""
     days_ahead = weekday - day.weekday()
     if days_ahead < 0:
@@ -12,7 +11,7 @@ def next_weekday(day: date, weekday: int) -> date:
     return day + datetime.timedelta(days_ahead)
 
 
-def meetup_day(year: int, month: int, day_of_the_week: str, which: str) -> date:
+def meetup(year: int, month: int, which: str, day_of_the_week: str) -> datetime.date:
     """Return the meeting day given some conditions."""
     last_day_of_month = monthrange(year, month)[1]
     days_of_the_week = {

@@ -1,7 +1,7 @@
 from typing import List
 
 
-def board(input_board_array: List[str]) -> None:
+def annotate(input_board_array: List[str]) -> None:
     if not input_board_array:
         return []
     row_length = [len(row) for row in input_board_array]
