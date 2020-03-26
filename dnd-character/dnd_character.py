@@ -1,4 +1,4 @@
-from random import randint
+from secrets import randbelow
 
 
 class Character:
@@ -12,7 +12,7 @@ class Character:
         self.hitpoints = 10 + modifier(self.constitution)
 
     def ability(self) -> int:
-        choice = [randint(1, 6) for i in range(4)]
+        choice = [randbelow(5) + 1 for i in range(4)]
         return sum(choice) - min(choice)
 
 
