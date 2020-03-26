@@ -9,7 +9,7 @@ Solutions for Python track on Exercism
 
 TODO:
 
--   Install NL_nl locale on Travis CI
+-   Try poetry for dependency management
 
 Status:
 
