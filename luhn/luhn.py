@@ -4,11 +4,11 @@
 class Luhn(object):
     """A simple Luhn object."""
 
-    def __init__(self, card_num):
+    def __init__(self, card_num: str) -> None:
         """Initialize."""
         self.card_num = card_num.replace(" ", "")
 
-    def valid(self):
+    def valid(self) -> bool:
         """Test if the number is valid."""
         if not self.card_num.isdigit() or self.card_num == "0":
             return False

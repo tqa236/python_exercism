@@ -1,11 +1,9 @@
-"""Find the score of a dart game."""
 import math
 from typing import Union
 
 
-def score(x_coordinate: Union[float, int], y_coordinate: Union[float, int]) -> int:
-    """Return the score of a dart game based on the distance."""
-    distance = math.sqrt(x_coordinate ** 2 + y_coordinate ** 2)
+def score(x: Union[float, int], y: Union[float, int]) -> int:
+    distance = math.sqrt(x * x + y * y)
     if distance > 10:
         return 0
     if distance > 5:

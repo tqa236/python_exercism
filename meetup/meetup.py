@@ -6,7 +6,9 @@ from datetime import date
 
 def next_weekday(day: date, weekday: int) -> date:
     """Find the nearest day in the future of a weekday type."""
-    days_ahead = (weekday - day.weekday() + 7) % 7
+    days_ahead = weekday - day.weekday()
+    if days_ahead < 0:
+        days_ahead += 7
     return day + datetime.timedelta(days_ahead)
 
 

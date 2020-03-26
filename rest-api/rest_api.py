@@ -1,5 +1,6 @@
 """Create a simple REST API."""
 import json
+from typing import Dict, List, Optional, Union
 
 
 class RestAPI:
@@ -9,7 +10,7 @@ class RestAPI:
         """Initialize."""
         self.database = {user["name"]: user for user in database["users"]}
 
-    def get(self, url: str, payload=None) -> None:
+    def get(self, url: str, payload: Optional[str] = None) -> None:
         """Get users."""
         if url != "/users":
             raise ValueError("API not exists.")
@@ -18,7 +19,7 @@ class RestAPI:
         payload = json.loads(payload)
         return json.dumps({"users": self.get_users(payload["users"])})
 
-    def post(self, url: str, payload=None) -> None:
+    def post(self, url: str, payload: Optional[str] = None) -> None:
         """Post users or IOUs."""
         payload = json.loads(payload)
         if url == "/add":
@@ -44,11 +45,16 @@ class RestAPI:
             return json.dumps({"users": self.get_users(sorted([lender, borrower]))})
         raise ValueError("API not exists.")
 
-    def get_users(self, users):
+    def get_users(
+        self, users: List[str]
+    ) -> Union[
+        List[Dict[str, Union[str, float]]],
+        List[Dict[str, Union[str, Dict[str, float], float]]],
+    ]:
         """Return a list of users' balances."""
         return [self.database[user] for user in users]
 
-    def cleanup(self, lender, borrower):
+    def cleanup(self, lender: str, borrower: str) -> None:
         """Delete old data before updating."""
         self.database[lender]["owes"].pop(borrower, None)
         self.database[lender]["owed_by"].pop(borrower, None)

@@ -9,8 +9,10 @@ class BowlingGame(object):
         self.frame = 0
 
     def roll(self, pins: int) -> None:
-        if pins < 0 or pins > 10:
-            raise ValueError("Invalid point.")
+        if pins < 0:
+            raise ValueError("Cannot score negative point.")
+        if pins > 10:
+            raise ValueError("Cannot score more than 10 points in a throw.")
         if self.first_throw:
             self.frame = self.frame + 1
         if self.frame > 10:

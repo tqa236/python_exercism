@@ -31,6 +31,11 @@ class SgfParsingTest(unittest.TestCase):
         expected = SgfTree(properties={"A": ["B"]})
         self.assertEqual(parse(input_string), expected)
 
+    def test_multiple_properties(self):
+        input_string = "(;A[b]C[d])"
+        expected = SgfTree(properties={"A": ["b"], "C": ["d"]})
+        self.assertEqual(parse(input_string), expected)
+
     def test_properties_without_delimiter(self):
         input_string = "(;A)"
         with self.assertRaisesWithMessage(ValueError):
@@ -46,13 +51,11 @@ class SgfParsingTest(unittest.TestCase):
         with self.assertRaisesWithMessage(ValueError):
             parse(input_string)
 
-    # @unittest.skip("extra-credit")
     def test_two_nodes(self):
         input_string = "(;A[B];B[C])"
         expected = SgfTree(properties={"A": ["B"]}, children=[SgfTree({"B": ["C"]})])
         self.assertEqual(parse(input_string), expected)
 
-    # @unittest.skip("extra-credit")
     def test_two_child_trees(self):
         input_string = "(;A[B](;B[C])(;C[D]))"
         expected = SgfTree(
@@ -61,31 +64,17 @@ class SgfParsingTest(unittest.TestCase):
         )
         self.assertEqual(parse(input_string), expected)
 
-    # @unittest.skip("extra-credit")
     def test_multiple_property_values(self):
         input_string = "(;A[b][c][d])"
         expected = SgfTree(properties={"A": ["b", "c", "d"]})
         self.assertEqual(parse(input_string), expected)
 
-    # @unittest.skip("extra-credit")
     def test_escaped_property(self):
         input_string = "(;A[\\]b\nc\nd\t\te \n\\]])"
         expected = SgfTree(properties={"A": ["]b\nc\nd  e \n]"]})
         self.assertEqual(parse(input_string), expected)
 
-    # @unittest.skip("extra-credit")
-    def test_multiple_properties(self):
-        input_string = "(;A[b]C[d])"
-        expected = SgfTree(properties={"A": ["b"], "C": ["d"]})
-        self.assertEqual(parse(input_string), expected)
-
     # Utility functions
-    def setUp(self):
-        try:
-            self.assertRaisesRegex
-        except AttributeError:
-            self.assertRaisesRegex = self.assertRaisesRegexp
-
     def assertRaisesWithMessage(self, exception):
         return self.assertRaisesRegex(exception, r".+")
 

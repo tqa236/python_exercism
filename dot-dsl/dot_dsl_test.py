@@ -14,7 +14,7 @@ class DotDslTest(unittest.TestCase):
     def test_graph_with_one_node(self):
         g = Graph([(NODE, "a", {})])
 
-        self.assertEqual(g.nodes, [Node("a")])
+        self.assertEqual(g.nodes, [Node("a", {})])
         self.assertEqual(g.edges, [])
         self.assertEqual(g.attrs, {})
 
@@ -97,12 +97,6 @@ class DotDslTest(unittest.TestCase):
             Graph([(99, 1, 2)])
 
     # Utility methods
-    def setUp(self):
-        try:
-            self.assertRaisesRegex
-        except AttributeError:
-            self.assertRaisesRegex = self.assertRaisesRegexp
-
     def assertRaisesWithMessage(self, exception):
         return self.assertRaisesRegex(exception, r".+")
 

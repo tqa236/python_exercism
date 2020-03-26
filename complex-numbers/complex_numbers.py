@@ -6,7 +6,7 @@ from typing import Union
 class ComplexNumber(object):
     """Implement a simple complex number class."""
 
-    def __init__(self, real: Union[int, float], imaginary: Union[float, int]) -> None:
+    def __init__(self, real: Union[float, int], imaginary: Union[float, int]) -> None:
         self.real = real
         self.imaginary = imaginary
 

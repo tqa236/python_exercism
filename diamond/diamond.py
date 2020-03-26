@@ -18,7 +18,7 @@ def make_row(letter: str, center_letter: str) -> str:
     return side_pad + center + side_pad
 
 
-def make_diamond(letter: str) -> str:
+def rows(letter: str) -> str:
     """Make a diamond with letters."""
     upper_part = [
         make_row(l, letter)

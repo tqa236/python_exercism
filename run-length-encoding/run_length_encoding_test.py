@@ -48,7 +48,7 @@ class RunLengthEncodingTest(unittest.TestCase):
     def test_decode_lower_case_string(self):
         self.assertMultiLineEqual(decode("2a3b4c"), "aabbbcccc")
 
-    def test_combination(self):
+    def test_encode_followed_by_decode_gives_original_string(self):
         self.assertMultiLineEqual(decode(encode("zzz ZZ  zZ")), "zzz ZZ  zZ")
 
 

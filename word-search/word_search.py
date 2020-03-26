@@ -1,9 +1,9 @@
 import re
-from typing import List
+from typing import List, Optional
 
 
 class Point(object):
-    def __init__(self, x: int, y: int):
+    def __init__(self, x: int, y: int) -> None:
         self.x = x
         self.y = y
 
@@ -12,10 +12,10 @@ class Point(object):
 
 
 class WordSearch(object):
-    def __init__(self, puzzle: List[str]):
+    def __init__(self, puzzle: List[str]) -> None:
         self.puzzle = puzzle
 
-    def search(self, word: str):
+    def search(self, word: str) -> Optional[List[Point]]:
         result = [
             (position.start(), index)
             for index, row in enumerate(self.puzzle)

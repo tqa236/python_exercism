@@ -3,45 +3,33 @@ import unittest
 
 from simple_cipher import Cipher
 
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
+# Tests adapted from `problem-specifications//canonical-data.json` @ v2.0.0
 
 
-class SimpleCipherTest(unittest.TestCase):
-    # Utility functions
-    def setUp(self):
-        try:
-            self.assertRaisesRegex
-        except AttributeError:
-            self.assertRaisesRegex = self.assertRaisesRegexp
-
-    def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
-
-
-class RandomKeyCipherTest(SimpleCipherTest):
+class RandomKeyCipherTest(unittest.TestCase):
     def test_can_encode(self):
         cipher = Cipher()
         plaintext = "aaaaaaaaaa"
-        self.assertEqual(cipher.encode(plaintext), cipher.key[: len(plaintext)])
+        self.assertEqual(cipher.encode(plaintext), cipher.key[0 : len(plaintext)])
 
     def test_can_decode(self):
         cipher = Cipher()
-        plaintext = "aaaaaaaaaa"
-        self.assertEqual(cipher.decode(cipher.key[: len(plaintext)]), plaintext)
+        self.assertEqual(cipher.decode(cipher.key[0 : len("aaaaaaaaaa")]), "aaaaaaaaaa")
 
     def test_is_reversible(self):
         cipher = Cipher()
         plaintext = "abcdefghij"
         self.assertEqual(cipher.decode(cipher.encode(plaintext)), plaintext)
 
-    def test_key_is_only_made_of_lowercase_letters(self):
+    def test_key_is_made_only_of_lowercase_letters(self):
         self.assertIsNotNone(re.match("^[a-z]+$", Cipher().key))
 
 
-class SubstitutionCipherTest(SimpleCipherTest):
+class SubstitutionCipherTest(unittest.TestCase):
     def test_can_encode(self):
         cipher = Cipher("abcdefghij")
-        self.assertEqual(cipher.encode("aaaaaaaaaa"), cipher.key)
+        plaintext = "aaaaaaaaaa"
+        self.assertEqual(cipher.encode(plaintext), cipher.key)
 
     def test_can_decode(self):
         cipher = Cipher("abcdefghij")
@@ -53,21 +41,27 @@ class SubstitutionCipherTest(SimpleCipherTest):
         self.assertEqual(cipher.decode(cipher.encode(plaintext)), plaintext)
 
     def test_can_double_shift_encode(self):
+        cipher = Cipher("iamapandabear")
         plaintext = "iamapandabear"
-        cipher = Cipher(plaintext)
         self.assertEqual(cipher.encode(plaintext), "qayaeaagaciai")
 
     def test_can_wrap_on_encode(self):
         cipher = Cipher("abcdefghij")
-        self.assertEqual(cipher.encode("zzzzzzzzzz"), "zabcdefghi")
+        plaintext = "zzzzzzzzzz"
+        self.assertEqual(cipher.encode(plaintext), "zabcdefghi")
 
     def test_can_wrap_on_decode(self):
         cipher = Cipher("abcdefghij")
         self.assertEqual(cipher.decode("zabcdefghi"), "zzzzzzzzzz")
 
-    def test_can_handle_messages_longer_than_key(self):
+    def test_can_encode_messages_longer_than_the_key(self):
         cipher = Cipher("abc")
-        self.assertEqual(cipher.encode("iamapandabear"), "iboaqcnecbfcr")
+        plaintext = "iamapandabear"
+        self.assertEqual(cipher.encode(plaintext), "iboaqcnecbfcr")
+
+    def test_can_decode_messages_longer_than_the_key(self):
+        cipher = Cipher("abc")
+        self.assertEqual(cipher.decode("iboaqcnecbfcr"), "iamapandabear")
 
 
 if __name__ == "__main__":

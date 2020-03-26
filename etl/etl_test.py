@@ -2,12 +2,14 @@ import unittest
 
 from etl import transform
 
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.0
+# Tests adapted from `problem-specifications//canonical-data.json` @ v2.0.1
 
 
 class EtlTest(unittest.TestCase):
-    def test_a_single_letter(self):
-        self.assertEqual(transform({1: ["A"]}), {"a": 1})
+    def test_single_letter(self):
+        legacy_data = {1: ["A"]}
+        data = {"a": 1}
+        self.assertEqual(transform(legacy_data), data)
 
     def test_single_score_with_multiple_letters(self):
         legacy_data = {1: ["A", "E", "I", "O", "U"]}

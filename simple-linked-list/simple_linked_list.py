@@ -33,7 +33,7 @@ class LinkedList(object):
     def __iter__(self) -> Iterator[Any]:
         return (self.pop() for i in range(self.length))
 
-    def head(self) -> "Node":
+    def head(self) -> Node:
         if self.__len__() == 0:
             raise EmptyListException("Empty linked list.")
         return self.head_node
@@ -52,7 +52,7 @@ class LinkedList(object):
         self.length = self.length - 1
         return to_return
 
-    def recurse_reverse(self, current: Node, previous: Optional["Node"]) -> None:
+    def recurse_reverse(self, current: Node, previous: Optional[Node]) -> None:
         if current.next() is None:
             current.next_node = previous
             self.head_node = current

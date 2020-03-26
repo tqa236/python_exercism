@@ -8,7 +8,7 @@ class StackUnderflowError(Exception):
     pass
 
 
-def update_stack(stack, element):
+def update_stack(stack: List[int], element: str) -> List[int]:
     check_minimum_elements = {
         "dup": 1,
         "swap": 2,

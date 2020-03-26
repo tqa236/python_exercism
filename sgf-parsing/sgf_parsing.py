@@ -37,7 +37,7 @@ class SgfTree(object):
         return not self == other
 
 
-def parse(input_string: str) -> SgfTree:
+def parse(input_string: str) -> "SgfTree":
     """Build a function to parse SGF format."""
     input_string = input_string.replace("\\", "").replace("\t", " ")
     regex = r"\(?\;?(?P<keys>[A-Z]+)?(?:\[(?P<values>(.|\s)+?\]?)\])"

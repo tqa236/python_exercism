@@ -1,5 +1,5 @@
 """Find the fewest number of coins for a given price."""
-from typing import List
+from typing import List, Optional
 
 
 def find_fewest_coins(coins: List[int], target: int) -> None:
@@ -12,7 +12,9 @@ def find_fewest_coins(coins: List[int], target: int) -> None:
     return sorted(target_coin_list)
 
 
-def find_fewest_coins_recursive(coins: List[int], target: int, coin_list=None) -> None:
+def find_fewest_coins_recursive(
+    coins: List[int], target: int, coin_list: Optional[List[int]] = None
+) -> None:
     """Find the fewest number of coins for a given price recursively."""
     coins = [coin for coin in coins if coin <= target]
     if not coins:

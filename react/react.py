@@ -1,6 +1,10 @@
 """Implement a basic reactive system."""
 
 
+from functools import partial
+from typing import Callable, List, Union
+
+
 class InputCell(object):
     def __init__(self, initial_value: int) -> None:
         """Initialize."""
@@ -20,7 +24,7 @@ class InputCell(object):
         for observer in self.observers:
             observer.update_value()
 
-    def register_observer(self, observer) -> None:
+    def register_observer(self, observer: "ComputeCell") -> None:
         """Bind to the callback to update automatically."""
         self.observers.append(observer)
 
@@ -28,7 +32,11 @@ class InputCell(object):
 class ComputeCell(InputCell):
     """Compute and update values for all cells."""
 
-    def __init__(self, inputs, compute_function):
+    def __init__(
+        self,
+        inputs: Union[List[InputCell], List["ComputeCell"]],
+        compute_function: Callable,
+    ) -> None:
         """Initialize."""
         super().__init__(None)
         self.inputs = inputs
@@ -50,11 +58,11 @@ class ComputeCell(InputCell):
                 for callback in self.callbacks:
                     callback(self.value)
 
-    def add_callback(self, callback) -> None:
+    def add_callback(self, callback: partial) -> None:
         """Add new callback."""
         self.callbacks.append(callback)
 
-    def remove_callback(self, callback) -> None:
+    def remove_callback(self, callback: partial) -> None:
         """Remove a callback."""
         if callback in self.callbacks:
             self.callbacks.remove(callback)

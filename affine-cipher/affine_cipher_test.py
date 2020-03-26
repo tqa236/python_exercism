@@ -12,10 +12,10 @@ class AffineCipherTest(unittest.TestCase):
     def test_encode_no(self):
         self.assertEqual(encode("no", 15, 18), "fu")
 
-    def test_encode_OMG(self):
+    def test_encode_omg(self):
         self.assertEqual(encode("OMG", 21, 3), "lvz")
 
-    def test_encode_O_M_G(self):
+    def test_encode_o_m_g(self):
         self.assertEqual(encode("O M G", 25, 47), "hjp")
 
     def test_encode_mindblowingly(self):
@@ -35,14 +35,14 @@ class AffineCipherTest(unittest.TestCase):
             "swxtj npvyk lruol iejdc blaxk swxmh qzglf",
         )
 
-    def test_encode_raises_meaningful_exception(self):
+    def test_encode_with_a_not_coprime_to_m(self):
         with self.assertRaisesWithMessage(ValueError):
-            encode("This is a test", 6, 17)
+            encode("This is a test.", 6, 17)
 
     def test_decode_exercism(self):
         self.assertEqual(decode("tytgn fjr", 3, 7), "exercism")
 
-    def test_decode_sentence(self):
+    def test_decode_a_sentence(self):
         self.assertEqual(
             decode("qdwju nqcro muwhn odqun oppmd aunwd o", 19, 16),
             "anobstacleisoftenasteppingstone",
@@ -57,7 +57,7 @@ class AffineCipherTest(unittest.TestCase):
             "thequickbrownfoxjumpsoverthelazydog",
         )
 
-    def test_decode_with_no_spaces(self):
+    def test_decode_with_no_spaces_in_input(self):
         self.assertEqual(
             decode("swxtjnpvyklruoliejdcblaxkswxmhqzglf", 17, 33),
             "thequickbrownfoxjumpsoverthelazydog",
@@ -68,17 +68,11 @@ class AffineCipherTest(unittest.TestCase):
             decode("vszzm    cly   yd cg    qdp", 15, 16), "jollygreengiant"
         )
 
-    def test_decode_raises_meaningful_exception(self):
+    def test_decode_with_a_not_coprime_to_m(self):
         with self.assertRaisesWithMessage(ValueError):
             decode("Test", 13, 5)
 
     # Utility functions
-    def setUp(self):
-        try:
-            self.assertRaisesRegex
-        except AttributeError:
-            self.assertRaisesRegex = self.assertRaisesRegexp
-
     def assertRaisesWithMessage(self, exception):
         return self.assertRaisesRegex(exception, r".+")
 

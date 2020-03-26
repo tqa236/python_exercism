@@ -1,9 +1,3 @@
-"""Tests for the series exercise
-
-Implementation note:
-The slices function should raise a ValueError with a meaningful error
-message if its length argument doesn't fit the series.
-"""
 import unittest
 
 from series import slices
@@ -27,6 +21,12 @@ class SeriesTest(unittest.TestCase):
     def test_slices_can_include_duplicates(self):
         self.assertEqual(slices("777777", 3), ["777", "777", "777", "777"])
 
+    def test_slices_of_a_long_series(self):
+        self.assertEqual(
+            slices("918493904243", 5),
+            ["91849", "18493", "84939", "49390", "93904", "39042", "90424", "04243"],
+        )
+
     def test_slice_length_is_too_large(self):
         with self.assertRaisesWithMessage(ValueError):
             slices("12345", 6)
@@ -44,12 +44,6 @@ class SeriesTest(unittest.TestCase):
             slices("", 1)
 
     # Utility functions
-    def setUp(self):
-        try:
-            self.assertRaisesRegex
-        except AttributeError:
-            self.assertRaisesRegex = self.assertRaisesRegexp
-
     def assertRaisesWithMessage(self, exception):
         return self.assertRaisesRegex(exception, r".+")
 

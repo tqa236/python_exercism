@@ -3,7 +3,7 @@ import re
 from collections import Counter
 
 
-def count_words(phrase):
+def count_words(phrase: str) -> Counter:
     """Count the number of words in a phrase."""
     phrase = re.sub(r"(\' | \')", " ", phrase.lower())
     phrase = re.sub(r"(^(\')+|(\')+$)", "", phrase)

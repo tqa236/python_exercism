@@ -1,11 +1,3 @@
-"""Tests for the ocr-numbers exercise
-
-Implementation note:
-ocr.convert should validate its input and
-raise ValueErrors with meaningful error messages
-if necessary.
-"""
-
 import unittest
 
 from ocr_numbers import convert
@@ -20,34 +12,46 @@ class OcrNumbersTest(unittest.TestCase):
     def test_recognizes_1(self):
         self.assertEqual(convert(["   ", "  |", "  |", "   "]), "1")
 
-    def test_unreadable_but_correctly_sized(self):
+    def test_unreadable_but_correctly_sized_inputs_return(self):
         self.assertEqual(convert(["   ", "  _", "  |", "   "]), "?")
 
-    def test_line_number_not_multiple_of_four(self):
+    def test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error(
+        self
+    ):
         with self.assertRaisesWithMessage(ValueError):
             convert([" _ ", "| |", "   "])
 
-    def test_col_number_not_multiple_of_three(self):
+    def test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error(
+        self
+    ):
         with self.assertRaisesWithMessage(ValueError):
             convert(["    ", "   |", "   |", "    "])
 
     def test_recognizes_110101100(self):
-        input_grid = [
-            "       _     _        _  _ ",
-            "  |  || |  || |  |  || || |",
-            "  |  ||_|  ||_|  |  ||_||_|",
-            "                           ",
-        ]
-        self.assertEqual(convert(input_grid), "110101100")
+        self.assertEqual(
+            convert(
+                [
+                    "       _     _        _  _ ",
+                    "  |  || |  || |  |  || || |",
+                    "  |  ||_|  ||_|  |  ||_||_|",
+                    "                           ",
+                ]
+            ),
+            "110101100",
+        )
 
-    def test_garbled_numbers_in_string(self):
-        input_grid = [
-            "       _     _           _ ",
-            "  |  || |  || |     || || |",
-            "  |  | _|  ||_|  |  ||_||_|",
-            "                           ",
-        ]
-        self.assertEqual(convert(input_grid), "11?10?1?0")
+    def test_garbled_numbers_in_a_string_are_replaced_with(self):
+        self.assertEqual(
+            convert(
+                [
+                    "       _     _           _ ",
+                    "  |  || |  || |     || || |",
+                    "  |  | _|  ||_|  |  ||_||_|",
+                    "                           ",
+                ]
+            ),
+            "11?10?1?0",
+        )
 
     def test_recognizes_2(self):
         self.assertEqual(convert([" _ ", " _|", "|_ ", "   "]), "2")
@@ -74,30 +78,40 @@ class OcrNumbersTest(unittest.TestCase):
         self.assertEqual(convert([" _ ", "|_|", " _|", "   "]), "9")
 
     def test_recognizes_string_of_decimal_numbers(self):
-        input_grid = [
-            "    _  _     _  _  _  _  _  _ ",
-            "  | _| _||_||_ |_   ||_||_|| |",
-            "  ||_  _|  | _||_|  ||_| _||_|",
-            "                              ",
-        ]
-        self.assertEqual(convert(input_grid), "1234567890")
+        self.assertEqual(
+            convert(
+                [
+                    "    _  _     _  _  _  _  _  _ ",
+                    "  | _| _||_||_ |_   ||_||_|| |",
+                    "  ||_  _|  | _||_|  ||_| _||_|",
+                    "                              ",
+                ]
+            ),
+            "1234567890",
+        )
 
-    def test_recognizes_numbers_separated_by_empty_lines(self):
-        input_grid = [
-            "    _  _ ",
-            "  | _| _|",
-            "  ||_  _|",
-            "         ",
-            "    _  _ ",
-            "|_||_ |_ ",
-            "  | _||_|",
-            "         ",
-            " _  _  _ ",
-            "  ||_||_|",
-            "  ||_| _|",
-            "         ",
-        ]
-        self.assertEqual(convert(input_grid), "123,456,789")
+    def test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas(
+        self
+    ):
+        self.assertEqual(
+            convert(
+                [
+                    "    _  _ ",
+                    "  | _| _|",
+                    "  ||_  _|",
+                    "         ",
+                    "    _  _ ",
+                    "|_||_ |_ ",
+                    "  | _||_|",
+                    "         ",
+                    " _  _  _ ",
+                    "  ||_||_|",
+                    "  ||_| _|",
+                    "         ",
+                ]
+            ),
+            "123,456,789",
+        )
 
     # Utility functions
     def assertRaisesWithMessage(self, exception):
