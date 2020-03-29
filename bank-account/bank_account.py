@@ -17,7 +17,9 @@ class BankAccount(object):
 
     @IsAccountOpen
     def get_balance(self):
+        self.lock.acquire()
         return self.balance
+        self.lock.release()
 
     def open(self) -> None:
         if not self.is_open:
@@ -27,17 +29,21 @@ class BankAccount(object):
 
     @IsAccountOpen
     def deposit(self, amount):
+        self.lock.acquire()
         if amount < 0:
             raise ValueError("deposit amount cannot be negative")
         self.balance = self.balance + amount
+        self.lock.release()
 
     @IsAccountOpen
     def withdraw(self, amount):
+        self.lock.acquire()
         if amount < 0:
             raise ValueError("withdraw amount cannot be negative")
         if amount > self.balance:
             raise ValueError("withdraw amount cannot be bigger than balance")
         self.balance = self.balance - amount
+        self.lock.release()
 
     @IsAccountOpen
     def close(self):
