@@ -26,6 +26,8 @@ class BowlingGame(object):
         self.bonus_countdown = max(self.bonus_countdown - 1, 0)
         if self.bonus_countdown == 0:
             self.bonus_rate = 1
+        elif self.frame_score != 10:
+            self.bonus_rate = 2
         if self.frame_score == 10:
             if self.frame <= 10:
                 self.bonus_rate = 2 + self.bonus_countdown
