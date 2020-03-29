@@ -3,5 +3,5 @@
 
 def is_isogram(string: str) -> bool:
     """Verify if a string is an isogram or not."""
-    letters = "".join(c for c in string if c.isalpha()).lower()
+    letters = [c for c in string.lower() if c.isalpha()]
     return len(set(letters)) == len(letters)
