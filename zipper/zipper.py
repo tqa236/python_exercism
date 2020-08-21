@@ -58,7 +58,7 @@ class Zipper(object):
         pass
 
     def to_tree(
-        self
+        self,
     ) -> Dict[
         str,
         Union[

@@ -1,9 +1,8 @@
 import unittest
 
+from book_store_hard import optimal_cost, optimal_cost1
 from hypothesis import given, settings
 from hypothesis.strategies import integers, lists
-
-from book_store_hard import optimal_cost, optimal_cost1
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.4.0
 

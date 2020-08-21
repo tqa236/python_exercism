@@ -19,7 +19,6 @@ class BankAccount(object):
     def get_balance(self):
         self.lock.acquire()
         return self.balance
-        self.lock.release()
 
     def open(self) -> None:
         if not self.is_open:

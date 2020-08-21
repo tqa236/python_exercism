@@ -4,9 +4,17 @@ from collections import Counter
 from typing import List, Tuple
 
 CARD_VALUE = {"J": 11, "Q": 12, "K": 13, "A": 1}
-HIGH_CARD, ONE_PAIR, TWO_PAIR, THREE_OF_A_KIND, STRAIGHT, FLUSH, FULL_HOUSE, FOUR_OF_A_KIND, STRAIGHT_FLUSH = range(
-    9
-)
+(
+    HIGH_CARD,
+    ONE_PAIR,
+    TWO_PAIR,
+    THREE_OF_A_KIND,
+    STRAIGHT,
+    FLUSH,
+    FULL_HOUSE,
+    FOUR_OF_A_KIND,
+    STRAIGHT_FLUSH,
+) = range(9)
 
 
 def parse_hand(hand: str) -> Tuple[List[int], List[str]]:

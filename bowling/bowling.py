@@ -42,6 +42,4 @@ class BowlingGame(object):
             self.frame_score = 0
 
     def score(self) -> None:
-        if self.frame < 10 or self.bonus_countdown > 0:
-            raise IndexError("Unfinished game.")
         return self.score_

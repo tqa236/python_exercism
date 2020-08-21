@@ -16,13 +16,13 @@ class OcrNumbersTest(unittest.TestCase):
         self.assertEqual(convert(["   ", "  _", "  |", "   "]), "?")
 
     def test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error(
-        self
+        self,
     ):
         with self.assertRaisesWithMessage(ValueError):
             convert([" _ ", "| |", "   "])
 
     def test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error(
-        self
+        self,
     ):
         with self.assertRaisesWithMessage(ValueError):
             convert(["    ", "   |", "   |", "    "])
@@ -91,7 +91,7 @@ class OcrNumbersTest(unittest.TestCase):
         )
 
     def test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas(
-        self
+        self,
     ):
         self.assertEqual(
             convert(

@@ -18,7 +18,7 @@ def handle_error_by_returning_none(input_data: str) -> Optional[int]:
 
 
 def handle_error_by_returning_tuple(
-    input_data: str
+    input_data: str,
 ) -> Union[Tuple[bool, int], Tuple[bool, str]]:
     """Return the result and the status."""
     try:
