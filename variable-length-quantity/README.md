@@ -31,7 +31,6 @@ Here are examples of integers as 32-bit values, and the variable length quantiti
 0FFFFFFF          FF FF FF 7F
 ```
 
-
 ## Exception messages
 
 Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
@@ -55,9 +54,9 @@ Alternatively, you can tell Python to run the pytest module:
 
 ### Common `pytest` options
 
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
+-   `-v` : enable verbose output
+-   `-x` : stop running tests on first failure
+-   `--ff` : run failures from previous test before running other test cases
 
 For other options, see `python -m pytest -h`
 
@@ -72,7 +71,7 @@ please see [Running the Tests](http://exercism.io/tracks/python/tests).
 
 ## Source
 
-A poor Splice developer having to implement MIDI encoding/decoding. [https://splice.com](https://splice.com)
+A poor Splice developer having to implement MIDI encoding/decoding. <https://splice.com>
 
 ## Submitting Incomplete Solutions
 
