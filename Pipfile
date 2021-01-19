@@ -7,14 +7,8 @@ verify_ssl = true
 black = "*"
 isort = "*"
 flake8 = "*"
-mypy = "*"
-pytest = "*"
-pytest-cov = "*"
 
 [packages]
-black = "*"
-isort = "*"
-pre-commit = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"

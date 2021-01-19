@@ -1,33 +1,16 @@
-def spiral_matrix(size: int) -> None:
-    if size == 0:
-        return []
-    # matrix = [[[None] for i in range(size)] for j in range(size)]
-    # i = j = 0
-    # direction = "left"
-    # for value in range(size ** 2):
-    #     matrix[j][i] = value
-    #     if direction == "left":
-    #         if i < size - 1:
-    #             i = i + 1
-    #         else:
-    #             j = j + 1
-    #             direction = "down"
-    #     elif direction == "down":
-    #         if j < size - 1:
-    #             j = j + 1
-    #         else:
-    #             i = i - 1
-    #             direction = "right"
-    #     elif direction == "right":
-    #         if i > 0:
-    #             i = i - 1
-    #         else:
-    #             j = j - 1
-    #             direction = "up"
-    #     elif direction == "up":
-    #         if j > 0:
-    #             j = j + 1
-    #         else:
-    #             i = i - 1
-    #             direction = "right"
-    # return matrix
+from itertools import cycle
+
+
+def spiral_matrix(size):
+    matrix = [[None] * size for _ in range(size)]
+    r, c = 0, 0
+    deltas = cycle(((0, 1), (1, 0), (0, -1), (-1, 0)))
+    dr, dc = next(deltas)
+
+    for i in range(size ** 2):
+        matrix[r][c] = i + 1
+        if not 0 <= r + dr < size or not 0 <= c + dc < size or matrix[r + dr][c + dc]:
+            dr, dc = next(deltas)
+        r += dr
+        c += dc
+    return matrix
