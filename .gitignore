@@ -118,3 +118,5 @@ dmypy.json
 */*.sqlite3
 .tags
 .tags1
+
+.vscode
