@@ -1,8 +1,11 @@
 import unittest
 
-from rail_fence_cipher import decode, encode
+from rail_fence_cipher import (
+    decode,
+    encode,
+)
 
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
+# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class RailFenceCipherTest(unittest.TestCase):
