@@ -31,7 +31,7 @@
 
 - Class attributes are the same across all instances of a `class`.
 - Ideally, this counter would increment whenever someone _made an new Alien_.
-- Class attributes can be changed from an instance method by using the _class name_:  `Alien.<class attribute name>`.
+- Class attributes can be changed from an instance method by using the _class name_: `Alien.<class attribute name>`.
 - `__init__()` is considered an instance method since it _initializes a new object_.
 
 ## 7. Object Creation

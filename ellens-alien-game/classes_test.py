@@ -5,14 +5,18 @@ import pytest
 try:
     from classes import new_aliens_collection
 except ImportError as err:
-    raise ImportError("We tried to import the new_aliens_collection() function, "
-                      "but could not find it. Did you remember to create it?") from err
+    raise ImportError(
+        "We tried to import the new_aliens_collection() function, "
+        "but could not find it. Did you remember to create it?"
+    ) from err
 
 try:
     from classes import Alien
 except ImportError as err:
-    raise ImportError("We tried to import the 'Alien' class from the classes.py file, but could not find it. "
-                      "Did you remember to create it?") from err
+    raise ImportError(
+        "We tried to import the 'Alien' class from the classes.py file, but could not find it. "
+        "Did you remember to create it?"
+    ) from err
 
 
 class ClassesTest(unittest.TestCase):
@@ -20,16 +24,20 @@ class ClassesTest(unittest.TestCase):
     @pytest.mark.task(taskno=1)
     def test_alien_has_correct_initial_coordinates(self):
         alien = Alien(2, -1)
-        error = ("Expected object to be at position (2, -1) but instead "
-                 f"found it initialized to position {(alien.x_coordinate, alien.y_coordinate)}.")
+        error = (
+            "Expected object to be at position (2, -1) but instead "
+            f"found it initialized to position {(alien.x_coordinate, alien.y_coordinate)}."
+        )
 
         self.assertEqual((2, -1), (alien.x_coordinate, alien.y_coordinate), msg=error)
 
     @pytest.mark.task(taskno=1)
     def test_alien_has_health(self):
         alien = Alien(0, 0)
-        error = ("Expected object's health to be 3 but instead found "
-                 f"it had a health of {alien.health}.")
+        error = (
+            "Expected object's health to be 3 but instead found "
+            f"it had a health of {alien.health}."
+        )
 
         self.assertEqual(3, alien.health, msg=error)
 
@@ -39,31 +47,47 @@ class ClassesTest(unittest.TestCase):
         alien_one = Alien(-8, -1)
         alien_two = Alien(2, 5)
 
-        coord_x_error = ("Expected alien_one and alien_two to have different x "
-                         f"positions. Instead both x's were: {alien_two.x_coordinate}.")
-        coord_y_error = ("Expected alien_one and alien_two to have different y "
-                         f"positions. Instead both y's were: {alien_two.y_coordinate}.")
+        coord_x_error = (
+            "Expected alien_one and alien_two to have different x "
+            f"positions. Instead both x's were: {alien_two.x_coordinate}."
+        )
+        coord_y_error = (
+            "Expected alien_one and alien_two to have different y "
+            f"positions. Instead both y's were: {alien_two.y_coordinate}."
+        )
 
-        self.assertFalse(alien_one.x_coordinate == alien_two.x_coordinate, msg=coord_x_error)
-        self.assertFalse(alien_one.y_coordinate == alien_two.y_coordinate, msg=coord_y_error)
+        self.assertFalse(
+            alien_one.x_coordinate == alien_two.x_coordinate, msg=coord_x_error
+        )
+        self.assertFalse(
+            alien_one.y_coordinate == alien_two.y_coordinate, msg=coord_y_error
+        )
 
     # Test class methods work as specified.
     @pytest.mark.task(taskno=2)
     def test_alien_hit_method(self):
-        #There are two valid interpretations for this method/task.
-        #`self.health -= 1` and `self.health = max(0, self.health - 1)`
-        #The tests for this task reflect this ambiguity.
+        # There are two valid interpretations for this method/task.
+        # `self.health -= 1` and `self.health = max(0, self.health - 1)`
+        # The tests for this task reflect this ambiguity.
 
-        data = [(1, (2,)), (2, (1,)), (3, (0,)), (4, (0, -1)), (5, (0, -2)), (6, (0, -3))]
+        data = [
+            (1, (2,)),
+            (2, (1,)),
+            (3, (0,)),
+            (4, (0, -1)),
+            (5, (0, -2)),
+            (6, (0, -3)),
+        ]
         for variant, (iterations, result) in enumerate(data, 1):
             alien = Alien(2, 2)
-            with self.subTest(f'variation #{variant}', input=iterations, output=result):
-                error = ("Expected hit method to decrement health by 1. "
-                         f"Health is {alien.health} when it should be {result}.")
+            with self.subTest(f"variation #{variant}", input=iterations, output=result):
+                error = (
+                    "Expected hit method to decrement health by 1. "
+                    f"Health is {alien.health} when it should be {result}."
+                )
                 for _ in range(iterations):
                     alien.hit()
                 self.assertIn(alien.health, result, msg=error)
-
 
     @pytest.mark.task(taskno=3)
     def test_alien_is_alive_method(self):
@@ -85,7 +109,8 @@ class ClassesTest(unittest.TestCase):
 
         error = (
             "Expected alien to be at position (-1, -4) but "
-            f"instead found it in position {(alien.x_coordinate, alien.y_coordinate)}.")
+            f"instead found it in position {(alien.x_coordinate, alien.y_coordinate)}."
+        )
 
         self.assertEqual((-1, -4), (alien.x_coordinate, alien.y_coordinate), msg=error)
 
@@ -106,7 +131,11 @@ class ClassesTest(unittest.TestCase):
         error_one = "Expected the total_aliens_created variable to be identical."
         error_two = "Expected the health variable to be identical."
 
-        self.assertEqual(alien_two.total_aliens_created, alien_one.total_aliens_created, msg=error_one)
+        self.assertEqual(
+            alien_two.total_aliens_created,
+            alien_one.total_aliens_created,
+            msg=error_one,
+        )
         self.assertEqual(alien_two.health, alien_one.health, msg=error_two)
 
     # Test total_aliens_created increments upon object instantiation
@@ -114,8 +143,10 @@ class ClassesTest(unittest.TestCase):
     def test_alien_total_aliens_created(self):
         Alien.total_aliens_created = 0
         aliens = [Alien(-2, 6)]
-        error = ("Expected total_aliens_created to equal 1. Instead "
-                 f"it equals: {aliens[0].total_aliens_created}.")
+        error = (
+            "Expected total_aliens_created to equal 1. Instead "
+            f"it equals: {aliens[0].total_aliens_created}."
+        )
 
         self.assertEqual(1, aliens[0].total_aliens_created, msg=error)
 
@@ -127,7 +158,8 @@ class ClassesTest(unittest.TestCase):
                 "Expected all total_aliens_created variables to be "
                 "equal to number of alien instances (i.e. 3).  Alien "
                 f"number {alien}'s total_aliens_created variable "
-                f"is equal to {variable}.")
+                f"is equal to {variable}."
+            )
 
         tac_list = [alien.total_aliens_created for alien in aliens]
 
@@ -147,6 +179,9 @@ class ClassesTest(unittest.TestCase):
 
             pos_error = (
                 f"Expected object to be at position {position} but "
-                f"instead found it initialized to position {(obj.x_coordinate, obj.y_coordinate)}.")
+                f"instead found it initialized to position {(obj.x_coordinate, obj.y_coordinate)}."
+            )
 
-            self.assertEqual(position, (obj.x_coordinate, obj.y_coordinate), msg=pos_error)
+            self.assertEqual(
+                position, (obj.x_coordinate, obj.y_coordinate), msg=pos_error
+            )
