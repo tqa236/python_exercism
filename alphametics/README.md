@@ -1,9 +1,13 @@
 # Alphametics
 
+Welcome to Alphametics on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Write a function to solve alphametics puzzles.
 
-[Alphametics](https://en.wikipedia.org/wiki/Alphametics) is a puzzle where
-letters in words are replaced with numbers.
+[Alphametics][alphametics] is a puzzle where letters in words are replaced with numbers.
 
 For example `SEND + MORE = MONEY`:
 
@@ -23,53 +27,30 @@ Replacing these with valid numbers gives:
 1 0 6 5 2
 ```
 
-This is correct because every letter is replaced by a different number and the
-words, translated into numbers, then make a valid sum.
+This is correct because every letter is replaced by a different number and the words, translated into numbers, then make a valid sum.
 
-Each letter must represent a different digit, and the leading digit of
-a multi-digit number must not be zero.
+Each letter must represent a different digit, and the leading digit of a multi-digit number must not be zero.
 
 Write a function to solve alphametics puzzles.
 
+[alphametics]: https://en.wikipedia.org/wiki/Alphametics
 
-## Exception messages
+## Source
 
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
+### Created by
 
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
+- @behrtam
 
-```python
-raise Exception("Meaningful message indicating the source of the error")
-```
+### Contributed to by
 
-## Running the tests
-
-To run the tests, run `pytest alphametics_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest alphametics_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/alphametics` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
-
-## Submitting Incomplete Solutions
-
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+- @BethanyG
+- @cmccandless
+- @Dog
+- @iandexter
+- @ikhadykin
+- @N-Parsons
+- @nikamirrr
+- @rfuentescruz
+- @sukovanej
+- @tqa236
+- @yawpitch
