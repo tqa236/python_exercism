@@ -39,8 +39,8 @@ def value_of_ace(card_one, card_two):
     :param card_one, card_two: str - card (J, Q, K == 10, numerical value otherwise)
     :return: int - value of the upcoming ace card (either 1 or 11).
     """
-
-    if value_of_card(card_one) + value_of_card(card_two) <= 10:
+    additional_value = 10 if card_one == "A" or card_two == "A" else 0
+    if additional_value + value_of_card(card_one) + value_of_card(card_two) <= 10:
         return 11
     return 1
 
