@@ -1,11 +1,11 @@
 from sets_categories_data import (
-    ALCOHOLS,
-    KETO,
-    OMNIVORE,
-    PALEO,
-    SPECIAL_INGREDIENTS,
     VEGAN,
     VEGETARIAN,
+    KETO,
+    PALEO,
+    OMNIVORE,
+    ALCOHOLS,
+    SPECIAL_INGREDIENTS,
 )
 
 
@@ -103,7 +103,7 @@ def separate_appetizers(dishes, appetizers):
     The function should return the list of dish names with appetizer names removed.
     Either list could contain duplicates and may require de-duping.
     """
-    return set(dishes).difference(set(appetizers))
+    return list(set(dishes).difference(set(appetizers)))
 
 
 def singleton_ingredients(dishes, intersection):
