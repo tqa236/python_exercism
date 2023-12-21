@@ -14,7 +14,7 @@ There are three different kinds of built-in numbers in Python : `ints`, `floats`
 
 `ints` are whole numbers. e.g. `1234`, `-10`, `20201278`.
 
-Integers in Python have [arbitrary precision][arbitrary-precision] -- the amount of digits is limited only by the available memory of the host system.
+Integers in Python have [arbitrary precision][arbitrary-precision] -- the number of digits is limited only by the available memory of the host system.
 
 ### floats
 
@@ -24,11 +24,11 @@ Floating point numbers are usually implemented in Python using a `double` in C (
 
 You can see more details and discussions in the following resources:
 
--   [Python numeric type documentation][numeric-type-docs]
--   [The Python Tutorial][floating point math]
--   [Documentation for `int()` built in][`int()` built in]
--   [Documentation for `float()` built in][`float()` built in]
--   [0.30000000000000004.com][0.30000000000000004.com]
+- [Python numeric type documentation][numeric-type-docs]
+- [The Python Tutorial][floating point math]
+- [Documentation for `int()` built in][`int()` built in]
+- [Documentation for `float()` built in][`float()` built in]
+- [0.30000000000000004.com][0.30000000000000004.com]
 
 ## Arithmetic
 
@@ -76,17 +76,12 @@ To convert a float to an integer, you can use `int()`. Also, to convert an integ
 3.0
 ```
 
-[arbitrary-precision]: https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic#:~:text=In%20computer%20science%2C%20arbitrary%2Dprecision,memory%20of%20the%20host%20system.
-
-[numeric-type-docs]: https://docs.python.org/3/library/stdtypes.html#typesnumeric
-
-[`int()` built in]: https://docs.python.org/3/library/functions.html#int
-
-[`float()` built in]: https://docs.python.org/3/library/functions.html#float
-
 [0.30000000000000004.com]: https://0.30000000000000004.com/
-
+[`float()` built in]: https://docs.python.org/3/library/functions.html#float
+[`int()` built in]: https://docs.python.org/3/library/functions.html#int
+[arbitrary-precision]: https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic#:~:text=In%20computer%20science%2C%20arbitrary%2Dprecision,memory%20of%20the%20host%20system.
 [floating point math]: https://docs.python.org/3.9/tutorial/floatingpoint.html
+[numeric-type-docs]: https://docs.python.org/3/library/stdtypes.html#typesnumeric
 
 ## Instructions
 
@@ -96,8 +91,8 @@ Your friend Chandler plans to visit exotic countries all around the world. Sadly
 
 Create the `exchange_money()` function, taking 2 parameters:
 
-1.  `budget` : The amount of money you are planning to exchange.
-2.  `exchange_rate` : Unit value of the foreign currency.
+1. `budget` : The amount of money you are planning to exchange.
+2. `exchange_rate` : The amount of domestic currency equal to one unit of foreign currency.
 
 This function should return the value of the exchanged currency.
 
@@ -112,10 +107,10 @@ This function should return the value of the exchanged currency.
 
 Create the `get_change()` function, taking 2 parameters:
 
-1.  `budget` : Amount of money before exchange.
-2.  `exchanging_value` : Amount of money that is _taken_ from the budget to be exchanged.
+1. `budget` : Amount of money before exchange.
+2. `exchanging_value` : Amount of money that is *taken* from the budget to be exchanged.
 
-This function should return the amount of money that _is left_ from the budget.
+This function should return the amount of money that *is left* from the budget.
 
 ```python
 >>> get_change(127.5, 120)
@@ -126,10 +121,13 @@ This function should return the amount of money that _is left_ from the budget.
 
 Create the `get_value_of_bills()` function, taking 2 parameters:
 
-1.  `denomination` : The value of a single bill.
-2.  `number_of_bills` : Amount of bills you received.
+1. `denomination` : The value of a single bill.
+2. `number_of_bills` : The total number of bills.
 
-This function should return the total value of the given _bills_.
+This exchanging booth only deals in cash of certain increments.
+The total you receive must be divisible by the value of one "bill" or unit, which can leave behind a fraction or remainder.
+Your function should return only the total value of the bills (_excluding fractional amounts_) the booth would give back.
+Unfortunately, the booth gets to keep the remainder/change as an added bonus.
 
 ```python
 >>> get_value_of_bills(5, 128)
@@ -138,25 +136,40 @@ This function should return the total value of the given _bills_.
 
 ## 4. Calculate number of bills
 
-Create the `get_number_of_bills()` function, taking `budget` and `denomination`.
+Create the `get_number_of_bills()` function, taking `amount` and `denomination`.
 
-This function should return the _number of bills_ that you can get using the _budget_.
-**Note: ** You can only receive _whole bills_, not fractions of bills,  so remember to divide accordingly.
+This function should return the _number of currency bills_ that you can receive within the given _amount_.
+In other words:  How many _whole bills_ of currency fit into the starting amount?
+Remember -- you can only receive _whole bills_, not fractions of bills, so remember to divide accordingly.
+Effectively, you are rounding _down_ to the nearest whole bill/denomination.
 
 ```python
 >>> get_number_of_bills(127.5, 5)
 25
 ```
 
-## 5. Calculate value after exchange
+## 5. Calculate leftover after exchanging into bills
+
+Create the `get_leftover_of_bills()` function, taking `amount` and `denomination`.
+
+This function should return the _leftover amount_ that cannot be returned from your starting _amount_ given the denomination of bills.
+It is very important to know exactly how much the booth gets to keep.
+
+```python
+>>> get_leftover_of_bills(127.5, 20)
+7.5
+```
+
+## 6. Calculate value after exchange
 
 Create the `exchangeable_value()` function, taking `budget`, `exchange_rate`, `spread`, and `denomination`.
 
-Parameter `spread` is the _percentage taken_ as an exchange fee.
-If `1.00 EUR == 1.20 USD` and the _spread_ is `10`, the actual exchange will be: `1.00 EUR == 1.32 USD`.
+Parameter `spread` is the *percentage taken* as an exchange fee, written as an integer.
+It needs to be converted to decimal by dividing it by 100.
+If `1.00 EUR == 1.20 USD` and the *spread* is `10`, the actual exchange rate will be: `1.00 EUR == 1.32 USD` because 10% of 1.20 is 0.12, and this additional fee is added to the exchange.
 
-This function should return the maximum value of the new currency after calculating the _exchange rate_ plus the _spread_.
-Remember that the currency _denomination_ is a whole number, and cannot be sub-divided.
+This function should return the maximum value of the new currency after calculating the *exchange rate* plus the *spread*.
+Remember that the currency *denomination* is a whole number, and cannot be sub-divided.
 
 **Note:** Returned value should be `int` type.
 
@@ -167,28 +180,19 @@ Remember that the currency _denomination_ is a whole number, and cannot be sub-d
 95
 ```
 
-## 6. Calculate non-exchangeable value
-
-Create the `non_exchangeable_value()` function, taking `budget`, `exchange_rate`, `spread`, and `denomination`.
-
-This function should return the value that is _not_ exchangeable due to the _denomination_ of the bills.
-
-**Note:** Returned value should be `int` type.
-
-```python
->>> non_exchangeable_value(127.25, 1.20, 10, 20)
-16
->>> non_exchangeable_value(127.25, 1.20, 10, 5)
-1
-```
-
 ## Source
 
 ### Created by
 
--   @Ticktakto
--   @Yabby1997
--   @limm-jk
--   @OMEGA-Y
--   @wnstj2007
--   @J08K
+- @Ticktakto
+- @Yabby1997
+- @limm-jk
+- @OMEGA-Y
+- @wnstj2007
+- @J08K
+
+### Contributed to by
+
+- @BethanyG
+- @kytrinyx
+- @pranasziaukas
