@@ -57,3 +57,7 @@ def noun_to_verb(sentence, index):
     word = sentence.split()[index].lower()
     word = "".join(c for c in word if c.isalpha())
     return word + "en"
+
+
+def adjective_to_verb(sentence, index):
+    return noun_to_verb(sentence, index)
