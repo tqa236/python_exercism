@@ -1,8 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/alphametics/canonical-data.json
+# File last updated on 2023-07-20
+
 import unittest
 
-from alphametics import solve
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.3.0
+from alphametics import (
+    solve,
+)
 
 
 class AlphameticsTest(unittest.TestCase):
@@ -60,7 +64,7 @@ class AlphameticsTest(unittest.TestCase):
         )
 
     # See https://github.com/exercism/python/pull/1358
-    # @unittest.skip("extra-credit")
+    @unittest.skip("extra-credit")
     def test_puzzle_with_ten_letters_and_199_addends(self):
         """This test may take a long time to run. Please be patient when running it."""
         puzzle = (
@@ -104,7 +108,3 @@ class AlphameticsTest(unittest.TestCase):
                 "T": 9,
             },
         )
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -95,7 +95,7 @@ Some community-sourced options can be found on our [Python track tools page][Pyt
 
 ## Submitting your solution
 
-You can submit your solution using the `exercism submit strings.py` command.
+You can submit your solution using the `exercism submit change.py` command.
 This command will upload your solution to the Exercism website and print the solution page's URL.
 
 It's possible to submit an incomplete solution which allows you to:

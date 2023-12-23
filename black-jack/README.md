@@ -67,7 +67,7 @@ True
 ```
 
 Any ordered comparison of a number to a `NaN` (_not a number_) type is `False`.
-A confusing side-effect of Python's `NaN` definition is that `NaN` never compares equal to `NaN`.
+A confusing side effect of Python's `NaN` definition is that `NaN` never compares equal to `NaN`.
 
 ```python
 >>> x = float('NaN')
@@ -88,7 +88,7 @@ False
 Unlike numbers, strings (`str`) are compared [_lexicographically_][lexographic order], using their individual Unicode code points (_the result of passing each code point in the `str` to the built-in function [`ord()`][ord], which returns an `int`_).
 If all code points in both strings match and are _**in the same order**_, the two strings are considered equal.
 This comparison is done in a 'pair-wise' fashion - first-to-first, second-to-second, etc.
-Unlike in Python 2.x, in Python 3.x, `str` and `bytes` cannot be directly coerced/compared.
+In Python 3.x, `str` and `bytes` cannot be directly coerced/compared.
 
 ```python
 >>> 'Python' > 'Rust'
@@ -194,7 +194,6 @@ The operators `in` and `not in` test for _membership_.
 For string and bytes types, `<name> in <fullname>` is `True` _**if and only if**_ `<name>` is a substring of `<fullname>`.
 
 ```python
->>>
 # A set of lucky numbers.
 >>> lucky_numbers = {11, 22, 33}
 >>> 22 in lucky_numbers
@@ -204,7 +203,9 @@ True
 False
 
 # A dictionary of employee information.
->>> employee = {'name': 'John Doe', 'id': 67826, 'age': 33, 'title': 'ceo'}
+>>> employee = {'name': 'John Doe', 
+                'id': 67826, 'age': 33, 
+                'title': 'ceo'}
 
 # Checking for the membership of certain keys.
 >>> 'age' in employee
@@ -226,35 +227,20 @@ False
 ```
 
 [arithmetic conversions]: https://docs.python.org/3/reference/expressions.html?highlight=number%20conversion#arithmetic-conversions
-
 [boolean operations]: https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not
-
 [complex numbers]: https://docs.python.org/3/library/functions.html#complex
-
 [decimal numbers]: https://docs.python.org/3/library/decimal.html
-
 [hex]: https://docs.python.org/3/library/functions.html?highlight=hex#hex
-
 [id function]: https://docs.python.org/3/library/functions.html#id
-
 [lexographic order]: https://en.wikipedia.org/wiki/Lexicographic_order
-
 [object identity]: https://docs.python.org/3/reference/datamodel.html
-
 [octal]: https://docs.python.org/3/library/functions.html?#oct
-
 [ord]: https://docs.python.org/3/library/functions.html#ord
-
 [pep8 programming recommendations]: https://pep8.org/#programming-recommendations
-
 [rational numbers]: https://docs.python.org/3/library/fractions.html
-
 [rich comparisons]: https://docs.python.org/3/reference/datamodel.html#object.__lt__
-
 [three way boolean comparison]: https://en.wikipedia.org/wiki/Three-way_comparison
-
 [value comparisons none]: https://docs.python.org/3/reference/expressions.html?highlight=none#value-comparisons
-
 [value comparisons]: https://docs.python.org/3/reference/expressions.html?highlight=nan#value-comparisons
 
 ## Instructions
@@ -274,7 +260,7 @@ Face cards (`J`, `Q`, `K`) are scored at 10 points and any other card is worth i
 Define the `value_of_card(<card>)` function with parameter `card`.
 The function should return the _numerical value_ of the passed-in card string.
 Since an ace can take on multiple values (1 **or** 11), this function should fix the value of an ace card at 1 for the time being.
-Later on, you will implement a function to determine the value of an ace card, give an existing hand.
+Later on, you will implement a function to determine the value of an ace card, given an existing hand.
 
 ```python
 >>> value_of_card('K')
@@ -326,8 +312,10 @@ Define the `value_of_ace(<card_one>, <card_two>)` function with parameters `card
 Your function will have to decide if the upcoming ace will get a value of 1 or a value of 11, and return that value.
 Remember: the value of the hand with the ace needs to be as high as possible _without_ going over 21.
 
+**Hint**: if we already have an ace in hand then its value would be 11.
+
 ```python
->>> value_of_ace('6', `K`)
+>>> value_of_ace('6', 'K')
 1
 
 >>> value_of_ace('7', '3')
@@ -386,21 +374,20 @@ False
 ```
 
 [blackjack]: https://bicyclecards.com/how-to-play/blackjack/
-
 [standard_deck]: https://en.wikipedia.org/wiki/Standard_52-card_deck
 
 ## Source
 
 ### Created by
 
--   @Ticktakto
--   @Yabby1997
--   @limm-jk
--   @OMEGA-Y
--   @wnstj2007
--   @pranasziaukas
--   @bethanyG
+- @Ticktakto
+- @Yabby1997
+- @limm-jk
+- @OMEGA-Y
+- @wnstj2007
+- @pranasziaukas
+- @bethanyG
 
 ### Contributed to by
 
--   @PaulT89
+- @PaulT89

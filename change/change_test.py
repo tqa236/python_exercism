@@ -1,21 +1,28 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/change/canonical-data.json
+# File last updated on 2023-07-20
+
 import unittest
 
-from change import find_fewest_coins
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.3.0
+from change import (
+    find_fewest_coins,
+)
 
 
 class ChangeTest(unittest.TestCase):
+    def test_change_for_1_cent(self):
+        self.assertEqual(find_fewest_coins([1, 5, 10, 25], 1), [1])
+
     def test_single_coin_change(self):
         self.assertEqual(find_fewest_coins([1, 5, 10, 25, 100], 25), [25])
 
     def test_multiple_coin_change(self):
         self.assertEqual(find_fewest_coins([1, 5, 10, 25, 100], 15), [5, 10])
 
-    def test_change_with_Lilliputian_Coins(self):
+    def test_change_with_lilliputian_coins(self):
         self.assertEqual(find_fewest_coins([1, 4, 15, 20, 50], 23), [4, 4, 15])
 
-    def test_change_with_Lower_Elbonia_Coins(self):
+    def test_change_with_lower_elbonia_coins(self):
         self.assertEqual(find_fewest_coins([1, 5, 10, 21, 25], 63), [21, 21, 21])
 
     def test_large_target_values(self):
@@ -33,28 +40,20 @@ class ChangeTest(unittest.TestCase):
     def test_no_coins_make_0_change(self):
         self.assertEqual(find_fewest_coins([1, 5, 10, 21, 25], 0), [])
 
-    def test_error_testing_for_change_smaller_than_smallest_coin(self):
-        with self.assertRaisesWithMessage(ValueError):
+    def test_error_testing_for_change_smaller_than_the_smallest_of_coins(self):
+        with self.assertRaises(ValueError) as err:
             find_fewest_coins([5, 10], 3)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "can't make target with given coins")
 
     def test_error_if_no_combination_can_add_up_to_target(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             find_fewest_coins([5, 10], 94)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "can't make target with given coins")
 
     def test_cannot_find_negative_change_values(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             find_fewest_coins([1, 2, 5], -5)
-
-    # Utility functions
-    def setUp(self):
-        try:
-            self.assertRaisesRegex
-        except AttributeError:
-            self.assertRaisesRegex = self.assertRaisesRegexp
-
-    def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
-
-
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "target can't be negative")

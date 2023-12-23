@@ -1,10 +1,12 @@
-from __future__ import division
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/rational-numbers/canonical-data.json
+# File last updated on 2023-07-19
 
 import unittest
 
-from rational_numbers import Rational
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
+from rational_numbers import (
+    Rational,
+)
 
 
 class RationalNumbersTest(unittest.TestCase):
@@ -94,6 +96,9 @@ class RationalNumbersTest(unittest.TestCase):
     def test_absolute_value_of_zero(self):
         self.assertEqual(abs(Rational(0, 1)), Rational(0, 1))
 
+    def test_absolute_value_of_a_rational_number_is_reduced_to_lowest_terms(self):
+        self.assertEqual(abs(Rational(2, 4)), Rational(1, 2))
+
     # Tests of type: Exponentiation of a rational number
 
     def test_raise_a_positive_rational_number_to_a_positive_integer_power(self):
@@ -101,6 +106,15 @@ class RationalNumbersTest(unittest.TestCase):
 
     def test_raise_a_negative_rational_number_to_a_positive_integer_power(self):
         self.assertEqual(Rational(-1, 2) ** 3, Rational(-1, 8))
+
+    def test_raise_a_positive_rational_number_to_a_negative_integer_power(self):
+        self.assertEqual(Rational(3, 5) ** -2, Rational(25, 9))
+
+    def test_raise_a_negative_rational_number_to_an_even_negative_integer_power(self):
+        self.assertEqual(Rational(-3, 5) ** -2, Rational(25, 9))
+
+    def test_raise_a_negative_rational_number_to_an_odd_negative_integer_power(self):
+        self.assertEqual(Rational(-3, 5) ** -3, Rational(-125, 27))
 
     def test_raise_zero_to_an_integer_power(self):
         self.assertEqual(Rational(0, 1) ** 5, Rational(0, 1))
@@ -130,6 +144,9 @@ class RationalNumbersTest(unittest.TestCase):
     def test_reduce_a_positive_rational_number_to_lowest_terms(self):
         self.assertEqual(Rational(2, 4), Rational(1, 2))
 
+    def test_reduce_places_the_minus_sign_on_the_numerator(self):
+        self.assertEqual(Rational(3, -4), Rational(-3, 4))
+
     def test_reduce_a_negative_rational_number_to_lowest_terms(self):
         self.assertEqual(Rational(-4, 6), Rational(-2, 3))
 
@@ -144,7 +161,3 @@ class RationalNumbersTest(unittest.TestCase):
 
     def test_reduce_one_to_lowest_terms(self):
         self.assertEqual(Rational(13, 13), Rational(1, 1))
-
-
-if __name__ == "__main__":
-    unittest.main()

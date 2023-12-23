@@ -8,7 +8,7 @@ ALPHABET_LENGTH = 26
 def convert(text: str, a: int, b: int) -> str:
     """Convert the main part of encoding and decoding."""
     if gcd(a, ALPHABET_LENGTH) != 1:
-        raise ValueError("Error: a and m must be coprime.")
+        raise ValueError("a and m must be coprime.")
     text = "".join([char for char in text.lower() if char.isalnum()])
     plain_numbers = [
         ascii_lowercase.index(char) if char in ascii_lowercase else -1 for char in text
@@ -32,5 +32,7 @@ def encode(plain_text: str, a: int, b: int) -> None:
 
 def decode(ciphered_text: str, a: int, b: int) -> None:
     """Decode."""
+    if gcd(a, ALPHABET_LENGTH) != 1:
+        raise ValueError("a and m must be coprime.")
     mmi = [(a * n) % ALPHABET_LENGTH for n in range(ALPHABET_LENGTH)].index(1)
     return convert(ciphered_text, mmi, -mmi * b)

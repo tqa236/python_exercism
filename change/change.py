@@ -4,11 +4,13 @@ from typing import List, Optional
 
 def find_fewest_coins(coins: List[int], target: int) -> None:
     """Find the fewest number of coins for a given price."""
+    if target < 0:
+        raise ValueError("target can't be negative")
     if target == 0:
         return []
     target_coin_list = find_fewest_coins_recursive(sorted(coins, reverse=True), target)
     if not target_coin_list:
-        raise ValueError("Cannot provide this amount.")
+        raise ValueError("can't make target with given coins")
     return sorted(target_coin_list)
 
 

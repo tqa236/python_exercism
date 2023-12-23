@@ -1,8 +1,13 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/affine-cipher/canonical-data.json
+# File last updated on 2023-07-20
+
 import unittest
 
-from affine_cipher import decode, encode
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v2.0.0
+from affine_cipher import (
+    decode,
+    encode,
+)
 
 
 class AffineCipherTest(unittest.TestCase):
@@ -36,8 +41,10 @@ class AffineCipherTest(unittest.TestCase):
         )
 
     def test_encode_with_a_not_coprime_to_m(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             encode("This is a test.", 6, 17)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "a and m must be coprime.")
 
     def test_decode_exercism(self):
         self.assertEqual(decode("tytgn fjr", 3, 7), "exercism")
@@ -69,13 +76,7 @@ class AffineCipherTest(unittest.TestCase):
         )
 
     def test_decode_with_a_not_coprime_to_m(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             decode("Test", 13, 5)
-
-    # Utility functions
-    def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
-
-
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "a and m must be coprime.")
