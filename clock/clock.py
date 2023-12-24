@@ -11,9 +11,13 @@ class Clock(object):
         self.hour = (hour + minute // MINUTE_PER_HOUR) % HOUR_PER_DAY
         self.minute = minute % MINUTE_PER_HOUR
 
-    def __repr__(self) -> str:
+    def __str__(self) -> str:
         """Display time with format hh:mm."""
         return f"{self.hour:02d}:{self.minute:02d}"
+
+    def __repr__(self) -> str:
+        """Display time with format hh:mm."""
+        return f"Clock({self.hour}, {self.minute})"
 
     def __eq__(self, other: "Clock") -> bool:
         """Compare time of two clocks."""
