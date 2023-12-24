@@ -10,6 +10,7 @@ Solutions for Python track on Exercism
 TODO:
 
 -   Try poetry for dependency management
+-   Solve sgf parsing
 
 Status:
 

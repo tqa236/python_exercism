@@ -40,25 +40,24 @@ class SgfTree(object):
 def parse(input_string: str) -> "SgfTree":
     """Build a function to parse SGF format."""
     input_string = input_string.replace("\\", "").replace("\t", " ")
+    if input_string == "()":
+        raise ValueError("tree missing")
     regex = r"\(?\;?(?P<keys>[A-Z]+)?(?:\[(?P<values>(.|\s)+?\]?)\])"
     matches = re.finditer(regex, input_string, re.MULTILINE)
     if input_string == "(;)":
         return SgfTree()
     if re.match(regex, input_string) is None:
-        raise ValueError("Invalid input")
+        raise ValueError("tree missing")
     properties, children, last_key, level = {}, [], "", 0
     for _, match in enumerate(matches, start=1):
         full = match.group()
         key = match.group("keys")
         value = match.group("values")
         if "(;" in full or ";" in full:
-            if (
-                not key
-                and not last_key
-                or key not in string.ascii_uppercase
-                or not value
-            ):
-                raise ValueError("Invalid input")
+            if not key and not last_key or not value:
+                raise ValueError("tree missing")
+            if key not in string.ascii_uppercase:
+                raise ValueError("property must be in uppercase")
             level += 1
         if level == 1:
             if not key and last_key:
