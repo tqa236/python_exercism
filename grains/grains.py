@@ -4,7 +4,7 @@
 def is_valid_square(integer_number: int) -> None:
     """Check if the number represent a valid square."""
     if integer_number not in range(1, 65):
-        raise ValueError("Wrong square")
+        raise ValueError("square must be between 1 and 64")
 
 
 def square(integer_number: int) -> int:
@@ -15,4 +15,4 @@ def square(integer_number: int) -> int:
 
 def total() -> int:
     """Return the number of grains for all squares."""
-    return 2 ** 64 - 1
+    return 2**64 - 1
