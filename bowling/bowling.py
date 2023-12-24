@@ -42,4 +42,13 @@ class BowlingGame(object):
             self.frame_score = 0
 
     def score(self) -> None:
+        print(self.frame)
+        if self.frame < 10:
+            raise ValueError(
+                "The game must be completed before scores can be calculated."
+            )
+        if self.bonus_countdown > 0:
+            raise ValueError(
+                "Bonus rolls must be rolled before scores can be calculated."
+            )
         return self.score_
