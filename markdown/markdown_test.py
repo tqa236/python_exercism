@@ -1,8 +1,10 @@
 import unittest
 
-from markdown import parse
+from markdown import (
+    parse,
+)
 
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.4.0
+# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class MarkdownTest(unittest.TestCase):

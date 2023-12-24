@@ -1,8 +1,10 @@
 import unittest
 
-from dominoes import can_chain
+from dominoes import (
+    can_chain,
+)
 
-# Tests adapted from `problem-specifications//canonical-data.json` @ v2.1.0
+# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class DominoesTest(unittest.TestCase):

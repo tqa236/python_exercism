@@ -1,9 +1,12 @@
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
-import io
 import unittest
-from unittest import mock
 
-from grep import grep
+from grep import (
+    grep,
+)
+
+# Tests adapted from `problem-specifications//canonical-data.json`
+import io
+from unittest import mock
 
 FILE_TEXT = {
     "iliad.txt": """Achilles sing, O Goddess! Peleus' son;

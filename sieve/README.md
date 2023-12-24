@@ -1,77 +1,67 @@
 # Sieve
 
-Use the Sieve of Eratosthenes to find all the primes from 2 up to a given
-number.
+Welcome to Sieve on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
 
-The Sieve of Eratosthenes is a simple, ancient algorithm for finding all
-prime numbers up to any given limit. It does so by iteratively marking as
-composite (i.e. not prime) the multiples of each prime, starting with the
-multiples of 2. It does not use any division or remainder operation.
+## Introduction
 
-Create your range, starting at two and continuing up to and including the given limit. (i.e. [2, limit])
+You bought a big box of random computer parts at a garage sale.
+You've started putting the parts together to build custom computers.
 
-The algorithm consists of repeating the following over and over:
+You want to test the performance of different combinations of parts, and decide to create your own benchmarking program to see how your computers compare.
+You choose the famous "Sieve of Eratosthenes" algorithm, an ancient algorithm, but one that should push your computers to the limits.
 
-- take the next available unmarked number in your list (it is prime)
-- mark all the multiples of that number (they are not prime)
+## Instructions
 
-Repeat until you have processed each number in your range.
+Your task is to create a program that implements the Sieve of Eratosthenes algorithm to find prime numbers.
 
-When the algorithm terminates, all the numbers in the list that have not
-been marked are prime.
+A prime number is a number that is only divisible by 1 and itself.
+For example, 2, 3, 5, 7, 11, and 13 are prime numbers.
 
-The wikipedia article has a useful graphic that explains the algorithm:
-https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+The Sieve of Eratosthenes is an ancient algorithm that works by taking a list of numbers and crossing out all the numbers that aren't prime.
 
-Notice that this is a very specific algorithm, and the tests don't check
-that you've implemented the algorithm, only that you've come up with the
-correct list of primes. A good first test is to check that you do not use
-division or remainder operations (div, /, mod or % depending on the
-language).
+A number that is **not** prime is called a "composite number".
 
+To use the Sieve of Eratosthenes, you first create a list of all the numbers between 2 and your given number.
+Then you repeat the following steps:
 
-## Exception messages
+1. Find the next unmarked number in your list. This is a prime number.
+2. Mark all the multiples of that prime number as composite (not prime).
 
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
+You keep repeating these steps until you've gone through every number in your list.
+At the end, all the unmarked numbers are prime.
 
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
+~~~~exercism/note
+[Wikipedia's Sieve of Eratosthenes article][eratosthenes] has a useful graphic that explains the algorithm.
 
-```python
-raise Exception("Meaningful message indicating the source of the error")
-```
+The tests don't check that you've implemented the algorithm, only that you've come up with the correct list of primes.
+A good first test is to check that you do not use division or remainder operations.
 
-## Running the tests
-
-To run the tests, run `pytest sieve_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest sieve_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/sieve` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
+[eratosthenes]: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+~~~~
 
 ## Source
 
-Sieve of Eratosthenes at Wikipedia [http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes](http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
+### Created by
 
-## Submitting Incomplete Solutions
+- @sjakobi
 
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+### Contributed to by
+
+- @behrtam
+- @cmccandless
+- @crsmi
+- @Dog
+- @Grociu
+- @ikhadykin
+- @kytrinyx
+- @N-Parsons
+- @Peque
+- @pheanex
+- @rootulp
+- @tqa236
+- @yawpitch
+
+### Based on
+
+Sieve of Eratosthenes at Wikipedia - https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes

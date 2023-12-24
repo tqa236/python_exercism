@@ -1,5 +1,10 @@
 # POV
 
+Welcome to POV on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Reparent a graph on a selected node.
 
 This exercise is all about re-orientating a graph to see things from a different
@@ -37,49 +42,20 @@ a different leaf node) can be seen to follow the path 6-2-0-3-9
 This exercise involves taking an input graph and re-orientating it from the point
 of view of one of the nodes.
 
-
-## Exception messages
-
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
-
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
-
-```python
-raise Exception("Meaningful message indicating the source of the error")
-```
-
-## Running the tests
-
-To run the tests, run `pytest pov_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest pov_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/pov` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
-
 ## Source
 
-Adaptation of exercise from 4clojure [https://www.4clojure.com/](https://www.4clojure.com/)
+### Created by
 
-## Submitting Incomplete Solutions
+- @cmccandless
 
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+### Contributed to by
+
+- @crsmi
+- @Dog
+- @N-Parsons
+- @tqa236
+- @yawpitch
+
+### Based on
+
+Adaptation of exercise from 4clojure - https://www.4clojure.com/

@@ -1,62 +1,72 @@
 # Bob
 
-Bob is a lackadaisical teenager. In conversation, his responses are very limited.
+Welcome to Bob on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
 
-Bob answers 'Sure.' if you ask him a question, such as "How are you?".
+## Introduction
 
-He answers 'Whoa, chill out!' if you YELL AT HIM (in all capitals).
+Bob is a [lackadaisical][] teenager.
+He likes to think that he's very cool.
+And he definitely doesn't get excited about things.
+That wouldn't be cool.
 
-He answers 'Calm down, I know what I'm doing!' if you yell a question at him.
+When people talk to him, his responses are pretty limited.
 
-He says 'Fine. Be that way!' if you address him without actually saying
-anything.
+[lackadaisical]: https://www.collinsdictionary.com/dictionary/english/lackadaisical
 
-He answers 'Whatever.' to anything else.
+## Instructions
 
-Bob's conversational partner is a purist when it comes to written communication and always follows normal rules regarding sentence punctuation in English.
+Your task is to determine what Bob will reply to someone when they say something to him or ask him a question.
 
-## Exception messages
+Bob only ever answers one of five things:
 
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
-
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
-
-```python
-raise Exception("Meaningful message indicating the source of the error")
-```
-
-## Running the tests
-
-To run the tests, run `pytest bob_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest bob_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/bob` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
+- **"Sure."**
+  This is his response if you ask him a question, such as "How are you?"
+  The convention used for questions is that it ends with a question mark.
+- **"Whoa, chill out!"**
+  This is his answer if you YELL AT HIM.
+  The convention used for yelling is ALL CAPITAL LETTERS.
+- **"Calm down, I know what I'm doing!"**
+  This is what he says if you yell a question at him.
+- **"Fine. Be that way!"**
+  This is how he responds to silence.
+  The convention used for silence is nothing, or various combinations of whitespace characters.
+- **"Whatever."**
+  This is what he answers to anything else.
 
 ## Source
 
-Inspired by the 'Deaf Grandma' exercise in Chris Pine's Learn to Program tutorial. [http://pine.fm/LearnToProgram/?Chapter=06](http://pine.fm/LearnToProgram/?Chapter=06)
+### Contributed to by
 
-## Submitting Incomplete Solutions
+- @0xae
+- @aldraco
+- @atg-abhishek
+- @austinlyons
+- @behrtam
+- @BethanyG
+- @cmccandless
+- @cypher
+- @Dog
+- @etrepum
+- @ikhadykin
+- @janetriley
+- @jremmen
+- @koljakube
+- @kytrinyx
+- @lowks
+- @lucasdpau
+- @miketamis
+- @N-Parsons
+- @patricksjackson
+- @pheanex
+- @sdublish
+- @sjakobi
+- @stonemirror
+- @thenigan
+- @thomasjpfan
+- @tqa236
+- @yawpitch
 
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+### Based on
+
+Inspired by the 'Deaf Grandma' exercise in Chris Pine's Learn to Program tutorial. - https://pine.fm/LearnToProgram/?Chapter=06

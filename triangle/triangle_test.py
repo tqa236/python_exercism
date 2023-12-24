@@ -4,7 +4,11 @@
 
 import unittest
 
-from triangle import equilateral, isosceles, scalene
+from triangle import (
+    equilateral,
+    isosceles,
+    scalene,
+)
 
 
 class EquilateralTriangleTest(unittest.TestCase):

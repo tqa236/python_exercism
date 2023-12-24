@@ -1,8 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/pangram/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
-from pangram import is_pangram
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v2.0.0
+from pangram import (
+    is_pangram,
+)
 
 
 class PangramTest(unittest.TestCase):
@@ -38,8 +42,8 @@ class PangramTest(unittest.TestCase):
     def test_mixed_case_and_punctuation(self):
         self.assertIs(is_pangram('"Five quacking Zephyrs jolt my wax bed."'), True)
 
-    def test_case_insensitive(self):
-        self.assertIs(is_pangram("the quick brown fox jumps over with lazy FX"), False)
+    def test_a_m_and_a_m_are_26_different_characters_but_not_a_pangram(self):
+        self.assertIs(is_pangram("abcdefghijklm ABCDEFGHIJKLM"), False)
 
     # Additional tests for this track
 
@@ -48,7 +52,3 @@ class PangramTest(unittest.TestCase):
 
     def test_sentence_without_upper_bound(self):
         self.assertIs(is_pangram("abcdefghijklmnopqrstuvwxy"), False)
-
-
-if __name__ == "__main__":
-    unittest.main()

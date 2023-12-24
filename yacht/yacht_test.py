@@ -1,8 +1,9 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/yacht/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
-
 import yacht
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
 
 
 class YachtTest(unittest.TestCase):
@@ -32,6 +33,9 @@ class YachtTest(unittest.TestCase):
 
     def test_yacht_of_3s_counted_as_fives(self):
         self.assertEqual(yacht.score([3, 3, 3, 3, 3], yacht.FIVES), 0)
+
+    def test_fives(self):
+        self.assertEqual(yacht.score([1, 5, 3, 5, 3], yacht.FIVES), 10)
 
     def test_sixes(self):
         self.assertEqual(yacht.score([2, 3, 4, 5, 6], yacht.SIXES), 6)
@@ -89,7 +93,3 @@ class YachtTest(unittest.TestCase):
 
     def test_yacht_as_choice(self):
         self.assertEqual(yacht.score([2, 2, 2, 2, 2], yacht.CHOICE), 10)
-
-
-if __name__ == "__main__":
-    unittest.main()
