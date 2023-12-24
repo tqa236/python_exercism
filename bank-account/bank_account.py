@@ -10,7 +10,7 @@ class BankAccount(object):
     def IsAccountOpen(func):
         def wrapper(self, *args):
             if not self.is_open:
-                raise ValueError("Account is closed")
+                raise ValueError("account not open")
             return func(self, *args)
 
         return wrapper
@@ -24,13 +24,13 @@ class BankAccount(object):
         if not self.is_open:
             self.is_open = True
         else:
-            raise ValueError("Account is already open")
+            raise ValueError("account already open")
 
     @IsAccountOpen
     def deposit(self, amount):
         self.lock.acquire()
         if amount < 0:
-            raise ValueError("deposit amount cannot be negative")
+            raise ValueError("amount must be greater than 0")
         self.balance = self.balance + amount
         self.lock.release()
 
@@ -38,9 +38,9 @@ class BankAccount(object):
     def withdraw(self, amount):
         self.lock.acquire()
         if amount < 0:
-            raise ValueError("withdraw amount cannot be negative")
+            raise ValueError("amount must be greater than 0")
         if amount > self.balance:
-            raise ValueError("withdraw amount cannot be bigger than balance")
+            raise ValueError("amount must be less than balance")
         self.balance = self.balance - amount
         self.lock.release()
 
