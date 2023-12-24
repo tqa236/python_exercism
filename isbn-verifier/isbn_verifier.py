@@ -2,9 +2,15 @@
 import re
 
 
-def verify(isbn: str) -> bool:
+def is_valid(isbn: str) -> bool:
     """Check a valid ISBN number."""
+    isbn = isbn.replace("-", "")
     if not isbn:
+        return False
+    valid_characters = set([str(i) for i in range(10)])
+    valid_characters.add("X")
+    isbn_characters = set(c for c in isbn)
+    if not isbn_characters.issubset(valid_characters):
         return False
     isbn_number = [int(digit) for digit in re.sub(r"\D", "", isbn)]
     if isbn[-1] == "X":
