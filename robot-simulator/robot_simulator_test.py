@@ -1,8 +1,16 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/robot-simulator/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
-from robot_simulator import EAST, NORTH, SOUTH, WEST, Robot
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v3.2.0
+from robot_simulator import (
+    Robot,
+    NORTH,
+    EAST,
+    SOUTH,
+    WEST,
+)
 
 
 class RobotSimulatorTest(unittest.TestCase):
@@ -135,7 +143,3 @@ class RobotSimulatorTest(unittest.TestCase):
 
         self.assertEqual(robot.coordinates, (11, 5))
         self.assertEqual(robot.direction, NORTH)
-
-
-if __name__ == "__main__":
-    unittest.main()

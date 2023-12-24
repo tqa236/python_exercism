@@ -1,8 +1,13 @@
 import unittest
 
-from go_counting import BLACK, NONE, WHITE, Board
+from go_counting import (
+    Board,
+    WHITE,
+    BLACK,
+    NONE,
+)
 
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.0
+# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class GoCountingTest(unittest.TestCase):

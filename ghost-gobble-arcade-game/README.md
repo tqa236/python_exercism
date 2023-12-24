@@ -6,7 +6,7 @@ If you get stuck on the exercise, check out `HINTS.md`, but try and solve it wit
 
 ## Introduction
 
-Python represents true and false values with the `bool` type.
+Python represents true and false values with the [`bool`][bools] type, which is a subtype of `int`.
  There are only two values in this type: `True` and `False`.
   These values can be bound to a variable:
 
@@ -28,9 +28,11 @@ We can evaluate Boolean expressions using the `and`, `or`, and `not` operators:
 >>> false_variable = not True
 ```
 
+[bools]: https://docs.python.org/3/library/stdtypes.html#typebool
+
 ## Instructions
 
-In this exercise, you need to implement some rules from [Pac-Man][pac-man], the classic 1980s-era arcade-game.
+In this exercise, you need to implement some rules from [Pac-Man][Pac-Man], the classic 1980s-era arcade-game.
 
 You have four rules to implement, all related to the game states.
 
@@ -80,15 +82,15 @@ Define the `win()` function that takes three parameters (_if Pac-Man has eaten a
 False
 ```
 
-[pac-man]: https://en.wikipedia.org/wiki/Pac-Man
+[Pac-Man]: https://en.wikipedia.org/wiki/Pac-Man
 
 ## Source
 
 ### Created by
 
--   @neenjaw
+- @neenjaw
 
 ### Contributed to by
 
--   @cmccandless
--   @bethanyg
+- @cmccandless
+- @BethanyG

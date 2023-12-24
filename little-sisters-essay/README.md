@@ -20,18 +20,20 @@ Functions or methods that operate on a `str` (_like the ones we are learning abo
 Following is a small selection of Python string methods.
 For a complete list, see the [str class][str methods] in the Python docs.
 
+
 [`<str>.title()`][str-title] parses a string and capitalizes the first "character" of each "word" found.
 In Python, this is very dependent on the [language codec][codecs] used and how the particular language represents words and characters.
 There may also be [locale][locale] rules in place for a language or character set.
 
+
 ```python
-man_in_hat_th = 'ู้ชายในหมวก'
+man_in_hat_th = 'ผู้ชายใส่หมวก'
 man_in_hat_ru = 'mужчина в шляпе'
 man_in_hat_ko = '모자를 쓴 남자'
-main_in_hat_en = 'the man in the hat.'
+man_in_hat_en = 'the man in the hat.'
 
 >>> man_in_hat_th.title()
-'ผู้ชายในหมวก'
+'ผู้ชายใส่หมวก'
 
 >>> man_in_hat_ru.title()
 'Мужчина В Шляпе'
@@ -39,11 +41,12 @@ main_in_hat_en = 'the man in the hat.'
 >>> man_in_hat_ko.title()
 '모자를 쓴 남자'
 
->> main_in_hat_en.title()
+>> man_in_hat_en.title()
 'The Man In The Hat.'
 ```
 
 [`<str>.endswith(<suffix>)`][str-endswith] returns `True` if the string ends with `<suffix>`, `False` otherwise.
+
 
 ```python
 >>> 'My heart breaks. 💔'.endswith('💔')
@@ -64,8 +67,9 @@ False
 The code points specified in `<chars>` are not a prefix or suffix - **all combinations** of the code points will be removed starting from **both ends** of the string.
  If nothing is specified for `<chars>`, all combinations of whitespace code points will be removed.
 
-```python
-# This will remove "https://", because it can be formed from "/stph:".
+
+ ```python
+# This will remove "https://", because it can be formed from "/stph:". 
 >>> 'https://unicode.org/emoji/'.strip('/stph:')
 'unicode.org/emoji'
 
@@ -85,9 +89,10 @@ The code points specified in `<chars>` are not a prefix or suffix - **all combin
 'address'
 ```
 
+
 [`<str>.replace(<substring>, <replacement substring>)`][str-replace] returns a copy of the string with all occurrences of `<substring>` replaced with `<replacement substring>`.
 
-The quote used below is from [The Hunting of the Snark][the hunting of the snark] by [Lewis Carroll][lewis carroll]
+The quote used below is from [The Hunting of the Snark][The Hunting of the Snark] by [Lewis Carroll][Lewis Carroll]
 
 ```python
 # The Hunting of the Snark, by Lewis Carroll
@@ -111,28 +116,17 @@ Just the place for a Snark! I have said it thrice:
 'book keeper'
 ```
 
-[lewis carroll]: https://www.poetryfoundation.org/poets/lewis-carroll
-
-[the hunting of the snark]: https://www.poetryfoundation.org/poems/43909/the-hunting-of-the-snark
-
+[Lewis Carroll]: https://www.poetryfoundation.org/poets/lewis-carroll
+[The Hunting of the Snark]: https://www.poetryfoundation.org/poems/43909/the-hunting-of-the-snark
 [codecs]: https://docs.python.org/3/library/codecs.html
-
 [common sequence operations]: https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str
-
 [locale]: https://docs.python.org/3/library/locale.html#module-locale
-
 [str methods]: https://docs.python.org/3/library/stdtypes.html#string-methods
-
 [str-endswith]: https://docs.python.org/3/library/stdtypes.html#str.endswith
-
 [str-replace]: https://docs.python.org/3/library/stdtypes.html#str.replace
-
 [str-strip]: https://docs.python.org/3/library/stdtypes.html#str.strip
-
 [str-title]: https://docs.python.org/3/library/stdtypes.html#str.title
-
 [text sequence]: https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str
-
 [unicode code points]: https://stackoverflow.com/questions/27331819/whats-the-difference-between-a-character-a-code-point-a-glyph-and-a-grapheme
 
 ## Instructions
@@ -147,6 +141,7 @@ Any good paper needs a properly formatted title.
 Implement the function `capitalize_title(<title>)` which takes a title `str` as a parameter and capitalizes the first letter of each word.
 This function should return a `str` in title case.
 
+
 ```python
 >>> capitalize_title("my hobbies")
 "My Hobbies"
@@ -156,6 +151,7 @@ This function should return a `str` in title case.
 
 You want to make sure that the punctuation in the paper is perfect.
 Implement the function `check_sentence_ending()` that takes `sentence` as a parameter. This function should return a `bool`.
+
 
 ```python
 >>> check_sentence_ending("I like to hike, bake, and read.")
@@ -168,6 +164,7 @@ To make the paper look professional, unnecessary spacing needs to be removed.
 Implement the function `clean_up_spacing()` that takes  `sentence` as a parameter.
 The function should remove extra whitespace at both the beginning and the end of the sentence, returning a new, updated sentence `str`.
 
+
 ```python
 >>> clean_up_spacing(" I like to go on hikes with my dog.  ")
 "I like to go on hikes with my dog."
@@ -179,6 +176,7 @@ To make the paper _even better_, you can replace some of the adjectives with the
 Write the function `replace_word_choice()` that takes `sentence`, `old_word`, and `new_word` as parameters.
 This function should replace all instances of the `old_word` with the `new_word`, and return a new `str` with the updated sentence.
 
+
 ```python
 >>> replace_word_choice("I bake good cakes.", "good", "amazing")
 "I bake amazing cakes."
@@ -188,9 +186,9 @@ This function should replace all instances of the `old_word` with the `new_word`
 
 ### Created by
 
--   @kimolivia
+- @kimolivia
 
 ### Contributed to by
 
--   @valentin-p
--   @bethanyg
+- @valentin-p
+- @BethanyG

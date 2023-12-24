@@ -49,7 +49,7 @@ An instance (_object_) of `MyClass` can be created and bound to a name by [_call
 <__main__.MyClass at 0x15adc55b0>
 ```
 
-`Class attributes` are shared across all objects (_or instances_) created from a class, and can be accessed via [`dot notation`][dot notation] - a `.` placed after the object name and before the attribute name:
+`Class attributes` are shared across all objects (_or instances_) created from a class, and can be accessed via [`dot notation`][dot notation]  -  a `.` placed after the object name and before the attribute name:
 
 ```python
 >>> new_object = MyClass()
@@ -106,6 +106,7 @@ Having a bunch of objects with synchronized data at all times is not particularl
 Fortunately, objects created from a class can be customized with their own `instance attributes` (_or instance properties, variables, or fields_).
 As their name suggests, instance attributes are unique to each object, and can be modified independently.
 
+
 ## Customizing Object Instantiation with `__init__()`
 
 The special ["dunder method"][dunder] (_short for "double underscore method"_) `__init__()` is used to customize class instances, and can be used to initialize instance attributes or properties for objects.
@@ -146,6 +147,7 @@ class MyClass:
 ```
 
 Note that you only need to pass one argument when initializing `MyClass` above -- Python takes care of passing `self` when the class is called.
+
 
 ## Methods
 
@@ -233,7 +235,7 @@ class MyClass:
 
 ## Placeholding or Stubbing Implementation with Pass
 
-In previous concept exercises and practice exercise stubs, you will have seen the `pass` keyword used within the body of functions in place of actual code.
+In previous concept exercises and practice exercise stubs, you will have seen the `pass` keyword used within the body of  functions in place of actual code.
 The `pass` keyword is a syntactically valid placeholder - it prevents Python from throwing a syntax error for an empty function or class definition.
 Essentially, it is a way to say to the Python interpreter, 'Don't worry! I _will_ put code here eventually, I just haven't done it yet.'
 
@@ -278,6 +280,7 @@ Ellen is making a game where the player has to fight aliens.
 She has just learned about Object Oriented Programming (OOP) and is eager to take advantage of what using `classes` could offer her program.
 
 To Ellen's delight, you have offered to help and she has given you the task of programming the aliens that the player has to fight.
+
 
 ## 1. Create the Alien Class
 

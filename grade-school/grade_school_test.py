@@ -1,8 +1,10 @@
 import unittest
 
-from grade_school import School
+from grade_school import (
+    School,
+)
 
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.1
+# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class GradeSchoolTest(unittest.TestCase):
@@ -12,7 +14,7 @@ class GradeSchoolTest(unittest.TestCase):
         expected = ["Aimee"]
         self.assertEqual(school.roster(), expected)
 
-    def test_adding_more_student_adds_them_to_the_sorted_roster(self):
+    def test_adding_more_students_adds_them_to_the_sorted_roster(self):
         school = School()
         school.add_student(name="Blair", grade=2)
         school.add_student(name="James", grade=2)

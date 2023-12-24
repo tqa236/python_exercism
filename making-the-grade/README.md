@@ -11,11 +11,13 @@ Python has two looping constructs.
 The keywords `break`, `continue`, and `else` help customize loop behavior.
 `range()` and `enumerate()` help with loop counting and indexing.
 
+
 ## While
 
 [`while`][while statement] loops will continue to execute as long as the `loop expression` or "test" evaluates to `True` in a [`boolean context`][truth value testing], terminating when it evaluates to `False`:
 
 ```python
+
 # Lists are considered "truthy" in a boolean context if they
 # contain one or more values, and "falsy" if they are empty.
 
@@ -32,11 +34,13 @@ The keywords `break`, `continue`, and `else` help customize loop behavior.
 'green_eggs'
 ```
 
+
 ## For
 
 The basic [`for`][for statement] `loop` in Python is better described as a _`for each`_ which cycles through the values of any [iterable object][iterable], terminating when there are no values returned from calling [`next()`][next built-in]:
 
 ```python
+
 >>> word_list = ["bird", "chicken", "barrel", "bongo"]
 
 >>> for word in word_list:
@@ -50,6 +54,7 @@ The basic [`for`][for statement] `loop` in Python is better described as a _`for
 'Barrel starts with a B.'
 'Bongo starts with a B.'
 ```
+
 
 ## Sequence Object range()
 
@@ -91,11 +96,13 @@ If no `start` number is provided, the sequence will begin with 0.
 '13 is odd.'
 ```
 
+
 ## Values and Indexes with enumerate()
 
 If both values and their indexes are needed, the built-in [`enumerate(<iterable>)`][enumerate] will return (`index`, `value`) pairs:
 
 ```python
+
 >>> word_list = ["bird", "chicken", "barrel", "apple"]
 
 # *index* and *word* are the loop variables.
@@ -129,6 +136,7 @@ If both values and their indexes are needed, the built-in [`enumerate(<iterable>
 'Spinach is in category: vegetable.'
 ```
 
+
 ## Altering Loop Behavior
 
 The [`continue`][continue statement] keyword can be used to skip forward to the next iteration cycle:
@@ -147,6 +155,7 @@ for index, word in enumerate(word_list):
 'Bongo (at index 3) starts with a b.'
 'Bear (at index 6) starts with a b.'
 ```
+
 
 The [`break`][break statement] (_like in many C-related languages_) keyword can be used to stop the iteration and "break out" of the innermost enclosing `loop`:
 
@@ -169,25 +178,16 @@ The [`break`][break statement] (_like in many C-related languages_) keyword can 
 'loop broken.'
 ```
 
-[for statement]: https://docs.python.org/3/reference/compound_stmts.html#for
-
-[range]: https://docs.python.org/3/library/stdtypes.html#range
-
 [break statement]: https://docs.python.org/3/reference/simple_stmts.html#the-break-statement
-
-[continue statement]: https://docs.python.org/3/reference/simple_stmts.html#the-continue-statement
-
-[while statement]: https://docs.python.org/3/reference/compound_stmts.html#the-while-statement
-
-[iterable]: https://docs.python.org/3/glossary.html#term-iterable
-
-[truth value testing]: https://docs.python.org/3/library/stdtypes.html#truth-value-testing
-
-[enumerate]: https://docs.python.org/3/library/functions.html#enumerate
-
 [common sequence operations]: https://docs.python.org/3/library/stdtypes.html#common-sequence-operations
-
+[continue statement]: https://docs.python.org/3/reference/simple_stmts.html#the-continue-statement
+[enumerate]: https://docs.python.org/3/library/functions.html#enumerate
+[for statement]: https://docs.python.org/3/reference/compound_stmts.html#for
+[iterable]: https://docs.python.org/3/glossary.html#term-iterable
 [next built-in]: https://docs.python.org/3/library/functions.html#next
+[range]: https://docs.python.org/3/library/stdtypes.html#range
+[truth value testing]: https://docs.python.org/3/library/stdtypes.html#truth-value-testing
+[while statement]: https://docs.python.org/3/reference/compound_stmts.html#the-while-statement
 
 ## Instructions
 
@@ -200,10 +200,7 @@ You decide to make things a little more interesting by putting together some fun
 While you can give "partial credit" on exam questions, overall exam scores have to be `int`s.
 So before you can do anything else with the class scores, you need to go through the grades and turn any `float` scores into `int`s. Lucky for you, Python has the built-in [`round()`][round] function you can use.
 
-A score of 75.45 or 75.49 will round to 75. A score of 43.50 or 43.59 will round to 44.
-There shouldn't be any scores that have more than two places after the decimal point.
-
-Create the function `round_scores()` that takes a `list` of `student_scores`.
+Create the function `round_scores(student_scores)` that takes a `list` of `student_scores`.
 This function should _consume_ the input `list` and `return` a new list with all the scores converted to `int`s.
 The order of the scores in the resulting `list` is not important.
 
@@ -216,10 +213,10 @@ The order of the scores in the resulting `list` is not important.
 
 ## 2. Non-Passing Students
 
-As you were grading the exam, you noticed some students weren't performing as well as you'd hoped.
+As you were grading the exam, you noticed some students weren't performing as well as you had hoped.
 But you were distracted, and forgot to note exactly _how many_ students.
 
-Create the function `count_failed_students()` that takes a `list` of `student_scores`.
+Create the function `count_failed_students(student_scores)` that takes a `list` of `student_scores`.
 This function should count up the number of students who don't have passing scores and return that count as an integer.
 A student needs a score greater than **40** to achieve a passing grade on the exam.
 
@@ -233,7 +230,7 @@ A student needs a score greater than **40** to achieve a passing grade on the ex
 The teacher you're assisting wants to find the group of students who've performed "the best" on this exam.
 What qualifies as "the best" fluctuates, so you need to find the student scores that are **greater than or equal to** the current threshold.
 
-Create the function `above_threshold()` taking `student_scores` (a `list` of grades), and `threshold` (the "top score" threshold) as parameters.
+Create the function `above_threshold(student_scores)` taking `student_scores` (a `list` of grades), and `threshold` (the "top score" threshold) as parameters.
 This function should return a `list` of all scores that are `>=` to `threshold`.
 
 ```python
@@ -243,10 +240,11 @@ This function should return a `list` of all scores that are `>=` to `threshold`.
 
 ## 4. Calculating Letter Grades
 
-The teacher you're assisting likes to assign letter grades as well as numeric scores.
-Since students rarely score 100 on an exam, the "letter grade" lower thresholds are calculated based on the highest score achieved, and increment evenly between the high score and the failing threshold of **&lt;= 40**.
+The teacher you are assisting likes to assign letter grades as well as numeric scores.
+Since students rarely score 100 on an exam, the "letter grade" lower thresholds are calculated based on the highest score achieved, and increment evenly between the high score and the failing threshold of **<= 40**.
 
-Create the function `letter_grades()` that takes the "highest" score on the exam as a parameter, and returns a `list` of lower score thresholds for each "American style" grade interval: `["D", "C", "B", "A"]`.
+Create the function `letter_grades(highest)` that takes the "highest" score on the exam as an argument, and returns a `list` of lower score thresholds for each "American style" grade interval: `["D", "C", "B", "A"]`.
+
 
 ```python
 """Where the highest score is 100, and failing is <= 40.
@@ -278,7 +276,7 @@ Create the function `letter_grades()` that takes the "highest" score on the exam
 You have a list of exam scores in descending order, and another list of student names also sorted in descending order by their exam scores.
 You would like to match each student name with their exam score and print out an overall class ranking.
 
-Create the function `student_ranking()` with parameters `student_scores` and `student_names`.
+Create the function `student_ranking(student_scores)` with parameters `student_scores` and `student_names`.
 Match each student name on the student_names `list` with their score from the student_scores `list`.
 You can assume each argument `list` will be sorted from highest score(er) to lowest score(er).
 The function should return a `list` of strings with the format `<rank>. <student name>: <student score>`.
@@ -295,7 +293,7 @@ The function should return a `list` of strings with the format `<rank>. <student
 
 Although a "perfect" score of 100 is rare on an exam, it is interesting to know if at least one student has achieved it.
 
-Create the function `perfect_score()` with parameter `student_info`.
+Create the function `perfect_score(student_info)` with parameter `student_info`.
 `student_info` is a `list` of lists containing the name and score of each student: `[["Charles", 90], ["Tony", 80]]`.
 The function should `return` _the first_ `[<name>, <score>]` pair of the student who scored 100 on the exam.
 
@@ -315,9 +313,9 @@ If no 100 scores are found in `student_info`, an empty list `[]` should be retur
 
 ### Created by
 
--   @mohanrajanr
--   @BethanyG
+- @mohanrajanr
+- @BethanyG
 
 ### Contributed to by
 
--   @pranasziaukas
+- @pranasziaukas

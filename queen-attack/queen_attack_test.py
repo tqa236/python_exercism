@@ -1,8 +1,10 @@
 import unittest
 
-from queen_attack import Queen
+from queen_attack import (
+    Queen,
+)
 
-# Tests adapted from `problem-specifications//canonical-data.json` @ v2.3.0
+# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class QueenAttackTest(unittest.TestCase):
@@ -27,7 +29,7 @@ class QueenAttackTest(unittest.TestCase):
             Queen(4, 8)
 
     # Test the ability of one queen to attack another
-    def test_can_not_attack(self):
+    def test_cannot_attack(self):
         self.assertIs(Queen(2, 4).can_attack(Queen(6, 6)), False)
 
     def test_can_attack_on_same_row(self):

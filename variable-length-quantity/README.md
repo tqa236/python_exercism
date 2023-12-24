@@ -1,5 +1,10 @@
 # Variable Length Quantity
 
+Welcome to Variable Length Quantity on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Implement variable length quantity encoding and decoding.
 
 The goal of this exercise is to implement [VLQ](https://en.wikipedia.org/wiki/Variable-length_quantity) encoding/decoding.
@@ -31,48 +36,24 @@ Here are examples of integers as 32-bit values, and the variable length quantiti
 0FFFFFFF          FF FF FF 7F
 ```
 
-## Exception messages
-
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
-
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
-
-```python
-raise Exception("Meaningful message indicating the source of the error")
-```
-
-## Running the tests
-
-To run the tests, run `pytest variable_length_quantity_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest variable_length_quantity_test.py`
-
-### Common `pytest` options
-
--   `-v` : enable verbose output
--   `-x` : stop running tests on first failure
--   `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/variable-length-quantity` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
-
 ## Source
 
-A poor Splice developer having to implement MIDI encoding/decoding. <https://splice.com>
+### Created by
 
-## Submitting Incomplete Solutions
+- @behrtam
 
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+### Contributed to by
+
+- @ackerleytng
+- @cmccandless
+- @Dog
+- @dvermd
+- @ikhadykin
+- @N-Parsons
+- @siejqa
+- @tqa236
+- @yawpitch
+
+### Based on
+
+A poor Splice developer having to implement MIDI encoding/decoding. - https://splice.com

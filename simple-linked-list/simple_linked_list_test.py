@@ -1,9 +1,9 @@
 import unittest
 
-from simple_linked_list import EmptyListException, LinkedList
+from simple_linked_list import LinkedList, EmptyListException
+
 
 # No canonical data available for this exercise
-
 
 class SimpleLinkedListTest(unittest.TestCase):
     def test_empty_list_has_len_zero(self):
@@ -112,5 +112,5 @@ class SimpleLinkedListTest(unittest.TestCase):
         return self.assertRaisesRegex(exception, r".+")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

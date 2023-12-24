@@ -1,78 +1,91 @@
 # Word Count
 
-Given a phrase, count the occurrences of each _word_ in that phrase.
+Welcome to Word Count on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+If you get stuck on the exercise, check out `HINTS.md`, but try and solve it without using those first :)
 
-For the purposes of this exercise you can expect that a _word_ will always be one of:
+## Introduction
 
-1. A _number_ composed of one or more ASCII digits (ie "0" or "1234") OR
-2. A _simple word_ composed of one or more ASCII letters (ie "a" or "they") OR
-3. A _contraction_ of two _simple words_ joined by a single apostrophe (ie "it's" or "they're")
+You teach English as a foreign language to high school students.
 
-When counting words you can assume the following rules:
+You've decided to base your entire curriculum on TV shows.
+You need to analyze which words are used, and how often they're repeated.
 
-1. The count is _case insensitive_ (ie "You", "you", and "YOU" are 3 uses of the same word)
-2. The count is _unordered_; the tests will ignore how words and counts are ordered
-3. Other than the apostrophe in a _contraction_ all forms of _punctuation_ are ignored
-4. The words can be separated by _any_ form of whitespace (ie "\t", "\n", " ")
+This will let you choose the simplest shows to start with, and to gradually increase the difficulty as time passes.
 
-For example, for the phrase `"That's the password: 'PASSWORD 123'!", cried the Special Agent.\nSo I fled.` the count would be:
+## Instructions
+
+Your task is to count how many times each word occurs in a subtitle of a drama.
+
+The subtitles from these dramas use only ASCII characters.
+
+The characters often speak in casual English, using contractions like _they're_ or _it's_.
+Though these contractions come from two words (e.g. _we are_), the contraction (_we're_) is considered a single word.
+
+Words can be separated by any form of punctuation (e.g. ":", "!", or "?") or whitespace (e.g. "\t", "\n", or " ").
+The only punctuation that does not separate words is the apostrophe in contractions.
+
+Numbers are considered words.
+If the subtitles say _It costs 100 dollars._ then _100_ will be its own word.
+
+Words are case insensitive.
+For example, the word _you_ occurs three times in the following sentence:
+
+> You come back, you hear me? DO YOU HEAR ME?
+
+The ordering of the word counts in the results doesn't matter.
+
+Here's an example that incorporates several of the elements discussed above:
+
+- simple words
+- contractions
+- numbers
+- case insensitive words
+- punctuation (including apostrophes) to separate words
+- different forms of whitespace to separate words
+
+`"That's the password: 'PASSWORD 123'!", cried the Special Agent.\nSo I fled.`
+
+The mapping for this subtitle would be:
 
 ```text
+123: 1
+agent: 1
+cried: 1
+fled: 1
+i: 1
+password: 2
+so: 1
+special: 1
 that's: 1
 the: 2
-password: 2
-123: 1
-cried: 1
-special: 1
-agent: 1
-so: 1
-i: 1
-fled: 1
 ```
-
-
-## Exception messages
-
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
-
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
-
-```python
-raise Exception("Meaningful message indicating the source of the error")
-```
-
-## Running the tests
-
-To run the tests, run `pytest word_count_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest word_count_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/word-count` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
 
 ## Source
 
+### Contributed to by
+
+- @behrtam
+- @c4llmeco4ch
+- @cmccandless
+- @Dog
+- @gabriel376
+- @Grociu
+- @guygastineau
+- @ikhadykin
+- @jackattack24
+- @kytrinyx
+- @lowks
+- @N-Parsons
+- @pheanex
+- @rivergillis
+- @samdec11
+- @sjakobi
+- @tqa236
+- @wobh
+- @yawpitch
+- @ZacharyRSmith
+
+### Based on
+
 This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.
-
-## Submitting Incomplete Solutions
-
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.

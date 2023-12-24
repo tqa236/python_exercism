@@ -1,8 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/rna-transcription/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
-from rna_transcription import to_rna
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.3.0
+from rna_transcription import (
+    to_rna,
+)
 
 
 class RnaTranscriptionTest(unittest.TestCase):
@@ -23,7 +27,3 @@ class RnaTranscriptionTest(unittest.TestCase):
 
     def test_rna_complement(self):
         self.assertEqual(to_rna("ACGTGGTCTTAA"), "UGCACCAGAAUU")
-
-
-if __name__ == "__main__":
-    unittest.main()

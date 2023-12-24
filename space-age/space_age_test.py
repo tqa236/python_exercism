@@ -1,8 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/space-age/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
-from space_age import SpaceAge
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.2.0
+from space_age import (
+    SpaceAge,
+)
 
 
 class SpaceAgeTest(unittest.TestCase):
@@ -29,7 +33,3 @@ class SpaceAgeTest(unittest.TestCase):
 
     def test_age_on_neptune(self):
         self.assertEqual(SpaceAge(1821023456).on_neptune(), 0.35)
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -8,8 +8,8 @@ If you get stuck on the exercise, check out `HINTS.md`, but try and solve it wit
 
 A [`list`][list] is a mutable collection of items in _sequence_.
 Like most collections (_see the built-ins [`tuple`][tuple], [`dict`][dict] and [`set`][set]_), lists can hold reference to any (or multiple) data type(s) - including other lists.
-Like any [sequence][sequence type], items can be accessed via `0-based index` number from the left and `-1-base index` from the right.
-Lists can be copied in whole or in part via [slice notation][slice notation] or `<list>.copy()`
+Like any [sequence][sequence type], items can be accessed via `0-based index` number from the left and `-1-based index` from the right.
+Lists can be copied in whole or in part via [slice notation][slice notation] or `<list>.copy()`.
 
 Lists support both [common][common sequence operations] and [mutable][mutable sequence operations] sequence operations such as `min()`/`max()`, `<list>.index()`, `<list>.append()` and `<list>.reverse()`.
 List elements can be iterated over using the `for item in <list>` construct.
@@ -18,9 +18,11 @@ List elements can be iterated over using the `for item in <list>` construct.
 Under the hood, `lists` are implemented as [dynamic arrays][dynamic array] -- similar to Java's [`ArrayList`][arraylist] type, and are most often used to store groups of similar data (_strings, numbers, sets etc._) of unknown length.
 Lists are an extremely flexible and useful data structure and many built-in methods and operations in Python produce lists as their output.
 
+
 ## Construction
 
 A `list` can be declared as a _literal_ with square `[]` brackets and commas between elements:
+
 
 ```python
 >>> no_elements = []
@@ -41,6 +43,7 @@ A `list` can be declared as a _literal_ with square `[]` brackets and commas bet
 
 For readability, line breaks can be used when there are many elements or nested data structures within a `list`:
 
+
 ```python
 >>> lots_of_entries = [
       "Rose",
@@ -52,7 +55,7 @@ For readability, line breaks can be used when there are many elements or nested 
       "Cyclamen",
       "Lavender"
    ]
-
+   
 >>> lots_of_entries
 ['Rose', 'Sunflower', 'Poppy', 'Pansy', 'Tulip', 'Fuchsia', 'Cyclamen', 'Lavender']
 
@@ -62,13 +65,14 @@ For readability, line breaks can be used when there are many elements or nested 
       ("fish", "mammal", "bird"),
       ['water', 'jungle', 'sky']
    ]
-
+   
 >>> nested_data_structures
 [{'fish': 'gold', 'monkey': 'brown', 'parrot': 'grey'}, ('fish', 'mammal', 'bird'), ['water', 'jungle', 'sky']]
 ```
 
 The `list()` constructor can be used empty or with an _iterable_ as an argument.
  Elements in the iterable are cycled through by the constructor and added to the `list` in order:
+
 
 ```python
 >>> no_elements = list()
@@ -90,6 +94,7 @@ The `list()` constructor can be used empty or with an _iterable_ as an argument.
 ```
 
 Results when using a `list` constructor with a `string` or a `dict` may be surprising:
+
 
 ```python
 # String elements (Unicode code points) are iterated through and added *individually*.
@@ -133,18 +138,19 @@ TypeError: 'int' object is not iterable
 Items inside lists (_as well as items in other sequence types `str` & `tuple`_) can be accessed via `0-based index` and _bracket notation_.
  Indexes can be from **`left`** --> **`right`** (_starting at zero_) or **`right`** --> **`left`** (_starting at -1_).
 
+
 <table>
 <tr>
   <td style="vertical-align: top"> index from left ⟹<br><br><br><br><br><br><br></td><td style="vertical-align: middle">
 
-|  0<br>👇🏾 |  1<br>👇🏾 |  2<br>👇🏾 |  3<br>👇🏾 |  4<br>👇🏾 |  5<br>👇🏾 |
-| :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
-|      P     |      y     |      t     |      h     |      o     |      n     |
-| 👆🏾<br>-6 | 👆🏾<br>-5 | 👆🏾<br>-4 | 👆🏾<br>-3 | 👆🏾<br>-2 | 👆🏾<br>-1 |
-
+|  0<br>👇🏾 	|  1<br>👇🏾 	|  2<br>👇🏾 	|  3<br>👇🏾 	|  4<br>👇🏾 	|  5<br>👇🏾 	|
+|:--------:	|:--------:	|:--------:	|:--------:	|:--------:	|:--------:	|
+|     P    	|     y    	|     t    	|     h    	|     o    	|     n    	|
+| 👆🏾<br>-6 	| 👆🏾<br>-5 	| 👆🏾<br>-4 	| 👆🏾<br>-3 	| 👆🏾<br>-2 	| 👆🏾<br>-1 	|
 </td><td style="vertical-align: bottom"><br><br><br><br><br>⟸ index from right</td>
 </tr>
 </table>
+
 
 ```python
 >>> breakfast_foods = ["Oatmeal", "Fruit Salad", "Eggs", "Toast"]
@@ -172,7 +178,9 @@ A section of the elements inside a `list` can be accessed via _slice notation_ (
  A _slice_ is defined as an element sequence at position `index`, such that `start <= index < stop`.
  _Slicing_ returns a copy of the "sliced" items and does not modify the original `list`.
 
+
 A `step` parameter can also be used `[start:stop:step]` to "skip over" or filter the `list` elements (_for example, a `step` of 2 will select every other element in the range_):
+
 
 ```python
 >>> colors = ["Red", "Purple", "Green", "Yellow", "Orange", "Pink", "Blue", "Grey"]
@@ -244,23 +252,14 @@ Blue
 _For a more in-depth explanation, of `loops` and `iterators`, complete the `loops` concept._
 
 [arraylist]: https://beginnersbook.com/2013/12/java-arraylist/
-
 [common sequence operations]: https://docs.python.org/3/library/stdtypes.html#common-sequence-operations
-
 [dict]: https://docs.python.org/3/library/stdtypes.html#dict
-
 [dynamic array]: https://en.wikipedia.org/wiki/Dynamic_array
-
 [list]: https://docs.python.org/3/library/stdtypes.html#list
-
 [mutable sequence operations]: https://docs.python.org/3/library/stdtypes.html#typesseq-mutable
-
 [sequence type]: https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range
-
 [set]: https://docs.python.org/3/library/stdtypes.html#set
-
 [slice notation]: https://docs.python.org/3/reference/expressions.html#slicings
-
 [tuple]: https://docs.python.org/3/library/stdtypes.html#tuple
 
 ## Instructions
@@ -328,9 +327,9 @@ In Black Joe, speed is important. Elyse is going to try and find a faster way of
 
 She has thought of two ways of getting an _average-like_ number:
 
--   Take the average of the _first_ and _last_ number in the hand.
--   Using the median (middle card) of the hand.
-
+- Take the average of the _first_ and _last_ number in the hand.
+- Using the median (middle card) of the hand.
+  
 Implement the function `approx_average_is_average(<hand>)`, given `hand`, a list containing the values of the cards in your hand.
 
 Return `True` if either _one_ `or` _both_ of the, above named, strategies result in a number _equal_ to the _actual average_.
@@ -368,7 +367,7 @@ False
 Every 11th hand in Black Joe is a bonus hand with a bonus rule: if the last card you draw is a Jack, you double its value.
 
 Implement a function `maybe_double_last(<hand>)` that takes a hand and checks if the last card is a Jack (11).
- If the the last card **is** a Jack (11), double its value before returning the hand.
+ If the last card **is** a Jack (11), double its value before returning the hand.
 
 ```python
 >>> hand = [5, 9, 11]
@@ -384,11 +383,11 @@ Implement a function `maybe_double_last(<hand>)` that takes a hand and checks if
 
 ### Created by
 
--   @itamargal
--   @isaacg
--   @bethanyg
+- @itamargal
+- @isaacg
+- @bethanyg
 
 ### Contributed to by
 
--   @valentin-p
--   @pranasziaukas
+- @valentin-p
+- @pranasziaukas

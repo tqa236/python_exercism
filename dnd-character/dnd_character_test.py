@@ -1,8 +1,13 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/dnd-character/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
-from dnd_character import Character, modifier
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
+from dnd_character import (
+    Character,
+    modifier,
+)
 
 
 class DndCharacterTest(unittest.TestCase):
@@ -71,7 +76,3 @@ class DndCharacterTest(unittest.TestCase):
     def test_each_ability_is_only_calculated_once(self):
         Char = Character()
         self.assertIs(Char.strength == Char.strength, True)
-
-
-if __name__ == "__main__":
-    unittest.main()

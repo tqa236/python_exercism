@@ -1,5 +1,10 @@
 # Zebra Puzzle
 
+Welcome to Zebra Puzzle on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Solve the zebra puzzle.
 
 1. There are five houses.
@@ -18,56 +23,28 @@ Solve the zebra puzzle.
 14. The Japanese smokes Parliaments.
 15. The Norwegian lives next to the blue house.
 
-Each of the five houses is painted a different color, and their
-inhabitants are of different national extractions, own different pets,
-drink different beverages and smoke different brands of cigarettes.
+Each of the five houses is painted a different color, and their inhabitants are of different national extractions, own different pets, drink different beverages and smoke different brands of cigarettes.
 
 Which of the residents drinks water?
 Who owns the zebra?
 
-
-## Exception messages
-
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
-
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
-
-```python
-raise Exception("Meaningful message indicating the source of the error")
-```
-
-## Running the tests
-
-To run the tests, run `pytest zebra_puzzle_test.py`
-
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest zebra_puzzle_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/zebra-puzzle` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
-
 ## Source
 
-Wikipedia [https://en.wikipedia.org/wiki/Zebra_Puzzle](https://en.wikipedia.org/wiki/Zebra_Puzzle)
+### Created by
 
-## Submitting Incomplete Solutions
+- @sjakobi
 
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+### Contributed to by
+
+- @behrtam
+- @cmccandless
+- @crsmi
+- @Dog
+- @lemoncurry
+- @N-Parsons
+- @pheanex
+- @tqa236
+
+### Based on
+
+Wikipedia - https://en.wikipedia.org/wiki/Zebra_Puzzle

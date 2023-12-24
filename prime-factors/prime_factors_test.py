@@ -1,8 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/prime-factors/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
-from prime_factors import factors
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
+from prime_factors import (
+    factors,
+)
 
 
 class PrimeFactorsTest(unittest.TestCase):
@@ -12,11 +16,26 @@ class PrimeFactorsTest(unittest.TestCase):
     def test_prime_number(self):
         self.assertEqual(factors(2), [2])
 
+    def test_another_prime_number(self):
+        self.assertEqual(factors(3), [3])
+
     def test_square_of_a_prime(self):
         self.assertEqual(factors(9), [3, 3])
 
+    def test_product_of_first_prime(self):
+        self.assertEqual(factors(4), [2, 2])
+
     def test_cube_of_a_prime(self):
         self.assertEqual(factors(8), [2, 2, 2])
+
+    def test_product_of_second_prime(self):
+        self.assertEqual(factors(27), [3, 3, 3])
+
+    def test_product_of_third_prime(self):
+        self.assertEqual(factors(625), [5, 5, 5, 5])
+
+    def test_product_of_first_and_second_prime(self):
+        self.assertEqual(factors(6), [2, 3])
 
     def test_product_of_primes_and_non_primes(self):
         self.assertEqual(factors(12), [2, 2, 3])
@@ -26,10 +45,3 @@ class PrimeFactorsTest(unittest.TestCase):
 
     def test_factors_include_a_large_prime(self):
         self.assertEqual(factors(93819012551), [11, 9539, 894119])
-
-    def test_factors_include_a_very_large_prime(self):
-        self.assertEqual(factors(2 ** 1000), [2] * 1000)
-
-
-if __name__ == "__main__":
-    unittest.main()

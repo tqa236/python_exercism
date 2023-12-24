@@ -1,5 +1,5 @@
-import random
 import unittest
+import random
 
 from robot_name import Robot
 
@@ -10,7 +10,7 @@ class RobotNameTest(unittest.TestCase):
     if not hasattr(unittest.TestCase, "assertRegex"):
         assertRegex = unittest.TestCase.assertRegexpMatches
 
-    name_re = r"^[A-Z]{2}\d{3}$"
+    name_re = r'^[A-Z]{2}\d{3}$'
 
     def test_has_name(self):
         self.assertRegex(Robot().name, self.name_re)
@@ -21,7 +21,10 @@ class RobotNameTest(unittest.TestCase):
         self.assertEqual(robot.name, robot.name)
 
     def test_different_robots_have_different_names(self):
-        self.assertNotEqual(Robot().name, Robot().name)
+        self.assertNotEqual(
+            Robot().name,
+            Robot().name
+        )
 
     def test_reset_name(self):
         # Set a seed
@@ -44,5 +47,5 @@ class RobotNameTest(unittest.TestCase):
         self.assertRegex(name2, self.name_re)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

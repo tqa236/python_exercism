@@ -1,8 +1,13 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/resistor-color/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
-from resistor_color import color_code, colors
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.0.0
+from resistor_color import (
+    color_code,
+    colors,
+)
 
 
 class ResistorColorTest(unittest.TestCase):
@@ -29,7 +34,3 @@ class ResistorColorTest(unittest.TestCase):
             "white",
         ]
         self.assertEqual(colors(), expected)
-
-
-if __name__ == "__main__":
-    unittest.main()

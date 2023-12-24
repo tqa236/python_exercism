@@ -1,65 +1,79 @@
 # Space Age
 
+Welcome to Space Age on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Given an age in seconds, calculate how old someone would be on:
 
-   - Earth: orbital period 365.25 Earth days, or 31557600 seconds
-   - Mercury: orbital period 0.2408467 Earth years
-   - Venus: orbital period 0.61519726 Earth years
-   - Mars: orbital period 1.8808158 Earth years
-   - Jupiter: orbital period 11.862615 Earth years
-   - Saturn: orbital period 29.447498 Earth years
-   - Uranus: orbital period 84.016846 Earth years
-   - Neptune: orbital period 164.79132 Earth years
+- Mercury: orbital period 0.2408467 Earth years
+- Venus: orbital period 0.61519726 Earth years
+- Earth: orbital period 1.0 Earth years, 365.25 Earth days, or 31557600 seconds
+- Mars: orbital period 1.8808158 Earth years
+- Jupiter: orbital period 11.862615 Earth years
+- Saturn: orbital period 29.447498 Earth years
+- Uranus: orbital period 84.016846 Earth years
+- Neptune: orbital period 164.79132 Earth years
 
 So if you were told someone were 1,000,000,000 seconds old, you should
 be able to say that they're 31.69 Earth-years old.
 
-If you're wondering why Pluto didn't make the cut, go watch [this
-youtube video](http://www.youtube.com/watch?v=Z_2gbGXzFbs).
+If you're wondering why Pluto didn't make the cut, go watch [this YouTube video][pluto-video].
 
+Note: The actual length of one complete orbit of the Earth around the sun is closer to 365.256 days (1 sidereal year).
+The Gregorian calendar has, on average, 365.2425 days.
+While not entirely accurate, 365.25 is the value used in this exercise.
+See [Year on Wikipedia][year] for more ways to measure a year.
 
-## Exception messages
+[pluto-video]: https://www.youtube.com/watch?v=Z_2gbGXzFbs
+[year]: https://en.wikipedia.org/wiki/Year#Summary
 
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
+For the Python track, this exercise asks you to create a `SpaceAge` _class_ (_[concept:python/classes]()_) that includes methods for all the planets of the solar system.
+Methods should follow the naming convention `on_<planet name>`.
 
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
+Each method should `return` the age (_"on" that planet_) in years, rounded to two decimal places:
 
 ```python
-raise Exception("Meaningful message indicating the source of the error")
+#creating an instance with one billion seconds, and calling .on_earth().
+>>> SpaceAge(1000000000).on_earth()
+
+#This is one billion seconds on Earth in years
+31.69
 ```
 
-## Running the tests
+For more information on constructing and using classes, see:
 
-To run the tests, run `pytest space_age_test.py`
+-   [**A First Look at Classes**][first look at classes] from the Python documentation.
+-   [**A Word About names and Objects**][names and objects] from the Python documentation.
+-   [**Objects, values, and types**][objects, values and types] in the Python data model documentation.
+-   [**What is a Class?**][what is a class] from Trey Hunners Python Morsels website.
 
-Alternatively, you can tell Python to run the pytest module:
-`python -m pytest space_age_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/space-age` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
+[first look at classes]: https://docs.python.org/3/tutorial/classes.html#a-first-look-at-classes
+[names and objects]: https://docs.python.org/3/tutorial/classes.html#a-word-about-names-and-objects
+[objects, values and types]: https://docs.python.org/3/reference/datamodel.html#objects-values-and-types
+[what is a class]: https://www.pythonmorsels.com/what-is-a-class/
 
 ## Source
 
-Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial. [http://pine.fm/LearnToProgram/?Chapter=01](http://pine.fm/LearnToProgram/?Chapter=01)
+### Contributed to by
 
-## Submitting Incomplete Solutions
+- @abhijitparida
+- @behrtam
+- @cmccandless
+- @crsmi
+- @Dog
+- @gabriel376
+- @gabriellhrn
+- @ikhadykin
+- @kytrinyx
+- @lowks
+- @N-Parsons
+- @pheanex
+- @sjakobi
+- @tqa236
+- @AndrewLawendy
 
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+### Based on
+
+Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial. - https://pine.fm/LearnToProgram/?Chapter=01

@@ -1,6 +1,19 @@
 # Twelve Days
 
-Output the lyrics to 'The Twelve Days of Christmas'.
+Welcome to Twelve Days on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+If you get stuck on the exercise, check out `HINTS.md`, but try and solve it without using those first :)
+
+## Instructions
+
+Your task in this exercise is to write code that returns the lyrics of the song: "The Twelve Days of Christmas."
+
+"The Twelve Days of Christmas" is a common English Christmas carol.
+Each subsequent verse of the song builds on the previous verse.
+
+The lyrics your code returns should _exactly_ match the full song text shown below.
+
+## Lyrics
 
 ```text
 On the first day of Christmas my true love gave to me: a Partridge in a Pear Tree.
@@ -28,51 +41,38 @@ On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, 
 On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
 ```
 
-## Exception messages
+## Test-driven development
 
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
+ Be sure to check the comments at the top of the tests file.
+ They will be helpful in understanding the expected output of your function.
 
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
+This challenge _could_ be solved with a minimum of code and a lot of hardcoded text which is duplicated between the verses.
+However, this song is a type of [cumulative song][cumulative song], where each new verse builds on the verse that comes before it.
+For more of a programming challenge, consider assembling each verse from its parts.
+For example, for each verse, the day changes and the gift changes, and the rest of the verse is pretty much the same.
+What might be a good strategy for avoiding repetition?
 
-```python
-raise Exception("Meaningful message indicating the source of the error")
-```
-
-## Running the tests
-
-To run the tests, run the appropriate command below ([why they are different](https://github.com/pytest-dev/pytest/issues/1629#issue-161422224)):
-
-- Python 2.7: `py.test twelve_days_test.py`
-- Python 3.4+: `pytest twelve_days_test.py`
-
-Alternatively, you can tell Python to run the pytest module (allowing the same command to be used regardless of Python version):
-`python -m pytest twelve_days_test.py`
-
-### Common `pytest` options
-
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
-
-For other options, see `python -m pytest -h`
-
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/twelve-days` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
+[cumulative song]: https://en.wikipedia.org/wiki/Cumulative_song
 
 ## Source
 
-Wikipedia [http://en.wikipedia.org/wiki/The_Twelve_Days_of_Christmas_(song)](http://en.wikipedia.org/wiki/The_Twelve_Days_of_Christmas_(song))
+### Created by
 
-## Submitting Incomplete Solutions
+- @sjakobi
 
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+### Contributed to by
+
+- @ackerleytng
+- @behrtam
+- @cmccandless
+- @Dog
+- @kytrinyx
+- @N-Parsons
+- @PatrickMcSweeny
+- @pheanex
+- @rootulp
+- @tqa236
+
+### Based on
+
+Wikipedia - https://en.wikipedia.org/wiki/The_Twelve_Days_of_Christmas_(song)
