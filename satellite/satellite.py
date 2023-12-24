@@ -5,9 +5,11 @@ from typing import List
 def tree_from_traversals(preorder: List[str], inorder: List[str]) -> None:
     """Construct a tree from the preoder and inorder traversals."""
     if len(preorder) != len(inorder):
-        raise ValueError("Wrong tree")
+        raise ValueError("traversals must have the same length")
     if len(preorder) != len(set(preorder)):
-        raise ValueError("Repeated item")
+        raise ValueError("traversals must contain unique items")
+    if set(preorder) != set(inorder):
+        raise ValueError("traversals must have the same elements")
     if not preorder:
         return {}
     root = preorder[0]
