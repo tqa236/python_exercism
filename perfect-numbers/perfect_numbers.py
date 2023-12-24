@@ -5,7 +5,7 @@ from functools import reduce
 def classify(number: int) -> str:
     """Classify numbers into the perfect number types."""
     if number < 1:
-        raise ValueError("Invalid number.")
+        raise ValueError("Classification is only possible for positive integers.")
     factors_sum = (
         sum(
             set(
@@ -13,7 +13,7 @@ def classify(number: int) -> str:
                     list.__add__,
                     (
                         [s, number // s]
-                        for s in range(1, int(number ** 0.5) + 1)
+                        for s in range(1, int(number**0.5) + 1)
                         if not number % s
                     ),
                 )
