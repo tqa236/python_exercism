@@ -1,8 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/nth-prime/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
-from nth_prime import prime
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v2.1.0
+from nth_prime import (
+    prime,
+)
 
 
 def prime_range(n):
@@ -24,8 +28,10 @@ class NthPrimeTest(unittest.TestCase):
         self.assertEqual(prime(10001), 104743)
 
     def test_there_is_no_zeroth_prime(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             prime(0)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "there is no zeroth prime")
 
     # Additional tests for this track
 
@@ -55,11 +61,3 @@ class NthPrimeTest(unittest.TestCase):
                 71,
             ],
         )
-
-    # Utility functions
-    def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
-
-
-if __name__ == "__main__":
-    unittest.main()
