@@ -1,35 +1,25 @@
-"""Implementation of a double linked list."""
-
-
-from typing import Optional
+from __future__ import annotations
 
 
 class Node(object):
-    """A simple node."""
-
     def __init__(
         self,
         value: int,
-        succeeding: Optional["Node"] = None,
-        previous: Optional["Node"] = None,
+        succeeding: Node | None,
+        previous: Node | None,
     ) -> None:
-        """Initilize."""
         self.value = value
         self.succeeding = succeeding
         self.previous = previous
 
 
 class LinkedList(object):
-    """A double linked list."""
-
     def __init__(self) -> None:
-        """Initialize."""
         self.head = None
         self.tail = None
         self.node = None
 
     def push(self, value: int) -> None:
-        """Add a node to the tail of the linked list."""
         node = Node(value, None, self.tail)
         if self.tail:
             self.tail.succeeding = node
@@ -38,7 +28,6 @@ class LinkedList(object):
             self.head = self.tail
 
     def unshift(self, value: int) -> None:
-        """Add a node to the head of the linked list."""
         node = Node(value, self.head, None)
         if self.head:
             self.head.previous = node
@@ -47,7 +36,8 @@ class LinkedList(object):
             self.tail = self.head
 
     def pop(self) -> int:
-        """Remove a node from the tail of the linked list."""
+        if self.tail is None:
+            raise IndexError("List is empty")
         value = self.tail.value
         self.tail = self.tail.previous
         if self.tail:
@@ -57,7 +47,8 @@ class LinkedList(object):
         return value
 
     def shift(self) -> int:
-        """Remove a node from the head of the linked list."""
+        if self.head is None:
+            raise IndexError("List is empty")
         value = self.head.value
         self.head = self.head.succeeding
         if self.head:
@@ -66,18 +57,30 @@ class LinkedList(object):
             self.tail = None
         return value
 
+    def delete(self, value) -> int:
+        node = self.head
+        while node:
+            if node.value == value:
+                if node.previous is None and node.succeeding is None:
+                    self.head = None
+                    self.tail = None
+                    return
+                if node.succeeding is not None:
+                    node.succeeding.previous = node.previous
+                else:
+                    self.tail = node.previous
+                if node.previous is not None:
+                    node.previous.succeeding = node.succeeding
+                else:
+                    self.head = node.succeeding
+                return
+            node = node.succeeding
+        raise ValueError("Value not found")
+
     def __len__(self) -> int:
-        """Override len method."""
         node = self.head
         count = 0
         while node is not None:
             count = count + 1
             node = node.succeeding
         return count
-
-    def __iter__(self):
-        """Override iter method."""
-        node = self.head
-        while node:
-            yield node.value
-            node = node.succeeding
