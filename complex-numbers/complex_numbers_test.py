@@ -1,13 +1,13 @@
-from __future__ import division
-import math
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/complex-numbers/canonical-data.json
+# File last updated on 2023-07-19
 
+import math
 import unittest
 
 from complex_numbers import (
     ComplexNumber,
 )
-
-# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class ComplexNumbersTest(unittest.TestCase):
@@ -149,6 +149,37 @@ class ComplexNumbersTest(unittest.TestCase):
             ComplexNumber(math.log(2), math.pi).exp(), ComplexNumber(-2, 0)
         )
 
+    def test_exponential_resulting_in_a_number_with_real_and_imaginary_part(self):
+        self.assertAlmostEqual(
+            ComplexNumber(math.log(2) / 2, math.pi / 4).exp(), ComplexNumber(1, 1)
+        )
+
+    # Operations between real numbers and complex numbers
+
+    def test_add_real_number_to_complex_number(self):
+        self.assertEqual(ComplexNumber(1, 2) + 5, ComplexNumber(6, 2))
+
+    def test_add_complex_number_to_real_number(self):
+        self.assertEqual(5 + ComplexNumber(1, 2), ComplexNumber(6, 2))
+
+    def test_subtract_real_number_from_complex_number(self):
+        self.assertEqual(ComplexNumber(5, 7) - 4, ComplexNumber(1, 7))
+
+    def test_subtract_complex_number_from_real_number(self):
+        self.assertEqual(4 - ComplexNumber(5, 7), ComplexNumber(-1, -7))
+
+    def test_multiply_complex_number_by_real_number(self):
+        self.assertEqual(ComplexNumber(2, 5) * 5, ComplexNumber(10, 25))
+
+    def test_multiply_real_number_by_complex_number(self):
+        self.assertEqual(5 * ComplexNumber(2, 5), ComplexNumber(10, 25))
+
+    def test_divide_complex_number_by_real_number(self):
+        self.assertAlmostEqual(ComplexNumber(10, 100) / 10, ComplexNumber(1, 10))
+
+    def test_divide_real_number_by_complex_number(self):
+        self.assertAlmostEqual(5 / ComplexNumber(1, 1), ComplexNumber(2.5, -2.5))
+
     # Additional tests for this track
 
     def test_equality_of_complex_numbers(self):
@@ -159,7 +190,3 @@ class ComplexNumbersTest(unittest.TestCase):
 
     def test_inequality_of_imaginary_part(self):
         self.assertNotEqual(ComplexNumber(1, 2), ComplexNumber(1, 1))
-
-
-if __name__ == "__main__":
-    unittest.main()

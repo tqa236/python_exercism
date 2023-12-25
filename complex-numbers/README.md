@@ -27,13 +27,17 @@ Dividing a complex number `a + i * b` by another `c + i * d` gives:
 Raising e to a complex exponent can be expressed as `e^(a + i * b) = e^a * e^(i * b)`, the last term of which is given by Euler's formula `e^(i * b) = cos(b) + i * sin(b)`.
 
 Implement the following operations:
- - addition, subtraction, multiplication and division of two complex numbers,
- - conjugate, absolute value, exponent of a given complex number.
 
+- addition, subtraction, multiplication and division of two complex numbers,
+- conjugate, absolute value, exponent of a given complex number.
 
 Assume the programming language you are using does not have an implementation of complex numbers.
 
-See [Emulating numeric types](https://docs.python.org/2/reference/datamodel.html#emulating-numeric-types) for help on operator overloading.
+##  Building a Numeric Type
+
+See [Emulating numeric types][emulating-numeric-types] for help on operator overloading and customization.
+
+[emulating-numeric-types]: https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types
 
 ## Source
 
