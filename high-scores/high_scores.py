@@ -1,19 +1,12 @@
-"""Extract relevant scores by some criterio."""
+class HighScores:
+    def __init__(self, scores: list[int]) -> None:
+        self.scores = scores
 
+    def latest(self) -> int:
+        return self.scores[-1]
 
-from typing import List
+    def personal_best(self) -> int:
+        return max(self.scores)
 
-
-def latest(scores: List[int]) -> int:
-    """Extract the latest score."""
-    return scores[-1]
-
-
-def personal_best(scores: List[int]) -> int:
-    """Extract the best score."""
-    return max(scores)
-
-
-def personal_top_three(scores: List[int]) -> List[int]:
-    """Extract the top three best scores."""
-    return sorted(scores, reverse=True)[:3]
+    def personal_top_three(self) -> list[int]:
+        return sorted(self.scores, reverse=True)[:3]
