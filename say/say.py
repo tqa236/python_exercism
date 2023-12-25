@@ -43,16 +43,14 @@ NUMBERS_DICT = {
     1000: "thousand",
     1000000: "million",
     1000000000: "billion",
-    10 ** 12: "trillion",
+    10**12: "trillion",
 }
 
 
 def say(number: Union[float, int]) -> None:
     """Pronounce a number in English."""
-    if number < 0:
-        raise ValueError("Number must be a positive integer.")
-    if number >= 1e12:
-        raise ValueError("Number too large.")
+    if number < 0 or number >= 1e12:
+        raise ValueError("input out of range")
 
     number = int(number)
     if number < 20:
