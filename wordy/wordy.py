@@ -1,10 +1,8 @@
-"""Parse and evaluate simple math word problems."""
 from operator import add, mul, sub
 from operator import truediv as div
 
 
-def calculate(question: str) -> None:
-    """Parse and evaluate simple math word problems."""
+def answer(question: str) -> None:
     elements = (
         question.strip("?")
         .replace("plus", "+")
@@ -13,16 +11,24 @@ def calculate(question: str) -> None:
         .replace("multiplied by", "*")
         .split()
     )
-    if (elements[0], elements[1]) != ("What", "is") or len(elements) % 2 == 0:
-        raise ValueError("Not a math problem.")
+    if (elements[0], elements[1]) != ("What", "is"):
+        raise ValueError("unknown operation")
     operator_dict = {"+": add, "-": sub, "/": div, "*": mul}
-    if elements[2].lstrip("-").isdigit():
-        result = int(elements[2])
-    else:
-        raise ValueError("No continuous operands")
-    for operator, operand in zip(elements[3::2], elements[4::2]):
-        try:
-            result = operator_dict[operator](result, int(operand))
-        except Exception as ex:
-            raise ValueError(f"Not a math problem: {ex}")
+    elements = elements[2:]
+    try:
+        elements = [
+            element if element in operator_dict else int(element)
+            for element in elements
+        ]
+    except ValueError:
+        raise ValueError("unknown operation")
+    if (
+        len(elements) % 2 == 0
+        or not all(isinstance(element, int) for element in elements[::2])
+        or not all(element in operator_dict for element in elements[1::2])
+    ):
+        raise ValueError("syntax error")
+    result = int(elements[0])
+    for operator, operand in zip(elements[1::2], elements[2::2]):
+        result = operator_dict[operator](result, int(operand))
     return result
