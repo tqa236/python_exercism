@@ -1,45 +1,48 @@
 """Reimplementation of various list operations."""
 
-from typing import Any, Callable, List, Union
+from collections.abc import Callable
+from typing import Any, Union
 
 
-def append(list1: List[int], list2: List[int]) -> None:
+def append(list1: list[int], list2: list[int]) -> None:
     return list1 + list2
 
 
 def concat(
-    lists: Union[List[Union[List[List[int]], List[List[Any]]]], List[List[int]]]
+    lists: Union[list[Union[list[list[int]], list[list[Any]]]], list[list[int]]],
 ) -> None:
     return sum(lists, [])
 
 
-def filter(function: Callable, list: List[int]) -> None:
+def filter(function: Callable, list: list[int]) -> None:
     return [element for element in list if function(element)]
 
 
-def length(list: List[int]) -> None:
+def length(list: list[int]) -> None:
     return len(list)
 
 
-def map(function: Callable, list: List[int]) -> None:
+def map(function: Callable, list: list[int]) -> None:
     return [function(element) for element in list]
 
 
-def foldl(function: Callable, list: List[int], initial: int) -> None:
+def foldl(function: Callable, list: list[int], initial: int) -> None:
     if not list:
         return initial
     return foldl(function, list[1:], function(initial, list[0]))
 
 
 def foldr(
-    function: Callable, list: Union[List[int], List[str]], initial: Union[int, str]
+    function: Callable,
+    list: Union[list[int], list[str]],
+    initial: Union[int, str],
 ) -> None:
     if not list:
         return initial
-    return foldr(function, list[:-1], function(list[-1], initial))
+    return foldr(function, list[:-1], function(initial, list[-1]))
 
 
 def reverse(
-    list: Union[List[List[int]], List[Union[str, float, int]], List[int]]
+    list: Union[list[list[int]], list[Union[str, float, int]], list[int]],
 ) -> None:
     return list[::-1]
