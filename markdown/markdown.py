@@ -1,5 +1,3 @@
-"""Markdown parser."""
-
 import re
 
 BOLD_RE = re.compile(r"__(.*?)__")
@@ -9,7 +7,6 @@ LIST_RE = re.compile(r"\* (.*)")
 
 
 def parse(markdown: str) -> str:
-    """Markdown parser."""
     lines = markdown.split("\n")
     result = []
     for line in lines:
@@ -17,7 +14,7 @@ def parse(markdown: str) -> str:
         line = ITALICS_RE.sub(r"<em>\1</em>", line)
         is_header = HEADER_RE.match(line)
         is_list = LIST_RE.match(line)
-        if is_header:
+        if is_header and len(is_header.group(1)) <= 6:
             result.append(
                 "<h{0}>{1}</h{0}>".format(len(is_header.group(1)), is_header.group(2))
             )

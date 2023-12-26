@@ -1,16 +1,10 @@
-# Game status categories
-# Change the values as you see fit
-"""Implement a simple hangman game."""
 STATUS_WIN = "win"
 STATUS_LOSE = "lose"
 STATUS_ONGOING = "ongoing"
 
 
-class Hangman(object):
-    """Implement a simple hangman game."""
-
+class Hangman:
     def __init__(self, word: str) -> None:
-        """Initialize all required value."""
         self.remaining_guesses = 9
         self.status = STATUS_ONGOING
         self.word = word
@@ -18,9 +12,8 @@ class Hangman(object):
         self.correct_guess = []
 
     def guess(self, char: str) -> None:
-        """Guess a character."""
         if self.status != STATUS_ONGOING:
-            raise ValueError("Game over.")
+            raise ValueError("The game has already ended.")
 
         if char not in self.word or char in self.correct_guess:
             self.remaining_guesses = self.remaining_guesses - 1
@@ -35,9 +28,7 @@ class Hangman(object):
                 self.status = STATUS_WIN
 
     def get_masked_word(self) -> str:
-        """Return masked word."""
         return self.masked_word
 
     def get_status(self) -> str:
-        """Return status."""
         return self.status
