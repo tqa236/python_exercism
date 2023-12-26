@@ -1,10 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/minesweeper/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
 from minesweeper import (
     annotate,
 )
-
-# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class MinesweeperTest(unittest.TestCase):
@@ -58,17 +60,17 @@ class MinesweeperTest(unittest.TestCase):
         )
 
     def test_different_len(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             annotate([" ", "*  ", "  "])
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(
+            err.exception.args[0], "The board is invalid with current input."
+        )
 
     def test_invalid_char(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             annotate(["X  * "])
-
-    # Utility functions
-    def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
-
-
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(
+            err.exception.args[0], "The board is invalid with current input."
+        )

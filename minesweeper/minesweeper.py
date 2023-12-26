@@ -1,17 +1,13 @@
-from typing import List
-
-
-def annotate(input_board_array: List[str]) -> None:
+def annotate(input_board_array: list[str]) -> None:
     if not input_board_array:
         return []
     row_length = [len(row) for row in input_board_array]
-    if min(row_length) != max(row_length):
-        raise ValueError("Bad-shaped board.")
     invalid_char = [
         char for row in input_board_array for char in row if char not in " *"
     ]
-    if invalid_char:
-        raise ValueError("Invalid char.")
+
+    if min(row_length) != max(row_length) or invalid_char:
+        raise ValueError("The board is invalid with current input.")
     column_length = len(input_board_array)
     row_length = len(input_board_array[0])
     extended_board_array = (
@@ -28,7 +24,7 @@ def annotate(input_board_array: List[str]) -> None:
                             extended_board_array[ii][jj] == "*"
                             for ii in range(i - 1, i + 2)
                             for jj in range(j - 1, j + 2)
-                        ]
-                    )
+                        ],
+                    ),
                 )
     return ["".join(row[1:-1]).replace("0", " ") for row in extended_board_array[1:-1]]
