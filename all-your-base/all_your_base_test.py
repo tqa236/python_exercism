@@ -1,10 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/all-your-base/canonical-data.json
+# File last updated on 2023-07-20
+
 import unittest
 
 from all_your_base import (
     rebase,
 )
-
-# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class AllYourBaseTest(unittest.TestCase):
@@ -45,45 +47,59 @@ class AllYourBaseTest(unittest.TestCase):
         self.assertEqual(rebase(7, [0, 6, 0], 10), [4, 2])
 
     def test_input_base_is_one(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             rebase(1, [0], 10)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "input base must be >= 2")
 
     def test_input_base_is_zero(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             rebase(0, [], 10)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "input base must be >= 2")
 
     def test_input_base_is_negative(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             rebase(-2, [1], 10)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "input base must be >= 2")
 
     def test_negative_digit(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             rebase(2, [1, -1, 1, 0, 1, 0], 10)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(
+            err.exception.args[0], "all digits must satisfy 0 <= d < input base"
+        )
 
     def test_invalid_positive_digit(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             rebase(2, [1, 2, 1, 0, 1, 0], 10)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(
+            err.exception.args[0], "all digits must satisfy 0 <= d < input base"
+        )
 
     def test_output_base_is_one(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             rebase(2, [1, 0, 1, 0, 1, 0], 1)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "output base must be >= 2")
 
     def test_output_base_is_zero(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             rebase(10, [7], 0)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "output base must be >= 2")
 
     def test_output_base_is_negative(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             rebase(2, [1], -7)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "output base must be >= 2")
 
     def test_both_bases_are_negative(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             rebase(-2, [1], -7)
-
-    # Utility functions
-    def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
-
-
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "input base must be >= 2")

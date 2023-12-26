@@ -15,4 +15,5 @@ TODO:
 
 ```bash
 ruff --exclude="*_test.py","*_data.py" --select ALL --preview . --ignore=D102,CPY001,ANN101
+ruff list-ops/list_ops.py --select ALL --target-version="py311" --fix
 ```
