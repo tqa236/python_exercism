@@ -7,10 +7,10 @@ If you need help running the tests or submitting your code, check out `HELP.md`.
 
 Implement variable length quantity encoding and decoding.
 
-The goal of this exercise is to implement [VLQ](https://en.wikipedia.org/wiki/Variable-length_quantity) encoding/decoding.
+The goal of this exercise is to implement [VLQ][vlq] encoding/decoding.
 
 In short, the goal of this encoding is to encode integer values in a way that would save bytes.
-Only the first 7 bits of each byte is significant (right-justified; sort of like an ASCII byte).
+Only the first 7 bits of each byte are significant (right-justified; sort of like an ASCII byte).
 So, if you have a 32-bit value, you have to unpack it into a series of 7-bit bytes.
 Of course, you will have a variable number of bytes depending upon your integer.
 To indicate which is the last byte of the series, you leave bit #7 clear.
@@ -34,6 +34,21 @@ Here are examples of integers as 32-bit values, and the variable length quantiti
 00200000          81 80 80 00
 08000000          C0 80 80 00
 0FFFFFFF          FF FF FF 7F
+```
+
+[vlq]: https://en.wikipedia.org/wiki/Variable-length_quantity
+
+## Exception messages
+
+Sometimes it is necessary to [raise an exception](https://docs.python.org/3/tutorial/errors.html#raising-exceptions). When you do this, you should always include a **meaningful error message** to indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. For situations where you know that the error source will be a certain type, you can choose to raise one of the [built in error types](https://docs.python.org/3/library/exceptions.html#base-classes), but should still include a meaningful message.
+
+This particular exercise requires that you use the [raise statement](https://docs.python.org/3/reference/simple_stmts.html#the-raise-statement) to "throw" a `ValueError` if the sequence to decode or encode is incomplete. The tests will only pass if you both `raise` the `exception` and include a message with it.
+
+To raise a `ValueError` with a message, write the message as an argument to the `exception` type:
+
+```python
+# if the sequence is incomplete
+raise ValueError("incomplete sequence")
 ```
 
 ## Source
