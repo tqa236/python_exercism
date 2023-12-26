@@ -1,7 +1,10 @@
-from typing import List
-
-
-def slices(series: str, length: int) -> List[str]:
-    if len(series) < length or length <= 0:
-        raise ValueError("length is not suitable")
+def slices(series: str, length: int) -> list[str]:
+    if not series:
+        raise ValueError("series cannot be empty")
+    if length < 0:
+        raise ValueError("slice length cannot be negative")
+    if length == 0:
+        raise ValueError("slice length cannot be zero")
+    if len(series) < length:
+        raise ValueError("slice length cannot be greater than series length")
     return [series[i : i + length] for i in range(len(series) - length + 1)]
