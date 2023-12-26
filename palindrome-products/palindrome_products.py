@@ -1,16 +1,11 @@
-"""Detect palindrome products in a given range."""
-
-
-from typing import List, Set, Tuple, Union
+from typing import Union
 
 
 def check_palindrom(number: int) -> bool:
-    """Check if a number is a palindrome or not."""
     return number == int(str(number)[::-1])
 
 
-def find_factors(number: int, min_factor: int, max_factor: int) -> Set[Tuple[int, int]]:
-    """Return a set of factors in a given range for a given number."""
+def find_factors(number: int, min_factor: int, max_factor: int) -> set[tuple[int, int]]:
     return set(
         [
             (i, number // i)
@@ -18,20 +13,20 @@ def find_factors(number: int, min_factor: int, max_factor: int) -> Set[Tuple[int
             if number % i == 0
             and min_factor <= number // i <= max_factor
             and i <= number // i
-        ]
+        ],
     )
 
 
 def check_valid(max_factor: int, min_factor: int) -> None:
-    """Check the validity of the factor range."""
     if max_factor < min_factor:
-        raise ValueError("Min factor must be smaller than max factor")
+        raise ValueError("min must be <= max")
 
 
 def find_palindrome(
-    max_factor: int, min_factor: int, palindrome_type: str
-) -> List[Union[int, Set[Tuple[int, int]]]]:
-    """Find all palindromes."""
+    max_factor: int,
+    min_factor: int,
+    palindrome_type: str,
+) -> list[Union[int, set[tuple[int, int]]]]:
     check_valid(max_factor, min_factor)
     palindromes = [
         i * j
@@ -48,13 +43,12 @@ def find_palindrome(
     return [number, find_factors(number, min_factor, max_factor)]
 
 
-def largest(max_factor: int, min_factor: int) -> List[Union[int, Set[Tuple[int, int]]]]:
-    """Find the largest palindrome and its factors."""
+def largest(max_factor: int, min_factor: int) -> list[Union[int, set[tuple[int, int]]]]:
     return find_palindrome(max_factor, min_factor, "max")
 
 
 def smallest(
-    max_factor: int, min_factor: int
-) -> List[Union[int, Set[Tuple[int, int]]]]:
-    """Find the smallest palindrome and its factors."""
+    max_factor: int,
+    min_factor: int,
+) -> list[Union[int, set[tuple[int, int]]]]:
     return find_palindrome(max_factor, min_factor, "min")
