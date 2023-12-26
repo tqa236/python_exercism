@@ -12,6 +12,7 @@ TODO:
 -   Try poetry for dependency management
 -   Solve sgf parsing
 -   Configure ruff
+-   Optimize palindrome
 
 ```bash
 ruff --exclude="*_test.py","*_data.py" --select ALL --preview . --ignore=D102,CPY001,ANN101
