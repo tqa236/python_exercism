@@ -1,7 +1,3 @@
-"""Recognize a number."""
-
-from typing import List
-
 NUMBERS = {
     "0": [" _ ", "| |", "|_|", "   "],
     "1": ["   ", "  |", "  |", "   "],
@@ -16,20 +12,20 @@ NUMBERS = {
 }
 
 
-def convert_one_number(number: List[str]) -> str:
-    """Recognize a single number."""
+def convert_one_number(number: list[str]) -> str:
     for key in NUMBERS:
         if "\n".join(number) == "\n".join(NUMBERS[key]):
             return key
     return "?"
 
 
-def convert(input_grid: List[str]) -> None:
-    """Recognize a list of numbers."""
+def convert(input_grid: list[str]) -> None:
     length = len(input_grid[0])
     width = len(input_grid)
-    if width % 4 != 0 or length % 3 != 0:
-        raise ValueError("Wrong input size.")
+    if width % 4 != 0:
+        raise ValueError("Number of input lines is not a multiple of four")
+    if length % 3 != 0:
+        raise ValueError("Number of input columns is not a multiple of three")
     numbers = [
         [
             [line[j : j + 3] for line in input_grid[i : i + 4]]
@@ -38,5 +34,5 @@ def convert(input_grid: List[str]) -> None:
         for i in range(0, width, 4)
     ]
     return ",".join(
-        ["".join([convert_one_number(number) for number in line]) for line in numbers]
+        ["".join([convert_one_number(number) for number in line]) for line in numbers],
     )
