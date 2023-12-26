@@ -1,10 +1,8 @@
-"""Implement a simple linked list."""
-from typing import Any, Iterator, List, Optional, Union
+from collections.abc import Iterator
+from typing import Any, Optional, Union
 
 
-class Node(object):
-    """Node."""
-
+class Node:
     def __init__(self, value: int) -> None:
         self.node_value = value
         self.next_node = None
@@ -16,10 +14,8 @@ class Node(object):
         return self.next_node
 
 
-class LinkedList(object):
-    """Linked list."""
-
-    def __init__(self, values: Union[range, List[int]] = []) -> None:
+class LinkedList:
+    def __init__(self, values: Union[range, list[int]] = []) -> None:
         self.head_node = None
         self.length = 0
         for value in values:
@@ -35,7 +31,7 @@ class LinkedList(object):
 
     def head(self) -> Node:
         if self.__len__() == 0:
-            raise EmptyListException("Empty linked list.")
+            raise EmptyListException("The list is empty.")
         return self.head_node
 
     def push(self, value: int) -> None:
@@ -46,7 +42,7 @@ class LinkedList(object):
 
     def pop(self) -> int:
         if self.__len__() == 0:
-            raise EmptyListException("Empty linked list.")
+            raise EmptyListException("The list is empty.")
         to_return = self.head_node.value()
         self.head_node = self.head_node.next()
         self.length = self.length - 1
