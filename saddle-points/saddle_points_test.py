@@ -1,17 +1,12 @@
-"""Tests for the saddle-points exercise
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/saddle-points/canonical-data.json
+# File last updated on 2023-07-19
 
-Implementation note:
-The saddle_points function must validate the input matrix and raise a
-ValueError with a meaningful error message if the matrix turns out to be
-irregular.
-"""
 import unittest
 
 from saddle_points import (
     saddle_points,
 )
-
-# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 def sorted_points(point_list):
@@ -96,13 +91,7 @@ class SaddlePointsTest(unittest.TestCase):
 
     def test_irregular_matrix(self):
         matrix = [[3, 2, 1], [0, 1], [2, 1, 0]]
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             saddle_points(matrix)
-
-    # Utility functions
-    def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
-
-
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "irregular matrix")
