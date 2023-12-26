@@ -1,10 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/hamming/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
 from hamming import (
     distance,
 )
-
-# Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class HammingTest(unittest.TestCase):
@@ -24,25 +26,29 @@ class HammingTest(unittest.TestCase):
         self.assertEqual(distance("GGACGGATTCTG", "AGGACGGATTCT"), 9)
 
     def test_disallow_first_strand_longer(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             distance("AATG", "AAA")
 
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "Strands must be of equal length.")
+
     def test_disallow_second_strand_longer(self):
-        with self.assertRaisesWithMessage(ValueError):
+        with self.assertRaises(ValueError) as err:
             distance("ATA", "AGTG")
 
-    def test_disallow_left_empty_strand(self):
-        with self.assertRaisesWithMessage(ValueError):
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "Strands must be of equal length.")
+
+    def test_disallow_empty_first_strand(self):
+        with self.assertRaises(ValueError) as err:
             distance("", "G")
 
-    def test_disallow_right_empty_strand(self):
-        with self.assertRaisesWithMessage(ValueError):
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "Strands must be of equal length.")
+
+    def test_disallow_empty_second_strand(self):
+        with self.assertRaises(ValueError) as err:
             distance("G", "")
 
-    # Utility functions
-    def assertRaisesWithMessage(self, exception):
-        return self.assertRaisesRegex(exception, r".+")
-
-
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "Strands must be of equal length.")
