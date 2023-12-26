@@ -24,20 +24,20 @@ def meetup(year: int, month: int, which: str, day_of_the_week: str) -> datetime.
         "Sunday": 6,
     }
     start_days = {
-        "1st": 1,
-        "2nd": 8,
-        "3rd": 15,
-        "4th": 22,
-        "5th": 29,
+        "first": 1,
+        "second": 8,
+        "third": 15,
+        "fourth": 22,
+        "fifth": 29,
         "teenth": 13,
         "last": last_day_of_month - 6,
     }
     if start_days[which] > last_day_of_month:
-        raise MeetupDayException("Invalid day.")
+        raise MeetupDayException("That day does not exist.")
     start = datetime.date(year, month, start_days[which])
     chosen_day = next_weekday(start, days_of_the_week[day_of_the_week])
     if chosen_day.month != month:
-        raise MeetupDayException("Invalid day.")
+        raise MeetupDayException("That day does not exist.")
     return chosen_day
 
 
