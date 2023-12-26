@@ -1,11 +1,10 @@
-"""A simple Domain Specific Language."""
-from typing import Any, Dict
+from typing import Any
 
 NODE, EDGE, ATTR = range(3)
 
 
-class Node(object):
-    def __init__(self, name: str, attrs: Dict[str, str] = {}) -> None:
+class Node:
+    def __init__(self, name: str, attrs: dict[str, str] = {}) -> None:
         self.name = name
         self.attrs = attrs
 
@@ -13,8 +12,8 @@ class Node(object):
         return self.name == other.name and self.attrs == other.attrs
 
 
-class Edge(object):
-    def __init__(self, src: str, dst: str, attrs: Dict[str, str] = {}) -> None:
+class Edge:
+    def __init__(self, src: str, dst: str, attrs: dict[str, str] = {}) -> None:
         self.src = src
         self.dst = dst
         self.attrs = attrs
@@ -27,27 +26,27 @@ class Edge(object):
         )
 
 
-class Graph(object):
+class Graph:
     def __init__(self, data: Any = []) -> None:
         self.nodes = []
         self.edges = []
         self.attrs = {}
         if not isinstance(data, list):
-            raise TypeError("Type not known.")
+            raise TypeError("Graph data malformed")
         for datum in data:
             if len(datum) <= 1:
-                raise TypeError("Malformed graph item.")
+                raise TypeError("Graph item incomplete")
             if datum[0] == NODE:
                 if len(datum) != 3:
-                    raise ValueError("Value not good.")
+                    raise ValueError("Node is malformed")
                 self.nodes.append(Node(datum[1], datum[2]))
             elif datum[0] == EDGE:
                 if len(datum) != 4:
-                    raise ValueError("Value not good.")
+                    raise ValueError("Edge is malformed")
                 self.edges.append(Edge(datum[1], datum[2], datum[3]))
             elif datum[0] == ATTR:
                 if len(datum) != 3:
-                    raise ValueError("Value not good.")
+                    raise ValueError("Attribute is malformed")
                 self.attrs[datum[1]] = datum[2]
             else:
-                raise ValueError("Value not good.")
+                raise ValueError("Unknown item")
