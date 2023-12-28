@@ -1,5 +1,8 @@
 from typing import List
 
+SHARP_NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
+FLAT_NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
+
 
 class Scale(object):
     def __init__(self, tonic: str) -> None:
