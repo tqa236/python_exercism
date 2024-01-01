@@ -1,20 +1,15 @@
-"""Refactor a ledger printer."""
-import locale as lc
+from __future__ import annotations
+
 from datetime import datetime
-from typing import List
 
 
-class LedgerEntry(object):
-    """Ledger object."""
-
+class LedgerEntry:
     def __init__(self, date: datetime, description: str, change: int) -> None:
-        """Initialize."""
         self.date = date
         self.description = description
         self.change = change
 
-    def __lt__(self, other: "LedgerEntry") -> bool:
-        """Override the < operator."""
+    def __lt__(self, other: LedgerEntry) -> bool:
         return (self.date, self.change, self.description) < (
             other.date,
             other.change,
@@ -22,16 +17,17 @@ class LedgerEntry(object):
         )
 
 
-def create_entry(date: str, description: str, change: int) -> "LedgerEntry":
-    """Create a ledger entry."""
+def create_entry(date: str, description: str, change: int) -> LedgerEntry:
     return LedgerEntry(datetime.strptime(date, "%Y-%m-%d"), description, change)
 
 
-def format_entries(currency: str, locale: str, entries: List["LedgerEntry"]) -> str:
-    """Format the entries."""
-    lc.setlocale(lc.LC_ALL, locale + ".utf8")
-    date_format = lc.nl_langinfo(lc.D_FMT)
-    column_name_dict = {
+def format_entries(currency: str, locale: str, entries: list[LedgerEntry]) -> str:
+    date_formats = {
+        "en_US": "%m/%d/%Y",
+        "nl_NL": "%d-%m-%Y",
+    }
+    date_format = date_formats[locale]
+    column_names = {
         "en_US": ["Date", "Description", "Change"],
         "nl_NL": ["Datum", "Omschrijving", "Verandering"],
     }
@@ -41,16 +37,18 @@ def format_entries(currency: str, locale: str, entries: List["LedgerEntry"]) -> 
         "| ".join(
             [
                 column.ljust(length)
-                for column, length in zip(column_name_dict[locale], column_length)
-            ]
-        )
+                for column, length in zip(
+                    column_names[locale],
+                    column_length,
+                    strict=False,
+                )
+            ],
+        ),
     ]
     entries = sorted(entries)
     for entry in entries:
         line = []
         date_str = entry.date.strftime(date_format)
-        if locale == "nl_NL":
-            date_str = entry.date.strftime("%d-%m-%Y")
 
         line.append(date_str)
 
@@ -64,7 +62,10 @@ def format_entries(currency: str, locale: str, entries: List["LedgerEntry"]) -> 
         if locale == "en_US":
             change_str = change_str + f"{abs(entry.change)/100:,.2f}"
         elif locale == "nl_NL":
-            change_str = change_str + " " f"{entry.change/100:n}"
+            change_str = change_str + " " f"{entry.change/100:,.2f}".replace(
+                ".",
+                "\n",
+            ).replace(",", ".").replace("\n", ",")
         if entry.change < 0 and locale == "en_US":
             change_str = "(" + change_str + ")"
         else:
