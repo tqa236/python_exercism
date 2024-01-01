@@ -1,2 +1,3 @@
 def egg_count(display_value):
-    return display_value.bit_count()
+    # Restriction: Do not use bit_count
+    return bin(display_value).count("1")
