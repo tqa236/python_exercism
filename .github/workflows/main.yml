@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4.1.1
       with:
-        python-version: '3.7'
+        python-version: '3.11'
     - name: Run tests
       run: |
         sudo apt-get install python3-setuptools
