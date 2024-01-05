@@ -24,14 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.1.1
-    - uses: actions/setup-python@v4
+    - uses: actions/setup-python@v5
       id: python
       with:
         python-version: "3.11"
-        update-environment: false
 
     - name: Run repo-review
-      shell: bash
       run: |
-        pip install 'sp-repo-review[cli]'
+        pip install "sp-repo-review[cli]"
         repo-review . --format html --stderr rich >> $GITHUB_STEP_SUMMARY
