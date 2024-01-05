@@ -27,7 +27,7 @@ jobs:
       id: python
       with:
         python-version: "3.11"
-    - name: Run repo-review
+    - name: Check config
       run: |
         python3 -m pip install "sp-repo-review[cli]"
         repo-review . --format html --stderr rich >> $GITHUB_STEP_SUMMARY
