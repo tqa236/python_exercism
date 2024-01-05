@@ -33,7 +33,7 @@ jobs:
       shell: bash
       run: >
         pipx run
-        --python '${{ steps.python.outputs.python-path }}'
+        --python '${{ steps.python.outputs.python-path }}' 'sp-repo-review[cli]'
         repo-review .
         --format html
         --stderr rich
