@@ -34,7 +34,6 @@ jobs:
       run: >
         pipx run
         --python '${{ steps.python.outputs.python-path }}'
-        --spec '${{ github.action_path }}[cli]'
         repo-review .
         --format html
         --stderr rich
