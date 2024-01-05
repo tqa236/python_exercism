@@ -31,9 +31,6 @@ jobs:
 
     - name: Run repo-review
       shell: bash
-      run: >
+      run: |
         pip install 'sp-repo-review[cli]'
-        repo-review .
-        --format html
-        --stderr rich
-        >> $GITHUB_STEP_SUMMARY
+        repo-review . --format html --stderr rich >> $GITHUB_STEP_SUMMARY
