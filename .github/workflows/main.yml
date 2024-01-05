@@ -19,13 +19,15 @@ jobs:
         python3 -m pip install pytest pytest-cov
         ./test.sh
 
-  config:
+  action:
+    name: Action
     runs-on: ubuntu-latest
-
     steps:
-    - uses: scientific-python/repo-review@v0.10.3
-      with:
-        plugins: sp-repo-review
-    - name: Validate configs
-      run: |
-        repo-review .
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run repo-review action
+        uses: ./
+        with:
+          plugins: sp-repo-review==2023.12.21
