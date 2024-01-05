@@ -111,3 +111,6 @@ dependencies = [ # Optional
 # https://pip.pypa.io/en/stable/reference/pip/#pep-517-and-518-support
 requires = ["setuptools>=43.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.repo-review]
+ignore = ["PY004", "PY007", "PP003", "PP301", "GH102", "GH103", "GH212", "PC", "MY", "RF", "RTD"]
