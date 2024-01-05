@@ -18,11 +18,16 @@ jobs:
         python3 -m pip install -r requirements.txt
         python3 -m pip install pytest pytest-cov
         ./test.sh
-  test:
 
+  repo-review:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: scientific-python/repo-review@v0.10.3
+    - uses: actions/checkout@v4.1.1
+    - uses: actions/setup-python@v5
       with:
-        plugins: sp-repo-review
+        python-version: '3.11'
+    - name: Check config
+      run: |
+        sudo apt-get install python3-setuptools
+        python3 -m pip install "sp-repo-review[cli]"
+        repo-review .
