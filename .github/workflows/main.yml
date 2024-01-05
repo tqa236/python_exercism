@@ -23,6 +23,7 @@ jobs:
     name: Repo review
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4.1.1
     - uses: actions/setup-python@v4
       id: python
       with:
