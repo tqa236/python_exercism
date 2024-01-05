@@ -19,15 +19,23 @@ jobs:
         python3 -m pip install pytest pytest-cov
         ./test.sh
 
-  action:
-    name: Action
+  repo-review:
+    name: Repo review
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+    - uses: actions/setup-python@v4
+      id: python
+      with:
+        python-version: "3.11"
+        update-environment: false
 
-      - name: Run repo-review action
-        uses: ./
-        with:
-          plugins: sp-repo-review==2023.12.21
+    - name: Run repo-review
+      shell: bash
+      run: >
+        pipx run
+        --python '${{ steps.python.outputs.python-path }}'
+        --spec '${{ github.action_path }}[cli]'
+        repo-review .
+        --format html
+        --stderr rich
+        >> $GITHUB_STEP_SUMMARY
