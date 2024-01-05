@@ -18,11 +18,14 @@ jobs:
         python3 -m pip install -r requirements.txt
         python3 -m pip install pytest pytest-cov
         ./test.sh
-  test:
 
+  config:
     runs-on: ubuntu-latest
 
     steps:
     - uses: scientific-python/repo-review@v0.10.3
       with:
         plugins: sp-repo-review
+    - name: Validate configs
+      run: |
+        repo-review .
