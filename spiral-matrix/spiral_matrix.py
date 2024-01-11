@@ -7,7 +7,7 @@ def spiral_matrix(size):
     deltas = cycle(((0, 1), (1, 0), (0, -1), (-1, 0)))
     dr, dc = next(deltas)
 
-    for i in range(size ** 2):
+    for i in range(size**2):
         matrix[r][c] = i + 1
         if not 0 <= r + dr < size or not 0 <= c + dc < size or matrix[r + dr][c + dc]:
             dr, dc = next(deltas)

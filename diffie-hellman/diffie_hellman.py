@@ -7,8 +7,8 @@ def private_key(p: int) -> int:
 
 
 def public_key(p: int, g: int, private: int) -> int:
-    return (g ** private) % p
+    return (g**private) % p
 
 
 def secret(p: int, public: int, private: int) -> int:
-    return (public ** private) % p
+    return (public**private) % p

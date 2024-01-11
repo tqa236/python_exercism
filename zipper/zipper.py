@@ -30,7 +30,7 @@ class Zipper(object):
                 Dict[str, Union[int, None, Dict[str, Union[int, None]]]],
                 Dict[str, Union[int, None]],
             ],
-        ]
+        ],
     ) -> Optional["Zipper"]:
         print(tree)
         print(tree["value"])
@@ -58,7 +58,7 @@ class Zipper(object):
         pass
 
     def to_tree(
-        self
+        self,
     ) -> Dict[
         str,
         Union[

@@ -1,14 +1,11 @@
-"""Make a diamond with letters."""
 from string import ascii_uppercase
 
 
 def make_space_pad(length: int) -> str:
-    """Make a space string with a given length."""
     return "".join(" " for _ in range(length))
 
 
 def make_row(letter: str, center_letter: str) -> str:
-    """Make one row a diamond with letters."""
     center_pad_length = 2 * (ord(letter) - 65) - 1
     side_pad_length = ord(center_letter) - ord(letter)
     center = "A"
@@ -19,9 +16,8 @@ def make_row(letter: str, center_letter: str) -> str:
 
 
 def rows(letter: str) -> str:
-    """Make a diamond with letters."""
     upper_part = [
-        make_row(l, letter)
-        for l in ascii_uppercase[: ascii_uppercase.index(letter) + 1]
+        make_row(row, letter)
+        for row in ascii_uppercase[: ascii_uppercase.index(letter) + 1]
     ]
     return upper_part + upper_part[::-1][1:]

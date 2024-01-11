@@ -4,7 +4,7 @@ import sys
 from functools import reduce
 from typing import List
 
-sys.setrecursionlimit(10 ** 6)
+sys.setrecursionlimit(10**6)
 
 BOOK_COST = 1
 

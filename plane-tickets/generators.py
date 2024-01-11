@@ -1,5 +1,4 @@
 """Functions to automate Conda airlines ticketing system."""
-import itertools
 
 
 def generate_seat_letters(number):

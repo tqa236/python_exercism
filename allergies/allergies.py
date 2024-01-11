@@ -31,5 +31,5 @@ class Allergies(object):
         return [
             item
             for index, item in enumerate(self.allergies)
-            if 2 ** index & self.score != 0
+            if 2**index & self.score != 0
         ]
