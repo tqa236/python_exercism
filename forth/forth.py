@@ -21,7 +21,7 @@ def update_stack(stack: List[int], element: str) -> List[int]:
     }
     if element in check_minimum_elements:
         if len(stack) < check_minimum_elements[element]:
-            raise StackUnderflowError("Not enough value ForthDropTest this operator")
+            raise StackUnderflowError("Insufficient number of items in stack")
     if element.isdigit():
         stack.append(int(element))
     elif element == "dup":
@@ -35,7 +35,7 @@ def update_stack(stack: List[int], element: str) -> List[int]:
     elif element in "+-*/":
         stack = stack[:-2] + [OPERATOR_DICT[element](stack[-2], stack[-1])]
     else:
-        raise ValueError("Nonexistent word")
+        raise ValueError("undefined operation")
     return stack
 
 
