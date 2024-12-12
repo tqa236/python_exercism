@@ -32,7 +32,8 @@ def add_me_with_my_friends(queue, index, person_name):
     :param person_name: str - the name to add.
     :return: list - queue updated with new name.
     """
-    return queue[:index] + [person_name] + queue[index:]
+    queue[:] = queue[:index] + [person_name] + queue[index:]
+    return queue
 
 
 def remove_the_mean_person(queue, person_name):
@@ -62,7 +63,7 @@ def remove_the_last_person(queue):
     :param queue: list - names in the queue.
     :return: str - name that has been removed from the end of the queue.
     """
-    return queue[-1]
+    return queue.pop()
 
 
 def sorted_names(queue):
