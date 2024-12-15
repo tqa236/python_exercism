@@ -30,7 +30,10 @@ def decrement_items(inventory, items):
     :return:  dict - updated inventory dictionary with items decremented.
     """
     for key, value in Counter(items).items():
-        inventory[key] = max(inventory.get(key, 0) - value, 0)
+        if key not in inventory:
+            continue
+        inventory[key] = max(inventory[key] - value, 0)
+    # inventory = {k: v for k, v in inventory.items() if v != 0}
 
     return inventory
 
