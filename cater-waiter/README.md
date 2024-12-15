@@ -6,9 +6,10 @@ If you get stuck on the exercise, check out `HINTS.md`, but try and solve it wit
 
 ## Introduction
 
-A [`set`][type-set] is a _mutable_ and _unordered_ collection of [_hashable_][hashable] objects.
-Set members must be distinct -- duplicate items are not allowed.
-They can hold multiple different data types and even nested structures like a `tuple` of `tuples` -- as long as all elements can be _hashed_.
+
+A [set][type-set] is a _mutable_ and _unordered_ collection of [_hashable_][hashable] objects.
+Set members must be distinct — duplicate items are not allowed.
+They can hold multiple different data types and even nested structures like a `tuple` of `tuples` — as long as all elements can be _hashed_.
 Sets also come in an immutable [`frozensets`][type-frozenset] flavor.
 
 Sets are most commonly used to quickly remove duplicates from other data structures or item groupings.
@@ -120,7 +121,7 @@ TypeError: unhashable type: 'set'
 
 Sets have methods that generally mimic [mathematical set operations][mathematical-sets].
 Most (_not all_) of these methods have an [operator][operator] equivalent.
-Methods generally take any `iterable` as an argument, while operators require that both things being compared are `sets` or `frozensets`.
+Methods generally take any `iterable` as an argument, while operators require that both sides of the operation are `sets` or `frozensets`.
 
 
 ### Disjoint Sets
@@ -132,6 +133,27 @@ There is no operator equivalent:
 
 
 ```python
+# Both mammals and additional_animals are lists.
+>>> mammals = ['squirrel','dog','cat','cow', 'tiger', 'elephant']
+>>> additional_animals = ['pangolin', 'panda', 'parrot', 
+                          'lemur', 'tiger', 'pangolin']
+
+# Animals is a dict.
+>>> animals = {'chicken': 'white',
+               'sparrow': 'grey',
+               'eagle': 'brown and white',
+               'albatross': 'grey and white',
+               'crow': 'black',
+               'elephant': 'grey', 
+               'dog': 'rust',
+               'cow': 'black and white',
+               'tiger': 'orange and black',
+               'cat': 'grey',
+               'squirrel': 'black'}
+               
+# Birds is a set.
+>>> birds = {'crow','sparrow','eagle','chicken', 'albatross'}
+
 # Mammals and birds don't share any elements.
 >>> birds.isdisjoint(mammals)
 True
@@ -218,7 +240,7 @@ False
 False
 
 # A set is always a loose superset of itself.
->>> set(animals) <= set(animals)
+>>> set(animals) >= set(animals)
 True
 ```
 
@@ -317,7 +339,7 @@ The operator version of this method is `<set> - <other set 1> - <other set 2> - 
  'Goose Berries', 'Strawberries'}
 
 # Operators require sets.
->>> berries_and_veggies - just_berries
+>>> berries_and_veggies - berries
 {'Artichokes','Asparagus','Broccoli','Kale',
 'Ramps','Rhubarb','Walking Onions','Watercress'}
 ```
@@ -412,7 +434,7 @@ You and your business partners operate a small catering company. You've just agr
 
 ## 1. Clean up Dish Ingredients
 
-The event recipes were added from various sources and their ingredients appear to have duplicate (_or more_) entries -- you don't want to end up purchasing excess items!
+The event recipes were added from various sources and their ingredients appear to have duplicate (_or more_) entries — you don't want to end up purchasing excess items!
  Before the shopping and cooking can commence, each dish's ingredient list needs to be "cleaned".
 
 Implement the `clean_ingredients(<dish_name>, <dish_ingredients>)` function that takes the name of a dish and a `list` of ingredients.
@@ -450,7 +472,7 @@ Implement the `check_drinks(<drink_name>, <drink_ingredients>)` function that ta
 
 The guest list includes diners with different dietary needs, and your staff will need to separate the dishes into Vegan, Vegetarian, Paleo, Keto, and Omnivore.
 
-Implement the `categorize_dish(<dish_name>, <dish_ingredients>)` function that takes a dish name and a `set` of that dish's' ingredients.
+Implement the `categorize_dish(<dish_name>, <dish_ingredients>)` function that takes a dish name and a `set` of that dish's ingredients.
 The function should return a string with the `dish name: <CATEGORY>` (_which meal category the dish belongs to_).
 All dishes will "fit" into one of the categories imported from `sets_categories_data.py` (VEGAN, VEGETARIAN, PALEO, KETO, or OMNIVORE).
 
@@ -533,7 +555,7 @@ appetizers = ['Kingfish Lettuce Cups','Avocado Deviled Eggs','Satay Steak Skewer
 
 ## 7. Find Ingredients Used in Only One Recipe
 
-Within in each category (_Vegan, Vegetarian, Paleo, Keto, Omnivore_), you're going to pull out ingredients that appear in only one dish.
+Within each category (_Vegan, Vegetarian, Paleo, Keto, Omnivore_), you're going to pull out ingredients that appear in only one dish.
 These "singleton" ingredients will be assigned a special shopper to ensure they're not forgotten in the rush to get everything else done.
 
 Implement the `singleton_ingredients(<dishes>, <INTERSECTIONS>)` function that takes a `list` of dishes and a `<CATEGORY>_INTERSECTIONS` constant for the same category.
@@ -546,7 +568,7 @@ from sets_categories_data import example_dishes, EXAMPLE_INTERSECTION
 
 >>> singleton_ingredients(example_dishes, EXAMPLE_INTERSECTION)
 ...
-{'vegetable oil', 'vegetable stock', 'barley malt', 'tofu', 'fresh basil', 'lemon', 'ginger', 'honey', 'spaghetti', 'cornstarch', 'yeast', 'red onion', 'breadcrumbs', 'mixed herbs', 'garlic powder', 'celeriac', 'lemon zest', 'sunflower oil', 'mushrooms', 'silken tofu', 'smoked tofu', 'bell pepper', 'cashews', 'oregano', 'tomatoes', 'parsley', 'red pepper flakes', 'rosemary'}
+{'garlic powder', 'sunflower oil', 'mixed herbs', 'cornstarch', 'celeriac', 'honey', 'mushrooms', 'bell pepper', 'rosemary', 'parsley', 'lemon', 'yeast', 'vegetable oil', 'vegetable stock', 'silken tofu', 'tofu', 'cashews', 'lemon zest', 'smoked tofu', 'spaghetti', 'ginger', 'breadcrumbs', 'tomatoes', 'barley malt', 'red pepper flakes', 'oregano', 'red onion', 'fresh basil'}
 ```
 
 ## Source

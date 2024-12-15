@@ -20,6 +20,7 @@ This first exercise introduces 4 major Python language features:
 3.  Comments, and
 4.  Docstrings.
 
+<br>
 
 ~~~~exercism/note
 
@@ -31,6 +32,7 @@ On the Python track, [variables][variables] are always written in [`snake_case`]
 [snake case]: https://en.wikipedia.org/wiki/Snake_case
 ~~~~
 
+<br>
 
 ## Name Assignment (Variables & Constants)
 
@@ -39,8 +41,8 @@ A name can be reassigned (or re-bound) to different values (different object typ
 
 
 ```python
->>> my_first_variable = 1  # my_first_variable bound to an integer object of value one.
->>> my_first_variable = 2  # my_first_variable re-assigned to integer value 2.
+>>> my_first_variable = 1  #<-- my_first_variable bound to an integer object of value one.
+>>> my_first_variable = 2  #<-- my_first_variable re-assigned to integer value 2.
 
 >>> print(type(my_first_variable))
 <class 'int'>
@@ -48,12 +50,12 @@ A name can be reassigned (or re-bound) to different values (different object typ
 >>> print(my_first_variable)
 2
 
->>> my_first_variable = "Now, I'm a string." # You may re-bind a name to a different object type and value.
+>>> my_first_variable = "Now, I'm a string." #<-- You may re-bind a name to a different object type and value.
 >>> print(type(my_first_variable))
 <class 'str'>
 
 >>> print(my_first_variable)
-"Now, I'm a string."  # Strings can be declared using single or double quote marks.
+"Now, I'm a string."  #<-- Strings can be declared using single or double quote marks.
 ```
 
 
@@ -93,23 +95,56 @@ def add_two_numbers(number_one, number_two):
 IndentationError: unindent does not match any outer indentation level
 ```
 
-Functions explicitly return a value or object via the [`return`][return] keyword.
-Functions that do not have an _explicit_ `return` expression will _implicitly_ return [`None`][none].
+
+Functions _explicitly_ return a value or object via the [`return`][return] keyword:
+
 
 ```python
-# Function definition on first line.
-def add_two_numbers(number_one, number_two):
-  result = number_one + number_two
-  return result  # Returns the sum of the numbers.
+# Function definition on first line, explicit return used on final line.
+>>> def add_two_numbers(number_one, number_two):
+        return number_one + number_two   
 
+
+# Calling the function in the Python terminal returns the sum of the numbers.
 >>> add_two_numbers(3, 4)
 7
 
-# This function will return None.
+# Assigning the function call to a variable and printing it 
+# will also return the value.
+>>> sum_with_return = add_two_numbers(5, 6)
+>>> print(sum_with_return)
+11
+```
+
+
+Functions that do not have an _explicit_ `return` expression will _implicitly_ return the [`None`][none] object.
+This means that if you do not use `return` in a function, Python will return the `None` object for you.
+The details of `None` will be covered in a later exercise.
+For the purposes of this exercise and explanation, `None` is a placeholder that represents nothing, or null:
+
+
+```python
+# This function does not have an explicit return.
 def add_two_numbers(number_one, number_two):
   result = number_one + number_two
 
+
+# Calling the function in the Python terminal appears 
+# to not return anything at all.
+>>> add_two_numbers(5, 7)
+>>>
+
+
+# Using print() with the function call shows that 
+# the function is actually returning the **None** object.
 >>> print(add_two_numbers(5, 7))
+None
+
+
+# Assigning the function call to a variable and printing 
+# the variable will also show None.
+>>> sum_without_return = add_two_numbers(5, 6)
+>>> print(sum_without_return)
 None
 ```
 
@@ -128,7 +163,7 @@ Dot (`.`) notation is used for calling functions defined inside a class or modul
 27
 
 
-# A mis-match between the number of parameters and the number of arguments will raise an error.
+# A mismatch between the number of parameters and the number of arguments will raise an error.
 >>> number_to_the_power_of(4,)
 ...
 Traceback (most recent call last):
@@ -234,52 +269,70 @@ You're going to write some code to help you cook a gorgeous lasagna from your fa
 
 You have five tasks, all related to cooking your recipe.
 
-## 1. Define expected bake time in minutes
+<br>
 
-Define an `EXPECTED_BAKE_TIME` constant that returns how many minutes the lasagna should bake in the oven.
+~~~~exercism/note
+We have started the first function definition for you in the stub file, but you will need to write the remaining function definitions yourself.
+You will also need to define any constants yourself.
+Read the #TODO comment lines in the stub file carefully.
+Once you are done with a task, remove the TODO comment.
+~~~~
+
+<br>
+
+## 1. Define expected bake time in minutes as a constant
+
+Define the `EXPECTED_BAKE_TIME` [constant][constants] that represents how many minutes the lasagna should bake in the oven.
 According to your cookbook, the Lasagna should be in the oven for 40 minutes:
 
 ```python
->>> import lasagna
->>> lasagna.EXPECTED_BAKE_TIME
+>>> print(EXPECTED_BAKE_TIME)
 40
 ```
 
 ## 2. Calculate remaining bake time in minutes
 
-Implement the `bake_time_remaining()` function that takes the actual minutes the lasagna has been in the oven as an argument and returns how many minutes the lasagna still needs to bake based on the `EXPECTED_BAKE_TIME`.
+Complete the `bake_time_remaining()` function that takes the actual minutes the lasagna has been in the oven as an argument and returns how many minutes the lasagna still needs to bake based on the `EXPECTED_BAKE_TIME` constant.
 
 ```python
->>> from lasagna import bake_time_remaining
 >>> bake_time_remaining(30)
 10
 ```
 
+
 ## 3. Calculate preparation time in minutes
 
-Implement the `preparation_time_in_minutes(number_of_layers)` function that takes the number of layers you want to add to the lasagna as an argument and returns how many minutes you would spend making them.
+Define the `preparation_time_in_minutes()` [function][functions] that takes the `number_of_layers` you want to add to the lasagna as an argument and returns how many minutes you would spend making them.
 Assume each layer takes 2 minutes to prepare.
 
 ```python
->>> from lasagna import preparation_time_in_minutes
+>>> def preparation_time_in_minutes(number_of_layers):
+        ...
+        ...
+        
 >>> preparation_time_in_minutes(2)
 4
 ```
 
+
 ## 4. Calculate total elapsed cooking time (prep + bake) in minutes
 
-Implement the `elapsed_time_in_minutes(number_of_layers, elapsed_bake_time)` function that has two parameters: `number_of_layers` (_the number of layers added to the lasagna_) and `elapsed_bake_time` (_the number of minutes the lasagna has been baking in the oven_).
-This function should return the total number of minutes you've been cooking, or the sum of your preparation time and the time the lasagna has already spent baking in the oven.
+Define the `elapsed_time_in_minutes()` function that takes two parameters as arguments: `number_of_layers` (_the number of layers added to the lasagna_) and `elapsed_bake_time` (_the number of minutes the lasagna has been baking in the oven_).
+This function should return the total number of minutes you have been cooking, or the sum of your preparation time and the time the lasagna has already spent baking in the oven.
 
 ```python
->>> from lasagna import elapsed_time_in_minutes
+>>> def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
+        ...
+        ...
+        
 >>> elapsed_time_in_minutes(3, 20)
 26
 ```
 
+
 ## 5. Update the recipe with notes
 
-Go back through the recipe, adding "notes" in the form of function docstrings.
+Go back through the recipe, adding "notes" in the form of [function docstrings][function-docstrings].
 
 ```python
 def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
@@ -294,6 +347,10 @@ def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
     lasagna.
     """
 ```
+
+[constants]: https://stackoverflow.com/a/2682752
+[functions]: https://docs.python.org/3/tutorial/controlflow.html#defining-functions
+[function-docstrings]: https://docs.python.org/3/tutorial/controlflow.html#documentation-strings
 
 ## Source
 

@@ -170,5 +170,4 @@ class LedgerTest(unittest.TestCase):
                 "01/01/2015 | Get present               |       $10.00 ",
             ]
         )
-        print(format_entries(currency, locale, entries))
         self.assertEqual(format_entries(currency, locale, entries), expected)
