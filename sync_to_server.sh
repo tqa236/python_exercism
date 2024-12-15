@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 for path in */; do
     [ -d "${path}" ] || continue # if not a directory, skip
+    [[ "$(basename "${path}")" == .* ]] && continue
     dirname="$(basename "${path}")"
     cd "$dirname" || exit
     exercise_name=${path::-1}
