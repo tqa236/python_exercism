@@ -3,4 +3,6 @@ repos:
     rev: v0.1.11
     hooks:
       - id: ruff
+        args: ["--exclude", "_test*.py"]
       - id: ruff-format
+        args: ["--exclude", "_test*.py"]
