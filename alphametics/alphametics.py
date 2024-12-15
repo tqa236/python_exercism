@@ -1,4 +1,5 @@
 """Solve alphametics puzzles."""
+
 import string
 from itertools import permutations
 

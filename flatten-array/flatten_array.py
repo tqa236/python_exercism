@@ -1,4 +1,5 @@
 """Flatten nested array."""
+
 from collections.abc import Iterable
 from typing import Any, List, Union
 

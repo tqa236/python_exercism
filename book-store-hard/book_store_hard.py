@@ -1,4 +1,5 @@
 """Find the optimal price given a list of books."""
+
 import math
 import sys
 from functools import reduce

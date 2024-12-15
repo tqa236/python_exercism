@@ -1,4 +1,5 @@
 """A lazy custom set implementation."""
+
 from typing import List, Optional
 
 

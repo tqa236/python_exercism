@@ -1,6 +1,5 @@
 """Convert from RND sequences into proteins."""
 
-
 from typing import List
 
 

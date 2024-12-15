@@ -1,4 +1,5 @@
 """Return a unique robot name."""
+
 from secrets import choice
 from string import ascii_uppercase, digits
 

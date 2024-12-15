@@ -1,4 +1,5 @@
 """A simple Clock class."""
+
 HOUR_PER_DAY = 24
 MINUTE_PER_HOUR = 60
 

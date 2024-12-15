@@ -1,6 +1,5 @@
 """Find all pythagorean triplets of a given sum."""
 
-
 from typing import Set, Tuple
 
 

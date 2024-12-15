@@ -1,4 +1,5 @@
 """Encode and decode text with atbash cipher."""
+
 import re
 import string
 from typing import Optional

@@ -1,6 +1,5 @@
 """English - Pig Latin translator."""
 
-
 VOWELS = "aeiou"
 
 

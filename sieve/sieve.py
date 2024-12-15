@@ -1,6 +1,5 @@
 """Generate a list of primes based on the Sieve algorithm."""
 
-
 from typing import List
 
 

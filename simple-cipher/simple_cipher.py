@@ -1,4 +1,5 @@
 """Implement a simple Ceasar cipher."""
+
 import secrets
 from string import ascii_lowercase
 from typing import Optional

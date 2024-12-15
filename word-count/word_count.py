@@ -1,4 +1,5 @@
 """Count the number of words in a phrase."""
+
 import re
 from collections import Counter
 

@@ -1,4 +1,5 @@
 """A simple rotational cipher."""
+
 from string import ascii_lowercase, ascii_uppercase
 from typing import Optional
 

@@ -1,6 +1,5 @@
 """Find the kind of a triangle."""
 
-
 from typing import List, Union
 
 

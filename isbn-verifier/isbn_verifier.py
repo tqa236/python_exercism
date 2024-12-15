@@ -1,4 +1,5 @@
 """Check a valid ISBN number."""
+
 import re
 
 

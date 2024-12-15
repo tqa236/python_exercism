@@ -1,4 +1,5 @@
 """Find the nth prime."""
+
 from math import log
 
 

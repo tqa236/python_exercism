@@ -1,4 +1,5 @@
 """Factorize a number."""
+
 import math
 from typing import List, Union
 

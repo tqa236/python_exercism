@@ -1,4 +1,4 @@
-""" Meltdown Mitigation exercise """
+"""Meltdown Mitigation exercise"""
 
 
 def is_criticality_balanced(temperature, neutrons_emitted):

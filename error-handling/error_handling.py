@@ -1,6 +1,5 @@
 """Practice handling various kind of errors."""
 
-
 from typing import Optional, Tuple, Union
 
 

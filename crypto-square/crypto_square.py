@@ -1,4 +1,5 @@
 """A simple crypto square encoder."""
+
 import math
 import re
 

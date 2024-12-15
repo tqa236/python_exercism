@@ -1,6 +1,5 @@
 """Implement a simple matrix object."""
 
-
 from typing import List
 
 

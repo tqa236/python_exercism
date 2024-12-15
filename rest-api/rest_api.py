@@ -1,4 +1,5 @@
 """Create a simple REST API."""
+
 import json
 from typing import Dict, List, Optional, Union
 

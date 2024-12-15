@@ -1,6 +1,5 @@
 """Transform legacy to new data format."""
 
-
 from typing import Dict, List
 
 

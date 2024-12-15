@@ -1,6 +1,5 @@
 """Recite a beer song."""
 
-
 from typing import List
 
 

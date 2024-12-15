@@ -1,6 +1,5 @@
 """Recite the twelve days song."""
 
-
 from typing import List
 
 

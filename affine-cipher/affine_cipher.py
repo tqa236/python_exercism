@@ -1,4 +1,5 @@
 """Affine Cipher."""
+
 from math import gcd
 from string import ascii_lowercase
 

@@ -1,4 +1,5 @@
 """Check if a string has correct bracket order or not."""
+
 import re
 
 

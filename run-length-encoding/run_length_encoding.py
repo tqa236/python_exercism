@@ -1,4 +1,5 @@
 """Encoder and decoder for run length encoding."""
+
 from itertools import groupby
 
 

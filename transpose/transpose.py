@@ -1,4 +1,5 @@
 """Transpose a matrix."""
+
 import itertools
 
 

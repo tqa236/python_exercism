@@ -1,6 +1,5 @@
 """Implement a simple class to detect allergens."""
 
-
 from typing import List
 
 

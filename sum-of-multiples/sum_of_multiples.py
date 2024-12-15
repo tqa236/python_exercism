@@ -1,6 +1,5 @@
 """Find the sum of all the unique multiples of some numbers up to a limit."""
 
-
 from typing import List
 
 

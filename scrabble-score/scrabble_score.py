@@ -1,6 +1,5 @@
 """Calculate the scrabble score of a word."""
 
-
 from typing import Dict
 
 

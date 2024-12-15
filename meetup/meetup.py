@@ -1,4 +1,5 @@
 """Return the meeting day given some conditions."""
+
 import datetime
 from calendar import monthrange
 

@@ -1,4 +1,5 @@
 """Generate public and private keys."""
+
 import secrets
 
 

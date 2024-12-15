@@ -1,4 +1,5 @@
 """Classify numbers into the perfect number types."""
+
 from functools import reduce
 
 

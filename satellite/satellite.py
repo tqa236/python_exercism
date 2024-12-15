@@ -1,4 +1,5 @@
 """Construct a tree from the preoder and inorder traversals."""
+
 from typing import List
 
 
