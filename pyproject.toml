@@ -113,7 +113,7 @@ requires = ["setuptools>=43.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.repo-review]
-ignore = ["PY004", "PY007", "PP003", "PP301", "GH102", "GH103", "GH212", "PC", "MY", "RF", "RTD"]
+ignore = ["PY004", "PY005", "PY007", "PP003", "PP301", "GH102", "GH103", "GH212", "PC", "MY", "RF", "RTD"]
 
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.
