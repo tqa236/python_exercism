@@ -24,12 +24,16 @@ classifiers = [
 dependencies = []
 
 [dependency-groups]
-dev = [{include-group = "test"}]
+dev = [{include-group = "test"}, {include-group = "lint"}]
 test = ["pytest", "hypothesis"]
+lint = ["sp-repo-review[cli]"]
 
 [build-system]
 requires = ["setuptools>=75.0.0"]
 build-backend = "setuptools.build_meta"
+
+[tool.uv]
+package = false
 
 [tool.setuptools]
 
