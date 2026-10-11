@@ -1,4 +1,5 @@
 """Build a class to parse SGF format."""
+
 from typing import Dict, List, Optional, Tuple
 
 
@@ -104,7 +105,11 @@ def _parse_node(text: str, index: int) -> Tuple[SgfTree, int]:
             index += 1
             while index < len(text) and text[index].isalpha() and text[index].isupper():
                 index += 1
-            if index < len(text) and text[index].isalpha() and not text[index].isupper():
+            if (
+                index < len(text)
+                and text[index].isalpha()
+                and not text[index].isupper()
+            ):
                 raise ValueError("property must be in uppercase")
             key = text[key_start:index]
 
