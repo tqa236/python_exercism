@@ -1,8 +1,2 @@
-argutil
-flake8
-GitPython
 pytest
-pycodestyle
-pydocstyle
-pre-commit
 hypothesis
