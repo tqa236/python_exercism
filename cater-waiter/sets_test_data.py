@@ -1,13 +1,12 @@
 # pylint: disable-all
 # flake8: noqa,
 from sets_categories_data import (
-    VEGAN_INTERSECTIONS,
-    VEGETARIAN_INTERSECTIONS,
-    PALEO_INTERSECTIONS,
     KETO_INTERSECTIONS,
     OMNIVORE_INTERSECTIONS,
+    PALEO_INTERSECTIONS,
+    VEGAN_INTERSECTIONS,
+    VEGETARIAN_INTERSECTIONS,
 )
-
 
 ###################################
 # Data for test_clean_ingredients #

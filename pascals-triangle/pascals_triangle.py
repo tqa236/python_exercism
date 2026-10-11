@@ -1,5 +1,5 @@
-from functools import cache
 from copy import deepcopy
+from functools import cache
 
 
 @cache

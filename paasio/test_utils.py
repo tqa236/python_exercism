@@ -3,7 +3,6 @@ import inspect
 import io
 import os
 
-
 ZEN = b"""Beautiful is better than ugly.
 Explicit is better than implicit.
 Simple is better than complex.

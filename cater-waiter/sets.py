@@ -1,11 +1,11 @@
 from sets_categories_data import (
+    ALCOHOLS,
+    KETO,
+    OMNIVORE,
+    PALEO,
+    SPECIAL_INGREDIENTS,
     VEGAN,
     VEGETARIAN,
-    KETO,
-    PALEO,
-    OMNIVORE,
-    ALCOHOLS,
-    SPECIAL_INGREDIENTS,
 )
 
 
