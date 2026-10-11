@@ -36,7 +36,8 @@ def generate_seats(number):
     numbers = [i // 4 + 1 for i in range(number + 5) if i // 4 + 1 != 13][:number]
     seat_letters = generate_seat_letters(number)
     return (
-        str(number) + seat_letter for number, seat_letter in zip(numbers, seat_letters, strict=False)
+        str(number) + seat_letter
+        for number, seat_letter in zip(numbers, seat_letters, strict=False)
     )
 
 

@@ -11,9 +11,7 @@ def parse_number(number, value_dict):
 
 def solve(puzzle: str) -> None:
     """Solve alphametics puzzles."""
-    letters = list(
-        {letter for letter in puzzle if letter in string.ascii_uppercase}
-    )
+    letters = list({letter for letter in puzzle if letter in string.ascii_uppercase})
     left_side, right_side = puzzle.replace(" ", "").split("==")
     left_side = left_side.split("+")
     non_zeros = {letter[0] for letter in left_side}

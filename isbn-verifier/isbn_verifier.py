@@ -17,7 +17,8 @@ def is_valid(isbn: str) -> bool:
     if isbn[-1] == "X":
         isbn_number.append(10)
     return (
-        sum([a * b for a, b in zip(isbn_number, range(10, 0, -1), strict=False)]) % 11 == 0
+        sum([a * b for a, b in zip(isbn_number, range(10, 0, -1), strict=False)]) % 11
+        == 0
         if len(isbn_number) == 10
         else False
     )

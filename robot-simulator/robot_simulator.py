@@ -26,7 +26,10 @@ class Robot(object):
     def advance(self) -> None:
         """Advance."""
         self.coordinates = tuple(
-            [item1 + item2 for item1, item2 in zip(self.coordinates, self.direction, strict=False)]
+            [
+                item1 + item2
+                for item1, item2 in zip(self.coordinates, self.direction, strict=False)
+            ]
         )
 
     def move(self, instructions: str) -> None:
