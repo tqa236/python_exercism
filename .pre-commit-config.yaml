@@ -6,3 +6,7 @@ repos:
         args: ["--exclude", "*_test.py,test_utils.py"]
       - id: ruff-format
         args: ["--exclude", "*_test.py,test_utils.py"]
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.26.1
+    hooks:
+      - id: zizmor
