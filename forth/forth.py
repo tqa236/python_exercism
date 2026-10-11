@@ -1,5 +1,5 @@
 from operator import add, floordiv, mul, sub
-from typing import List
+from typing import Dict, List
 
 OPERATOR_DICT = {"+": add, "-": sub, "/": floordiv, "*": mul}
 
@@ -19,12 +19,17 @@ def update_stack(stack: List[int], element: str) -> List[int]:
         "*": 2,
         "/": 2,
     }
-    if element in check_minimum_elements:
-        if len(stack) < check_minimum_elements[element]:
-            raise StackUnderflowError("Insufficient number of items in stack")
-    if element.isdigit():
+    if (
+        element in check_minimum_elements
+        and len(stack) < check_minimum_elements[element]
+    ):
+        raise StackUnderflowError("Insufficient number of items in stack")
+
+    if element.lstrip("-").isdigit() and element != "-":
         stack.append(int(element))
-    elif element == "dup":
+        return stack
+
+    if element == "dup":
         stack.append(stack[-1])
     elif element == "swap":
         stack[-1], stack[-2] = stack[-2], stack[-1]
@@ -33,30 +38,59 @@ def update_stack(stack: List[int], element: str) -> List[int]:
     elif element == "over":
         stack.append(stack[-2])
     elif element in "+-*/":
+        if element == "/" and stack[-1] == 0:
+            raise ZeroDivisionError("divide by zero")
         stack = stack[:-2] + [OPERATOR_DICT[element](stack[-2], stack[-1])]
     else:
         raise ValueError("undefined operation")
     return stack
 
 
-def evaluate(input_data: List[str]) -> None:
-    commands = [command.lower().split() for command in input_data]
-    stack = []
-    user_defined_words = {}
-    for command in commands[:-1]:
-        if command[1].isdigit():
-            raise ValueError("Cannot redefine numbers")
-        sub_command = []
-        for element in command[2:-1]:
-            if element in user_defined_words:
-                sub_command = sub_command + user_defined_words[element]
-            else:
-                sub_command.append(element)
-        user_defined_words[command[1]] = sub_command
-    for element in commands[-1]:
-        if element in user_defined_words:
-            for sub_element in user_defined_words[element]:
-                stack = update_stack(stack, sub_element)
-        else:
-            stack = update_stack(stack, element)
+def _is_int_token(token: str) -> bool:
+    return token.lstrip("-").isdigit() and token != "-"
+
+
+def _execute_token(
+    stack: List[int], token: str, words: Dict[str, List[str]]
+) -> List[int]:
+    if token in words:
+        for subtoken in words[token]:
+            stack = _execute_token(stack, subtoken, words)
+        return stack
+    if _is_int_token(token):
+        stack.append(int(token))
+        return stack
+    if token in {"dup", "swap", "drop", "over", "+", "-", "*", "/"}:
+        return update_stack(stack, token)
+    raise ValueError("undefined operation")
+
+
+def evaluate(input_data: List[str]) -> List[int]:
+    stack: List[int] = []
+    words: Dict[str, List[str]] = {}
+
+    for command in input_data:
+        tokens = command.lower().split()
+        if not tokens:
+            continue
+        if tokens[0] == ":":
+            if len(tokens) < 4 or tokens[-1] != ";":
+                raise ValueError("illegal operation")
+            name = tokens[1]
+            if _is_int_token(name):
+                raise ValueError("illegal operation")
+            body = []
+            previous_definition = words.get(name, [])
+            for token in tokens[2:-1]:
+                if token in words and token != name:
+                    body.extend(words[token])
+                elif token == name and previous_definition:
+                    body.extend(previous_definition)
+                else:
+                    body.append(token)
+            words[name] = body
+            continue
+
+        for token in tokens:
+            stack = _execute_token(stack, token, words)
     return stack

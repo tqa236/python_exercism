@@ -1,4 +1,3 @@
-import string
 from typing import List
 
 ILIADFILENAME = "iliad.txt"
@@ -38,10 +37,52 @@ FILES = {
 }
 
 
-def grep(pattern: str, flags: str, files: List[str]) -> None:
-    content = [line for file in files for line in FILES[file].split("\n")]
-    flags = [flag for flag in flags if flag in string.ascii_lowercase]
-    if "i" in flags:
-        pattern = pattern.lower()
-        content = [line.lower() for line in content]
-    return "\n".join([line for line in content if pattern in line]) + "\n"
+def grep(pattern: str, flags: str, files: List[str]) -> str:
+    flag_set = set(flags.split()) if flags else set()
+    ignore_case = "-i" in flag_set
+    whole_line = "-x" in flag_set
+    invert = "-v" in flag_set
+    line_numbers = "-n" in flag_set
+    file_names_only = "-l" in flag_set
+
+    pattern_text = pattern.lower() if ignore_case else pattern
+    results = []
+
+    for filename in files:
+        with open(filename, encoding="utf-8") as handle:
+            lines = handle.read().splitlines()
+
+        matches = []
+        for number, line in enumerate(lines, start=1):
+            text = line.lower() if ignore_case else line
+            line_pattern = pattern_text
+            if whole_line:
+                matched = text == line_pattern
+            else:
+                matched = line_pattern in text
+            if invert:
+                matched = not matched
+
+            if matched:
+                if file_names_only:
+                    matches.append(filename)
+                    break
+                rendered = line
+                if line_numbers and len(files) > 1:
+                    rendered = f"{filename}:{number}:{line}"
+                elif line_numbers:
+                    rendered = f"{number}:{line}"
+                elif len(files) > 1:
+                    rendered = f"{filename}:{line}"
+                else:
+                    rendered = line
+                matches.append(rendered)
+
+        if file_names_only and matches:
+            results.extend(matches)
+        elif not file_names_only:
+            results.extend(matches)
+
+    if not results:
+        return ""
+    return "\n".join(results) + "\n"

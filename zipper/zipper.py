@@ -1,77 +1,72 @@
-from typing import Dict, Optional, Union
+from typing import Any, Dict, Optional
 
 
 class Zipper(object):
     def __init__(
         self,
         value: int,
-        left: Optional[Dict[str, Union[int, None, Dict[str, Union[int, None]]]]],
-        right: Optional[Dict[str, Union[int, None]]],
+        left: Optional["Zipper"] = None,
+        right: Optional["Zipper"] = None,
+        parent: Optional["Zipper"] = None,
     ) -> None:
         self._value = value
-        if left is None:
-            self._left = left
-        else:
-            print("left", left)
-            self._left = Zipper(left["value"], left["left"], left["right"])
-        if right is None:
-            self._right = right
-        else:
-            print("right", right)
-            self._right = Zipper(right["value"], right["left"], right["right"])
-        print("tree", self.to_tree())
+        self._left = left
+        self._right = right
+        self._parent = parent
+
+        if self._left is not None:
+            self._left._parent = self
+        if self._right is not None:
+            self._right._parent = self
 
     @staticmethod
     def from_tree(
-        tree: Dict[
-            str,
-            Union[
-                int,
-                Dict[str, Union[int, None, Dict[str, Union[int, None]]]],
-                Dict[str, Union[int, None]],
-            ],
-        ],
+        tree: Optional[Dict[str, Any]], parent: Optional["Zipper"] = None
     ) -> Optional["Zipper"]:
-        print(tree)
-        print(tree["value"])
-        return Zipper(tree["value"], tree["left"], tree["right"])
+        if tree is None:
+            return None
+
+        zipper = Zipper(tree["value"], parent=parent)
+        zipper._left = Zipper.from_tree(tree.get("left"), parent=zipper)
+        zipper._right = Zipper.from_tree(tree.get("right"), parent=zipper)
+        return zipper
 
     def value(self) -> int:
         return self._value
 
-    def set_value(self):
-        pass
+    def set_value(self, value: int) -> "Zipper":
+        self._value = value
+        return self
 
     def left(self) -> Optional["Zipper"]:
         return self._left
 
-    def set_left(self):
-        pass
+    def set_left(self, tree: Optional[Dict[str, Any]]) -> "Zipper":
+        self._left = Zipper.from_tree(tree, parent=self)
+        return self
 
-    def right(self) -> "Zipper":
+    def right(self) -> Optional["Zipper"]:
         return self._right
 
-    def set_right(self):
-        pass
+    def set_right(self, tree: Optional[Dict[str, Any]]) -> "Zipper":
+        self._right = Zipper.from_tree(tree, parent=self)
+        return self
 
-    def up(self):
-        pass
+    def up(self) -> Optional["Zipper"]:
+        return self._parent
 
-    def to_tree(
-        self,
-    ) -> Dict[
-        str,
-        Union[
-            int,
-            Dict[str, Union[int, None, Dict[str, Union[int, None]]]],
-            Dict[str, Union[int, None]],
-            None,
-        ],
-    ]:
-        left = None
-        right = None
-        if self._left is not None:
-            left = self._left.to_tree()
-        if self._right is not None:
-            right = self._right.to_tree()
-        return {"value": self._value, "left": left, "right": right}
+    def to_tree(self) -> Dict[str, Any]:
+        root = self
+        while root._parent is not None:
+            root = root._parent
+
+        def build(node: Optional["Zipper"]) -> Optional[Dict[str, Any]]:
+            if node is None:
+                return None
+            return {
+                "value": node._value,
+                "left": build(node._left),
+                "right": build(node._right),
+            }
+
+        return build(root)
