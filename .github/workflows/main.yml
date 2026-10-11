@@ -17,7 +17,7 @@ jobs:
         python-version: '3.14'
     - name: Run tests
       run: |
-        python3 -m pip install pytest pytest-cov hypothesis
+        python3 -m pip install pytest hypothesis
         ./test.sh
 
   repo-review:
