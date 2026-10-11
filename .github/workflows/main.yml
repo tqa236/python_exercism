@@ -2,32 +2,34 @@ name: CI
 
 on: [push]
 
+permissions:
+  contents: read
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4.2.2
+      with:
+        persist-credentials: false
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.14'
     - name: Run tests
       run: |
-        sudo apt-get install python3-setuptools
-        python3 -m pip install -r requirements.txt
-        python3 -m pip install pytest pytest-cov
+        python3 -m pip install pytest pytest-cov hypothesis
         ./test.sh
 
   repo-review:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
+      with:
+        persist-credentials: false
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.14'
     - name: Check config
       run: |
-        sudo apt-get install python3-setuptools
         python3 -m pip install "sp-repo-review[cli]"
         repo-review .
