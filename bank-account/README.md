@@ -46,16 +46,16 @@ To raise a `ValueError` with a message, write the message as an argument to the 
 
 ```python
 # account is not open
-raise ValueError('account not open')
+raise ValueError("account not open")
 
 # account is already open
-raise ValueError('account already open')
+raise ValueError("account already open")
 
 # incorrect withdrawal/deposit amount
-raise ValueError('amount must be greater than 0')
+raise ValueError("amount must be greater than 0")
 
 # withdrawal is too big
-raise ValueError('amount must be less than balance')
+raise ValueError("amount must be less than balance")
 ```
 
 ## Source

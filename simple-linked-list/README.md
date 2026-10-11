@@ -105,8 +105,10 @@ class EmptyListException(Exception):
     message: explanation of the error.
 
     """
+
     def __init__(self, message):
         self.message = message
+
 
 # raising an EmptyListException
 raise EmptyListException("The list is empty.")

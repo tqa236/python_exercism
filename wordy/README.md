@@ -89,17 +89,17 @@ To _handle_ a raised error within a particular code block, one can use a [try-ex
 
 ```python
 while len(equation) > 1:
-        try: 
-           # The questionable/error-prone code goes here,in an indented block
-           # It can contain statements, loops, if-else blocks, or other executable code. 
-           x_value, operation, y_value, *rest = equation
-           ...
-           ...
+    try:
+        # The questionable/error-prone code goes here,in an indented block
+        # It can contain statements, loops, if-else blocks, or other executable code.
+        x_value, operation, y_value, *rest = equation
+        ...
+        ...
 
-        except:
-            # Code for what to do when an error gets thrown in the code above.
-            # This could be one error, or more complicated logging, error checking and messaging.
-            raise ValueError("syntax error")
+    except:
+        # Code for what to do when an error gets thrown in the code above.
+        # This could be one error, or more complicated logging, error checking and messaging.
+        raise ValueError("syntax error")
 ```
 
 [built-in-errors]: https://docs.python.org/3.11/library/exceptions.html#built-in-exceptions

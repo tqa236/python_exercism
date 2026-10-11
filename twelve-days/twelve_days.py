@@ -22,7 +22,7 @@ def recite_one_verse(verse: int) -> List[str]:
     ]
     day = day_presents[verse - 1][0]
     presents = "".join([day_presents[i - 1][1] for i in range(verse, 0, -1)])
-    return [f"On the {day} day of Christmas my true love gave to me: " f"{presents}"]
+    return [f"On the {day} day of Christmas my true love gave to me: {presents}"]
 
 
 def recite(start_verse: int, end_verse: int) -> List[str]:

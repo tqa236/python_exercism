@@ -28,11 +28,11 @@ def recite_one_verse(verse: int):
             lyrics.append(f"I know an old lady who swallowed a {ANIMAL_ACTIONS[i][0]}.")
         elif i == 1:
             lyrics.append(
-                f"She swallowed the {ANIMAL_ACTIONS[i+1][0]} to catch the {ANIMAL_ACTIONS[i][0]} that wriggled and jiggled and tickled inside her."
+                f"She swallowed the {ANIMAL_ACTIONS[i + 1][0]} to catch the {ANIMAL_ACTIONS[i][0]} that wriggled and jiggled and tickled inside her."
             )
         else:
             lyrics.append(
-                f"She swallowed the {ANIMAL_ACTIONS[i+1][0]} to catch the {ANIMAL_ACTIONS[i][0]}."
+                f"She swallowed the {ANIMAL_ACTIONS[i + 1][0]} to catch the {ANIMAL_ACTIONS[i][0]}."
             )
         if i == verse - 1 or i == 0:
             lyrics.append(f"{ANIMAL_ACTIONS[i][1]}")

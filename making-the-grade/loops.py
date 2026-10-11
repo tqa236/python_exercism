@@ -51,7 +51,7 @@ def student_ranking(student_scores, student_names):
     """
 
     return [
-        f"{i+1}. {student_names[i]}: {student_scores[i]}"
+        f"{i + 1}. {student_names[i]}: {student_scores[i]}"
         for i in range(len(student_scores))
     ]
 

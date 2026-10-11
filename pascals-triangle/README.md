@@ -73,12 +73,13 @@ We could write a recursive function to find the answer to 5! (i.e. 5 * 4 * 3 * 2
 
 ````python
 def factorial(number):
-  if number <= 1:  # base case
-    return 1
+    if number <= 1:  # base case
+        return 1
 
-  return number * factorial(number - 1) # recursive case
+    return number * factorial(number - 1)  # recursive case
 
-print(factorial(5)) # returns 120
+
+print(factorial(5))  # returns 120
 ````
 
 Finally, it should be noted that Python limits the number of times recursive calls can be made (1000 by default) and does not optimize for [tail recursion][tail-recursion].

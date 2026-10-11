@@ -21,7 +21,7 @@ To raise a `ValueError` with a message, write the message as an argument to the 
 
 ```python
 # when the prime function receives malformed input
-raise ValueError('there is no zeroth prime')
+raise ValueError("there is no zeroth prime")
 ```
 
 ## Source

@@ -151,9 +151,9 @@ for index, word in enumerate(word_list):
     if word.startswith("b"):
         print(f"{word.title()} (at index {index}) starts with a b.")
 
-'Barrel (at index 2) starts with a b.'
-'Bongo (at index 3) starts with a b.'
-'Bear (at index 6) starts with a b.'
+"Barrel (at index 2) starts with a b."
+"Bongo (at index 3) starts with a b."
+"Bear (at index 6) starts with a b."
 ```
 
 

@@ -252,7 +252,7 @@ class MyClass:
     def change_location(self, amount):
         self.location_x += amount
         self.location_y += amount
-        return  self.location_x, self.location_y
+        return self.location_x, self.location_y
 
     # Alter class variable number for all instances
     def increment_number(self):
@@ -261,8 +261,8 @@ class MyClass:
 
     # This will compile and run without error, but has no current functionality.
     def pending_functionality(self):
-       # Stubbing or placholding the body of this method.
-       pass
+        # Stubbing or placholding the body of this method.
+        pass
 ```
 
 [calling]: https://www.pythonmorsels.com/topics/calling-a-function

@@ -70,7 +70,6 @@ To raise a `ValueError` with a message, write the message as an argument to the 
 # When the value passed to `delete()` is not found.
 if not found:
     raise ValueError("Value not found")
-
 ```
 
 To raise an `IndexError` with a message, write the message as an argument to the `exception` type:
@@ -79,7 +78,6 @@ To raise an `IndexError` with a message, write the message as an argument to the
 # When pop() is called and there are no nodes left in the linked list
 if self.length == 0:
     raise IndexError("List is empty")
-
 ```
 
 

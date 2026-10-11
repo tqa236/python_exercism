@@ -198,7 +198,6 @@ Docstrings are declared using triple double quotes (""") indented at the same le
 
 
 ```python
-
 # An example from PEP257 of a multi-line docstring.
 def complex(real=0.0, imag=0.0):
     """Form a complex number.
@@ -210,7 +209,6 @@ def complex(real=0.0, imag=0.0):
 
     if imag == 0.0 and real == 0.0:
         return complex_zero
-
 ```
 
 

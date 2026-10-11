@@ -45,7 +45,7 @@ To raise a `ValueError` with a message, write the message as an argument to the 
 
 ```python
 # when the coordinates for the piece are invalid
-raise ValueError('Invalid coordinate')
+raise ValueError("Invalid coordinate")
 ```
 
 ## Source

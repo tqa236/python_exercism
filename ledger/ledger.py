@@ -60,9 +60,9 @@ def format_entries(currency: str, locale: str, entries: list[LedgerEntry]) -> st
         line.append(field.ljust(25))
         change_str = currency_dict[currency]
         if locale == "en_US":
-            change_str = change_str + f"{abs(entry.change)/100:,.2f}"
+            change_str = change_str + f"{abs(entry.change) / 100:,.2f}"
         elif locale == "nl_NL":
-            change_str = change_str + " " f"{entry.change/100:,.2f}".replace(
+            change_str = change_str + f" {entry.change / 100:,.2f}".replace(
                 ".",
                 "\n",
             ).replace(",", ".").replace("\n", ",")

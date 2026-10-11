@@ -82,10 +82,11 @@ class BufferFullException(BufferError):
     message: explanation of the error.
 
     """
+
     def __init__(self, message):
         self.message = message
 
-        
+
 # raising a BufferFullException
 raise BufferFullException("Circular buffer is full")
 ```

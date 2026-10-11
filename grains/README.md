@@ -28,7 +28,7 @@ This particular exercise requires that you use the [raise statement](https://doc
 To raise a `ValueError` with a message, write the message as an argument to the `exception` type:
 
 ```python
-# when the square value is not in the acceptable range        
+# when the square value is not in the acceptable range
 raise ValueError("square must be between 1 and 64")
 ```
 

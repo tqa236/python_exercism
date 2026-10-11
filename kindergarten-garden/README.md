@@ -98,10 +98,10 @@ Both of these statements need to work with your `__init__()` method:
 
 ```Python
 # Make a garden based on the default 12-student roster.
-Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV") 
+Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
 
 # Make a garden based on a 2-student roster.
-Garden("VRCC\nVCGG", students=["Valorie", "Raven"]) 
+Garden("VRCC\nVCGG", students=["Valorie", "Raven"])
 ```
 
 

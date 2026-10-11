@@ -93,10 +93,11 @@ class MeetupDayException(ValueError):
     message: explanation of the error.
 
     """
+
     def __init__(self, message):
         self.message = message
 
-        
+
 # raising a MeetupDayException
 raise MeetupDayException("That day does not exist.")
 ```

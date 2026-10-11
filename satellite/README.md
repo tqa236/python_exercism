@@ -45,8 +45,8 @@ raise ValueError("traversals must have the same length")
 
 # if preorder and inorder do not share the same elements
 raise ValueError("traversals must have the same elements")
-    
-# if element repeat (are not unique)    
+
+# if element repeat (are not unique)
 raise ValueError("traversals must contain unique items")
 ```
 
