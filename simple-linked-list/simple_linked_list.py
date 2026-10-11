@@ -15,7 +15,9 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self, values: Union[range, list[int]] = []) -> None:
+    def __init__(self, values: Union[range, list[int]] = None) -> None:
+        if values is None:
+            values = []
         self.head_node = None
         self.length = 0
         for value in values:

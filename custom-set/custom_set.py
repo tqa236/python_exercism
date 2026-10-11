@@ -6,7 +6,9 @@ from typing import List, Optional
 class CustomSet:
     """A lazy custom set implementation."""
 
-    def __init__(self, elements: List[int] = []) -> None:
+    def __init__(self, elements: List[int] = None) -> None:
+        if elements is None:
+            elements = []
         self.elements = set(elements)
         print(self.elements)
 

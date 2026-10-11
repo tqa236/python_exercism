@@ -4,7 +4,9 @@ NODE, EDGE, ATTR = range(3)
 
 
 class Node:
-    def __init__(self, name: str, attrs: dict[str, str] = {}) -> None:
+    def __init__(self, name: str, attrs: dict[str, str] = None) -> None:
+        if attrs is None:
+            attrs = {}
         self.name = name
         self.attrs = attrs
 
@@ -13,7 +15,9 @@ class Node:
 
 
 class Edge:
-    def __init__(self, src: str, dst: str, attrs: dict[str, str] = {}) -> None:
+    def __init__(self, src: str, dst: str, attrs: dict[str, str] = None) -> None:
+        if attrs is None:
+            attrs = {}
         self.src = src
         self.dst = dst
         self.attrs = attrs
@@ -27,7 +31,9 @@ class Edge:
 
 
 class Graph:
-    def __init__(self, data: Any = []) -> None:
+    def __init__(self, data: Any = None) -> None:
+        if data is None:
+            data = []
         self.nodes = []
         self.edges = []
         self.attrs = {}

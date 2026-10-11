@@ -87,7 +87,7 @@ target-version = "py314"
 
 [tool.ruff.lint]
 select = ["B", "C4", "E", "F", "I", "T10", "W"]
-ignore = ["E501"]
+ignore = ["E501", "B904", "B031"]
 fixable = ["ALL"]
 unfixable = []
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"

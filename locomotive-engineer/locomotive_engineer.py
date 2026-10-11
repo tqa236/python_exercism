@@ -36,7 +36,7 @@ def add_missing_stops(route, **stops):
     :return: dict - updated route dictionary.
     """
     route = copy.deepcopy(route)
-    route["stops"] = [value for value in stops.values()]
+    route["stops"] = list(stops.values())
     return route
 
 
@@ -56,5 +56,5 @@ def fix_wagon_depot(wagons_rows):
     :param wagons_rows: list[list[tuple]] - the list of rows of wagons.
     :return: list[list[tuple]] - list of rows of wagons.
     """
-    transposed_tuples = list(zip(*wagons_rows))
+    transposed_tuples = list(zip(*wagons_rows, strict=False))
     return [list(sublist) for sublist in transposed_tuples]

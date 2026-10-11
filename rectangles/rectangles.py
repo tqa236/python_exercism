@@ -43,7 +43,7 @@ def check_complete_horizontal_line(
 ) -> bool:
     """Check if a line between two points on the same line is complete."""
     return all(
-        [ascii_diagram[point[0]][i] in "-+" for i in range(point[1] + 1, other[1])]
+        ascii_diagram[point[0]][i] in "-+" for i in range(point[1] + 1, other[1])
     )
 
 
@@ -52,7 +52,7 @@ def check_complete_vertical_line(
 ) -> bool:
     """Check if a line between two points on the same column is complete."""
     return all(
-        [ascii_diagram[i][point[1]] in "|+" for i in range(point[0] + 1, other[0])]
+        ascii_diagram[i][point[1]] in "|+" for i in range(point[0] + 1, other[0])
     )
 
 

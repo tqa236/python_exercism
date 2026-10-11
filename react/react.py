@@ -47,7 +47,7 @@ class ComputeCell(InputCell):
 
     def update_value(self) -> None:
         """Update new value when there's a change."""
-        if all([input.updated for input in self.inputs]):
+        if all(input.updated for input in self.inputs):
             self.updated = True
             old_value = self.value
             self.value = self.compute_function([input.value for input in self.inputs])

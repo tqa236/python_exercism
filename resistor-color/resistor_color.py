@@ -23,4 +23,4 @@ def color_code(color: str) -> int:
 
 def colors() -> List[str]:
     """Return the full list of colors."""
-    return [color for color in CODES]
+    return list(CODES)

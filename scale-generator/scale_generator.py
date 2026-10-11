@@ -78,7 +78,7 @@ class Scale(object):
     def _scale_score(self, scale: List[str]) -> tuple[int, int, int]:
         accidental_total = sum(note.count("#") + note.count("b") for note in scale)
         repeated_letters = sum(
-            1 for prev, curr in zip(scale, scale[1:]) if prev[0] == curr[0]
+            1 for prev, curr in zip(scale, scale[1:], strict=False) if prev[0] == curr[0]
         )
         flat_count = sum(note.count("b") for note in scale)
         sharp_count = sum(note.count("#") for note in scale)

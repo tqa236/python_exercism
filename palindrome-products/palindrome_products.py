@@ -6,15 +6,14 @@ def check_palindrom(number: int) -> bool:
 
 
 def find_factors(number: int, min_factor: int, max_factor: int) -> set[tuple[int, int]]:
-    return set(
-        [
+    return {
+
             (i, number // i)
             for i in range(min_factor, max_factor + 1)
             if number % i == 0
             and min_factor <= number // i <= max_factor
             and i <= number // i
-        ],
-    )
+        }
 
 
 def check_valid(max_factor: int, min_factor: int) -> None:

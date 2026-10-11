@@ -29,6 +29,6 @@ def answer(question: str) -> None:
     ):
         raise ValueError("syntax error")
     result = int(elements[0])
-    for operator, operand in zip(elements[1::2], elements[2::2]):
+    for operator, operand in zip(elements[1::2], elements[2::2], strict=False):
         result = operator_dict[operator](result, int(operand))
     return result

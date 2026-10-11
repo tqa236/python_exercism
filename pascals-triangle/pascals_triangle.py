@@ -12,7 +12,7 @@ def rows(row_count):
         return [[1]]
     base_triangle = deepcopy(rows(row_count - 1))
     last_line = [
-        i + j for i, j in zip([0] + base_triangle[-1], base_triangle[-1] + [0])
+        i + j for i, j in zip([0] + base_triangle[-1], base_triangle[-1] + [0], strict=False)
     ]
     base_triangle.append(last_line)
     return base_triangle

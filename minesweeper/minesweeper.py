@@ -12,7 +12,7 @@ def annotate(input_board_array: list[str]) -> None:
     row_length = len(input_board_array[0])
     extended_board_array = (
         [[" " for i in range(row_length + 2)]]
-        + [[" "] + [char for char in row] + [" "] for row in input_board_array]
+        + [[" "] + list(row) + [" "] for row in input_board_array]
         + [[" " for i in range(row_length + 2)]]
     )
     for i in range(1, column_length + 1):

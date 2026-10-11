@@ -39,8 +39,8 @@ def FULL_HOUSE(dice: List[int]) -> int:
         if all(
             [
                 len(set(dice)) == 2,
-                any([dice.count(x) == 2 for x in dice]),
-                any([dice.count(x) == 3 for x in dice]),
+                any(dice.count(x) == 2 for x in dice),
+                any(dice.count(x) == 3 for x in dice),
             ]
         )
         else 0
@@ -52,11 +52,11 @@ def FOUR_OF_A_KIND(dice: List[int]) -> int:
 
 
 def LITTLE_STRAIGHT(dice: List[int]) -> int:
-    return 30 if set([1, 2, 3, 4, 5]) == set(sorted(dice)) else 0
+    return 30 if {1, 2, 3, 4, 5} == set(dice) else 0
 
 
 def BIG_STRAIGHT(dice: List[int]) -> int:
-    return 30 if set([2, 3, 4, 5, 6]) == set(sorted(dice)) else 0
+    return 30 if {2, 3, 4, 5, 6} == set(dice) else 0
 
 
 def CHOICE(dice: List[int]) -> int:

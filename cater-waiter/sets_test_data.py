@@ -4735,10 +4735,10 @@ intersections = (
 )
 
 dishes_and_overlap = [
-    (item[0], item[1]) for item in zip(ingredients_only, intersections)
+    (item[0], item[1]) for item in zip(ingredients_only, intersections, strict=False)
 ]
 ingredients = (set.union(*group) for group in ingredients_only)
-singletons = (item[0] ^ item[1] for item in zip(ingredients, intersections))
+singletons = (item[0] ^ item[1] for item in zip(ingredients, intersections, strict=False))
 
 backup_singletons = [
     {
