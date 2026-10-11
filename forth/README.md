@@ -42,13 +42,12 @@ This particular exercise requires that you create a _custom exception_ to be [ra
 # subclassing the Exception to create a StackUnderflowError
 class StackUnderflowError(Exception):
     """Exception raised when Stack is not full.
-    message: explanation of the error.
+       message: explanation of the error.
     """
-
     def __init__(self, message):
         self.message = message
 
-
+        
 # raising a StackUnderflowError
 raise StackUnderflowError("Insufficient number of items in stack")
 ```
@@ -60,7 +59,7 @@ To raise a `built-in exception` with a message, write the message as an argument
 # an example when division by zero is attempted.
 raise ZeroDivisionError("divide by zero")
 
-# an example when the operation is undefined.
+#an example when the operation is undefined.
 raise ValueError("undefined operation")
 ```
 

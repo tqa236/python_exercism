@@ -18,7 +18,7 @@ jobs:
     - name: Run tests
       run: |
         python3 -m pip install pytest hypothesis
-        ./test.sh
+        python3 -m pytest
 
   repo-review:
     runs-on: ubuntu-latest
