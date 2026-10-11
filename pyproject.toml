@@ -33,6 +33,9 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 
+[tool.pytest.ini_options]
+markers = ["task: A concept exercise task."]
+
 [tool.repo-review]
 ignore = ["PY004", "PY005", "PY007", "PP003", "PP301", "GH102", "GH103", "GH212", "PC", "MY", "RF", "RTD"]
 
