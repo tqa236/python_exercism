@@ -70,4 +70,4 @@ Please check the tests and their expected results carefully.
 
 ### Based on
 
-Adaptation of exercise from 4clojure - https://www.4clojure.com/
+Adaptation of exercise from 4clojure - https://github.com/oxalorg/4ever-clojure
