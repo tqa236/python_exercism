@@ -34,6 +34,12 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 
 [tool.pytest.ini_options]
+minversion = "6"
+testpaths = ["."]
+addopts = ["-ra", "--strict-config", "--strict-markers"]
+log_level = "INFO"
+xfail_strict = true
+filterwarnings = ["error"]
 markers = ["task: A concept exercise task."]
 
 [tool.repo-review]
